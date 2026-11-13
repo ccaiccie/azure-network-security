@@ -49,3 +49,4 @@ Companion code for the **Azure network security** video series. There is one fol
 | 36 | [Capstone: a multi-region enterprise network, designed, routed, inspected and broken](36-capstone-multiregion/) | `36-capstone-multiregion/` |
 | 37 | [BGP path selection and selective routing across Azure VPN Gateway, Route Server, ExpressRoute and Virtual WAN](37-bgp-path-selection-selective-routing/) | `37-bgp-path-selection-selective-routing/` |
 | 38 | [Container networking and security inspection: AKS egress through Azure Firewall, what the firewall sees, pod policy and ingress](38-container-security-inspection/) | `38-container-security-inspection/` |
+# azure-network-security
