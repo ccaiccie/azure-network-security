@@ -1,0 +1,34 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "cs38"
+
+# Gate 1: Azure Firewall, policy, public IPs, routes (billable by the hour)
+deploy_firewall = false
+
+# Gate 2: one small AKS cluster with outbound type userDefinedRouting (billable; needs gate 1)
+deploy_aks = false
+
+# Gate 3: DNAT rule from the firewall public IP to the internal load balancer (needs gate 1)
+enable_dnat = false
+
+# Gate 4: Log Analytics and firewall diagnostics (billed per GB; needs gate 1)
+enable_diagnostics = false
+
+# Behaviour switches. Changing cni_mode, network_policy or private_cluster replaces the cluster.
+cni_mode              = "overlay"
+network_policy        = "azure"
+firewall_sku          = "Basic"
+include_fqdn_tag_rule = true
+egress_rule_source    = "10.61.1.0/24"
+egress_test_fqdn      = "example.com"
+bypass_client_cidr    = ""
+private_cluster       = false
+api_authorized_ranges = []
+
+# Ranges (see the guide)
+node_subnet_cidr = "10.61.1.0/24"
+pod_cidr         = "10.244.0.0/16"
+service_cidr     = "172.20.0.0/16"
+dns_service_ip   = "172.20.0.10"
+ingress_ilb_ip   = "10.61.1.100"

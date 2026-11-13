@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# FUTURE authorized guest actions only. No operator-host execution.
+set -euo pipefail
+umask 077
+exec python3 -I /opt/azure-routeserver-lab/controller.py "$@"

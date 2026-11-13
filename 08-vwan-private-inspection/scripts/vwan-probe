@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# One finite direct synthetic flow and write-once evidence, no guest changes.
+set -euo pipefail
+umask 077
+exec /usr/bin/python3 -I /opt/azure-vwan-lab/probe.py "$@"

@@ -1,0 +1,27 @@
+# VENDOR-NEUTRAL PSEUDO-CONFIGURATION. Designed, not tested. Not valid on any real router:
+# translate each idea to your own router's syntax and review it with your network team.
+
+# --- CE1 (circuit A), neighbours 172.31.255.2 (primary) and 172.31.255.6 (secondary), remote ASN: Microsoft's documented ASN
+prefix-list SITE1      permit 192.168.10.0/24
+prefix-list REGION-A   permit 10.1.0.0/16, 10.11.0.0/16
+prefix-list REGION-B   permit 10.2.0.0/16, 10.12.0.0/16
+
+# Import: on-premises to Azure uses local preference (never sent to Microsoft)
+route-map FROM-MSEE-A permit 10
+  match prefix-list REGION-A
+  set local-preference 200
+route-map FROM-MSEE-A permit 20
+  match prefix-list REGION-B
+  set local-preference 100
+route-map FROM-MSEE-A deny 30            # anything else is refused
+
+# Export: advertise the site prefix only; never Azure-learned routes
+route-map TO-MSEE-A permit 10
+  match prefix-list SITE1
+# maintenance only: make circuit A look longer to Azure (works only when the connection weights are equal)
+#  set as-path prepend 65001 65001
+route-map TO-MSEE-A deny 20
+
+neighbor 172.31.255.2 maximum-prefix <limit from the current docs>
+neighbor 172.31.255.2 bfd              # only if the current docs say it is supported and you enabled it
+# CE2 mirrors this for circuit B, with REGION-B at 200 and REGION-A at 100.

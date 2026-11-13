@@ -1,0 +1,16 @@
+// Saved queries for the Log Analytics workspace. Table and column names depend on the log mode:
+// check the schema in your own workspace and current Microsoft docs.
+
+// 1. The last Bastion sessions: who, from where, to what
+MicrosoftAzureBastionAuditLogs
+| order by TimeGenerated desc
+| project TimeGenerated, UserName, ClientIpAddress, TargetVMIPAddress, Protocol
+
+// 2. Sessions per user per day (the base of an anomaly alert)
+MicrosoftAzureBastionAuditLogs
+| summarize sessions = count() by UserName, bin(TimeGenerated, 1d)
+
+// 3. Sessions outside business hours (UTC 18:00 to 06:00)
+MicrosoftAzureBastionAuditLogs
+| where hourofday(TimeGenerated) >= 18 or hourofday(TimeGenerated) < 6
+| project TimeGenerated, UserName, ClientIpAddress, TargetVMIPAddress

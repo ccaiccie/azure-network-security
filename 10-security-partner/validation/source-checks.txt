@@ -1,0 +1,8 @@
+HISTORICAL RECORD, NOT CURRENT RELEASE ACCEPTANCE
+All PASS and NOT RUN results below describe prior authoring work.
+Original bytes SHA256: 11f333bc089f618b3c1dda33c4e428eeae8ac622e64774627c7b3bbe85f0bc0d
+Private producer paths use descriptive historical identifiers.
+Fresh status: RECOVERY.md and external FINAL-ACCEPTANCE.json.
+
+Base64 source payload +8KiB metadata reserve: 60872 bytes; not rendered Terraform custom_data.
+PASS 166 source assertions, including text/brace counts. No HCL/provider/cloud/ZIA validation implied.

@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+# FUTURE approved read-only guest evidence. No route/filter/BGP changes.
+set -euo pipefail
+umask 077
+DURATION=0;OUT=''
+while (($#)); do
+  case "$1" in
+    --capture-seconds) DURATION=${2:?Missing seconds}; shift 2 ;;
+    --out) OUT=${2:?Missing path}; shift 2 ;;
+    *) printf 'Usage: sudo rs-evidence [--capture-seconds 0..120] [--out NEW_DIR]\n' >&2;exit 2 ;;
+  esac
+done
+[[ "$DURATION" =~ ^[0-9]+$ ]] && ((DURATION<=120)) || exit 2
+[[ $EUID -eq 0 ]] || exit 2
+for tool in python3 ip nft conntrack timeout tcpdump; do command -v "$tool" >/dev/null || exit 2; done
+CONFIG=${RS_LAB_CONFIG:-/etc/azure-routeserver-lab.json}
+mapfile -t VALUES < <(python3 - "$CONFIG" <<'PY'
+import json,sys
+from pathlib import Path
+c=json.loads(Path(sys.argv[1]).read_text());assert c['role'] in ('nva1','nva2','remote')
+assert c['private_ip']=={'nva1':'10.0.2.4','nva2':'10.0.2.5','remote':'10.30.1.20'}[c['role']]
+assert len(c['rs_peer_ips'])==2
+print(c['role']);print(c['private_ip'])
+for p in sorted(c['rs_peer_ips']):print(p)
+PY
+)
+((${#VALUES[@]}==4)) || exit 2
+ROLE=${VALUES[0]};IP=${VALUES[1]}
+ip -4 -o addr show | grep -Fq " $IP/" || exit 2
+if [[ $ROLE != remote ]]; then command -v vtysh >/dev/null || exit 2;fi
+OUT=${OUT:-"$HOME/rs-evidence/$ROLE-$(date -u +%Y%m%dT%H%M%SZ)-$$"}
+mkdir -p -- "$(dirname -- "$OUT")"
+mkdir -- "$OUT" || { printf 'Use a NEW nonexistent output path.\n' >&2;exit 2; }
+printf 'started_utc=%s\nnode=%s\n' "$(date -u +%FT%TZ)" "$ROLE" > "$OUT/timing.txt"
+trap 'rc=$?; printf "completed_utc=%s\nshell_exit=%s\n" "$(date -u +%FT%TZ)" "$rc" >> "$OUT/timing.txt"' EXIT
+record() {
+  local name=$1;shift
+  set +e
+  "$@" > "$OUT/$name.stdout" 2> "$OUT/$name.stderr"
+  local rc=$?
+  set -e
+  printf 'exit=%s\n' "$rc" > "$OUT/$name.exit"
+}
+snapshot() {
+  local phase=$1
+  record "$phase-status" /usr/local/bin/rs-control status
+  record "$phase-addresses" ip -j -4 addr show
+  record "$phase-links" ip -d -j link show
+  record "$phase-guest-routes" ip -j route show
+  record "$phase-route-D" ip -j route get 172.20.50.10
+  record "$phase-route-A" ip -j route get 10.10.1.10
+  record "$phase-route-R" ip -j route get 10.30.1.20
+  record "$phase-owned-policy" nft -j list table inet "$( [[ $ROLE == remote ]] && echo rs_remote || echo rs_nva )"
+  record "$phase-conntrack" conntrack -L -p tcp --orig-dst 172.20.50.10
+  if [[ $ROLE != remote ]]; then
+    record "$phase-frr-version" vtysh -c 'show version'
+    record "$phase-frr-running" vtysh -c 'show running-config'
+    record "$phase-frr-summary" vtysh -c 'show bgp ipv4 unicast summary json'
+    record "$phase-bgp-prefix" vtysh -c 'show bgp ipv4 unicast 172.20.50.0/24 json'
+    for i in 2 3; do
+      record "$phase-peer-${VALUES[$i]}" vtysh -c "show bgp ipv4 unicast neighbors ${VALUES[$i]} json"
+      record "$phase-advertised-${VALUES[$i]}" vtysh -c "show bgp ipv4 unicast neighbors ${VALUES[$i]} advertised-routes json"
+      record "$phase-route-peer-${VALUES[$i]}" ip -j route get "${VALUES[$i]}"
+    done
+  fi
+}
+snapshot before
+if ((DURATION>0));then
+  # Inner original/translated tuples and outer GRE, plus scoped BGP control only.
+  FILTER="((tcp and host 172.20.50.10 and (port 8080 or port 8081)) or (ip proto 47 and host 10.30.1.20 and (host 10.0.2.4 or host 10.0.2.5)) or (tcp port 179 and host $IP and (host ${VALUES[2]} or host ${VALUES[3]})))"
+  record capture timeout --signal=INT --kill-after=5 "$DURATION" tcpdump -i any -nn -s 0 -w "$OUT/traffic.pcap" "$FILTER"
+fi
+snapshot after
+printf 'Saved observations to %s. Inspect every .exit/.stderr; partial evidence is INCONCLUSIVE, not PASS.\n' "$OUT"

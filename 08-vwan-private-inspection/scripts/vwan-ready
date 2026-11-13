@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Read-only role, local NIC, expected systemd units and source-bound local HTTP.
+set -euo pipefail
+exec /usr/bin/python3 -I /opt/azure-vwan-lab/server.py --check-local-ready \
+  --config "${VWAN_LAB_CONFIG:-/etc/azure-vwan-lab.json}"

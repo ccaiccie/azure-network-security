@@ -1,0 +1,8 @@
+// Frontend source/restriction evidence, not Node socket/XFF trust. No case UUID
+// field is promised in this table; correlate UTC/source/host with HTTP evidence.
+let backend = "REPLACE_WITH_GUARDED_BACKEND_ID";
+AppServiceIPSecAuditLogs
+| where _ResourceId =~ backend
+| where TimeGenerated between (datetime(2000-01-01T00:00:00Z) .. datetime(2000-01-01T00:01:00Z))
+| project TimeGenerated, CIp, CsHost, Result, ServiceEndpoint
+| order by TimeGenerated asc

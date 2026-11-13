@@ -1,0 +1,28 @@
+{
+  "checked_at_utc": "2026-11-04T06:25:53.442378+00:00",
+  "status": "draft-not-provider-validated-not-deployed",
+  "passed": {
+    "bash_syntax_scripts": 3,
+    "source_contract_checks": 30,
+    "guest_harness_mock_tests": 5
+  },
+  "not_run": [
+    "terraform fmt",
+    "terraform init -backend=false",
+    "terraform validate",
+    "terraform test",
+    "terraform plan",
+    "terraform apply",
+    "terraform destroy",
+    "Azure runtime tests"
+  ],
+  "blocker": "Terraform/OpenTofu executables and provider cache unavailable; no installation attempted.",
+  "cloud_resources_changed": false,
+  "repository_edited_or_pushed": false,
+  "provider_pin": "hashicorp/azurerm = 5.12.0",
+  "default_policy_mode": "network",
+  "application_scenario": "mutually exclusive optional mode",
+  "resource_declarations": 24,
+  "hcl_files_inspected_for_split_operators": 8,
+  "corrected_defect": "variables.tf FQDN lowercase comparison restored from split = = to ==; regression guard added."
+}

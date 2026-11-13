@@ -1,0 +1,10 @@
+test_application_mode_does_not_report_network_note (__main__.GuestHarness.test_application_mode_does_not_report_network_note) ... ok
+test_collects_all_cases_without_claiming_pass (__main__.GuestHarness.test_collects_all_cases_without_claiming_pass) ... ok
+test_missing_dig_marks_bypass_not_run (__main__.GuestHarness.test_missing_dig_marks_bypass_not_run) ... ok
+test_rejects_unapproved_positive_host (__main__.GuestHarness.test_rejects_unapproved_positive_host) ... ok
+test_rejects_wrong_machine (__main__.GuestHarness.test_rejects_wrong_machine) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.906s
+
+OK

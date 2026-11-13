@@ -1,0 +1,2 @@
+PASS 144 source assertions; compressed sources plus8192-byte reserve=15640 bytes, not Terraform-rendered payload.
+No HCL semantics, provider schema, real TLS/DNS/token/Blob authorization or Azure execution verified.

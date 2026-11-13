@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars (kept out of source control). Every gate defaults to false.
+subscription_id     = "00000000-0000-0000-0000-000000000000"
+location            = "westeurope"
+secondary_location  = "northeurope"
+resource_group_name = "vnet-peering-lab"
+
+# Needed only when deploy_vms or deploy_nva is true.
+admin_ssh_public_key = ""
+
+deploy_vms               = false
+peer_spokes_directly     = false
+deploy_nva               = false
+create_global_peering    = false
+create_gateway           = false
+enable_gateway_transit   = false
+create_onprem_connection = false
+break_fix                = "none"
+# vpn_shared_key is never written here. Use: export TF_VAR_vpn_shared_key=...

@@ -1,0 +1,76 @@
+PASS bash syntax: check-local.sh
+PASS bash syntax: collect-control-plane.sh
+PASS bash syntax: guest-probe.sh
+PASS bash syntax: guest-ready.sh
+PASS: intact comparison operators
+PASS: provider exact pin
+PASS: registration disabled
+PASS: computed firewall IP
+PASS: explicit private subnets
+PASS: all four forwarded peering flags
+PASS: four peering declarations only
+PASS: all VirtualAppliance routes use computed F and None has no hop
+PASS: routes consume tested specifications
+PASS: NSGs consume tested specifications
+PASS: same-VNet switch adds C through merge
+PASS: C shares existing app VNet
+PASS: A-to-C /24 exact
+PASS: C-to-A /24 exact
+PASS: C return route has separate bounded switch
+PASS: C policy explicit allow and both named denies
+PASS: explicit remote route switch
+PASS: blackhole switch only on db
+PASS: blackhole exact prefix and type
+PASS: allow is named
+PASS: alternate deny is named
+PASS: reverse deny is named
+PASS: only one firewall Allow collection
+PASS: no application collection
+PASS: no SNAT override
+PASS: no NAT or DNAT resources
+PASS: workload NSG permits required negative ports
+PASS: workload NSG deny both directions
+PASS: no workload Internet or AzureCloud allow
+PASS: SSH password disabled
+PASS: no Terraform private key generation
+PASS: no provisioner
+PASS: concrete image required
+PASS: fixture ports A and B
+PASS: fixture service startup is owned
+PASS: cloud-init invokes readiness
+PASS: no package bootstrap downloads
+PASS: Bastion Standard with native tunnel
+PASS: resource-specific logs
+PASS: curl config ignored
+PASS: workload NIC has no public IP
+PASS: VNet ranges nonoverlapping
+42 focused source checks passed; NOT Terraform or runtime validation.
+test_collector_baseline_has_only_two_workloads (__main__.CollectorTests.test_collector_baseline_has_only_two_workloads) ... ok
+test_collector_c_uses_existing_app_vnet (__main__.CollectorTests.test_collector_c_uses_existing_app_vnet) ... ok
+test_both_real_loopback_listeners_return_identity (__main__.FixtureTests.test_both_real_loopback_listeners_return_identity) ... {"case": "/ready-local", "fixture_role": "db", "peer_ip": "127.0.0.1", "peer_port": 42936, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:15:51.284576+00:00"}
+{"case": "/ready-local", "fixture_role": "db", "peer_ip": "127.0.0.1", "peer_port": 48580, "server_ip": "127.0.0.1", "server_port": 8081, "time_utc": "2026-11-04T07:15:51.286245+00:00"}
+ok
+test_c_fixture_role_and_private_source_identity (__main__.FixtureTests.test_c_fixture_role_and_private_source_identity) ... {"case": "/same-positive-local", "fixture_role": "c", "peer_ip": "127.0.0.1", "peer_port": 51198, "server_ip": "127.0.0.1", "server_port": 44367, "time_utc": "2026-11-04T07:15:51.288293+00:00"}
+ok
+test_never_serves_files (__main__.FixtureTests.test_never_serves_files) ... {"case": "/../../etc/passwd", "fixture_role": "db", "peer_ip": "127.0.0.1", "peer_port": 42946, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:15:51.790532+00:00"}
+ok
+test_ready_script_checks_both_ports (__main__.FixtureTests.test_ready_script_checks_both_ports) ... {"case": "/ready-local", "fixture_role": "db", "peer_ip": "127.0.0.1", "peer_port": 42962, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:15:51.888611+00:00"}
+{"case": "/ready-local", "fixture_role": "db", "peer_ip": "127.0.0.1", "peer_port": 48594, "server_ip": "127.0.0.1", "server_port": 8081, "time_utc": "2026-11-04T07:15:51.892177+00:00"}
+ok
+test_rejects_overlong_path (__main__.FixtureTests.test_rejects_overlong_path) ... ok
+test_rejects_post (__main__.FixtureTests.test_rejects_post) ... ok
+test_negative_does_not_claim_firewall_denial (__main__.ProbeTests.test_negative_does_not_claim_firewall_denial) ... ok
+test_positive_checks_identity_but_not_firewall_verdict (__main__.ProbeTests.test_positive_checks_identity_but_not_firewall_verdict) ... ok
+test_same_vnet_alternate_port_requires_review (__main__.ProbeTests.test_same_vnet_alternate_port_requires_review) ... ok
+test_same_vnet_is_rejected_when_disabled (__main__.ProbeTests.test_same_vnet_is_rejected_when_disabled) ... ok
+test_same_vnet_positive_uses_c_identity (__main__.ProbeTests.test_same_vnet_positive_uses_c_identity) ... ok
+test_same_vnet_reverse_records_negative_on_c (__main__.ProbeTests.test_same_vnet_reverse_records_negative_on_c) ... ok
+test_same_vnet_reverse_requires_c (__main__.ProbeTests.test_same_vnet_reverse_requires_c) ... ok
+test_wrong_machine_is_rejected (__main__.ProbeTests.test_wrong_machine_is_rejected) ... ok
+test_wrong_role_is_rejected (__main__.ProbeTests.test_wrong_role_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 4.662s
+
+OK
+NOT RUN terraform fmt/init/validate/test: Terraform unavailable.

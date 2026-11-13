@@ -1,0 +1,22 @@
+[Unit]
+Description=Private NVA experiment backend on port %i
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /opt/azure-nva-lab/server.py --bind 10.20.1.20 --port %i
+DynamicUser=yes
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

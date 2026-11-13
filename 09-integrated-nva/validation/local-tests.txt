@@ -1,0 +1,109 @@
+HISTORICAL RECORD, NOT CURRENT RELEASE ACCEPTANCE
+All PASS and NOT RUN results below describe prior authoring work.
+Original bytes SHA256: 9093e724154eb21d5b6b1de778f6b5f72ea0b1e5f7c954e6422cdff125f9d159
+Private producer paths use descriptive historical identifiers.
+Fresh status: RECOVERY.md and external FINAL-ACCEPTANCE.json.
+
+test_early_stream_eof_is_not_complete (test_fixture_probe.BoundedFailureTests.test_early_stream_eof_is_not_complete) ... ok
+test_http_redirect_is_not_followed (test_fixture_probe.BoundedFailureTests.test_http_redirect_is_not_followed) ... ok
+test_malformed_response_saved_without_success (test_fixture_probe.BoundedFailureTests.test_malformed_response_saved_without_success) ... ok
+test_out_of_range_translated_port_is_identity_mismatch (test_fixture_probe.BoundedFailureTests.test_out_of_range_translated_port_is_identity_mismatch) ... ok
+test_slow_headers_total_deadline_without_reconnect (test_fixture_probe.BoundedFailureTests.test_slow_headers_total_deadline_without_reconnect) ... ok
+test_test_network_guard_denies_external_address (test_fixture_probe.BoundedFailureTests.test_test_network_guard_denies_external_address) ... ok
+test_total_deadline_outside_main_thread (test_fixture_probe.BoundedFailureTests.test_total_deadline_outside_main_thread) ... ok
+test_app_readiness_no_listener_or_network (test_fixture_probe.ConfigAndReadinessTests.test_app_readiness_no_listener_or_network) ... ok
+test_cli_uses_approved_runtime_public_tuple_without_dns (test_fixture_probe.ConfigAndReadinessTests.test_cli_uses_approved_runtime_public_tuple_without_dns) ... ok
+test_config_unknown_fields_or_missing_fields_rejected (test_fixture_probe.ConfigAndReadinessTests.test_config_unknown_fields_or_missing_fields_rejected) ... ok
+test_egress_pool_limit_sixteen_consistent_for_probe_and_readiness (test_fixture_probe.ConfigAndReadinessTests.test_egress_pool_limit_sixteen_consistent_for_probe_and_readiness) ... ok
+test_empty_or_documentation_destination_cli_fails_without_network (test_fixture_probe.ConfigAndReadinessTests.test_empty_or_documentation_destination_cli_fails_without_network) ... ok
+test_failed_8081_listener_is_not_ready (test_fixture_probe.ConfigAndReadinessTests.test_failed_8081_listener_is_not_ready) ... ok
+test_fixed_address_on_loopback_is_not_nic_readiness (test_fixture_probe.ConfigAndReadinessTests.test_fixed_address_on_loopback_is_not_nic_readiness) ... ok
+test_fixed_config_rejects_changes_before_commands (test_fixture_probe.ConfigAndReadinessTests.test_fixed_config_rejects_changes_before_commands) ... ok
+test_fixture_wrong_port_role_before_commands (test_fixture_probe.ConfigAndReadinessTests.test_fixture_wrong_port_role_before_commands) ... ok
+test_inactive_unit_is_not_ready (test_fixture_probe.ConfigAndReadinessTests.test_inactive_unit_is_not_ready) ... ok
+test_initial_empty_pool_origin_can_start_but_app_never_listens (test_fixture_probe.ConfigAndReadinessTests.test_initial_empty_pool_origin_can_start_but_app_never_listens) ... ok
+test_initial_empty_pool_permits_local_readiness_not_public_probe (test_fixture_probe.ConfigAndReadinessTests.test_initial_empty_pool_permits_local_readiness_not_public_probe) ... ok
+test_missing_or_extra_active_units_rejected (test_fixture_probe.ConfigAndReadinessTests.test_missing_or_extra_active_units_rejected) ... ok
+test_missing_private_nic_rejected (test_fixture_probe.ConfigAndReadinessTests.test_missing_private_nic_rejected) ... ok
+test_mode_contract (test_fixture_probe.ConfigAndReadinessTests.test_mode_contract) ... ok
+test_origin_readiness_exact_8080_8081 (test_fixture_probe.ConfigAndReadinessTests.test_origin_readiness_exact_8080_8081) ... ok
+test_probe_cli_missing_or_loopback_source_nic_never_connects (test_fixture_probe.ConfigAndReadinessTests.test_probe_cli_missing_or_loopback_source_nic_never_connects) ... ok
+test_public_or_reserved_config_rejected_before_any_command (test_fixture_probe.ConfigAndReadinessTests.test_public_or_reserved_config_rejected_before_any_command) ... ok
+test_reverse_on_app_rejected (test_fixture_probe.ConfigAndReadinessTests.test_reverse_on_app_rejected) ... ok
+test_wrong_role_cli_stops_before_subprocess_or_network (test_fixture_probe.ConfigAndReadinessTests.test_wrong_role_cli_stops_before_subprocess_or_network) ... ok
+test_direct_probe_records_original_tuple_and_immutable_stages (test_fixture_probe.FixtureProbeTests.test_direct_probe_records_original_tuple_and_immutable_stages) ... {"fixture": "azure-partner-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T12:06:43.809492+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 47499, "server_ip": "127.0.0.1", "server_port": 45819}
+ok
+test_finite_stream_explicit_completion (test_fixture_probe.FixtureProbeTests.test_finite_stream_explicit_completion) ... {"fixture": "azure-partner-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T12:06:43.819581+00:00", "frame": 0, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 56491, "server_ip": "127.0.0.1", "server_port": 45819}
+{"fixture": "azure-partner-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T12:06:44.820033+00:00", "frame": 1, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 56491, "server_ip": "127.0.0.1", "server_port": 45819, "stream_end": false}
+{"fixture": "azure-partner-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T12:06:45.820445+00:00", "frame": 2, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 56491, "server_ip": "127.0.0.1", "server_port": 45819, "stream_end": false}
+{"fixture": "azure-partner-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T12:06:46.821543+00:00", "frame": 3, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 56491, "server_ip": "127.0.0.1", "server_port": 45819, "stream_end": false}
+{"fixture": "azure-partner-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T12:06:47.904105+00:00", "frame": 4, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 56491, "server_ip": "127.0.0.1", "server_port": 45819, "stream_end": false}
+{"fixture": "azure-partner-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T12:06:48.820903+00:00", "frame": 5, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 56491, "server_ip": "127.0.0.1", "server_port": 45819, "stream_end": true}
+ok
+test_fixture_bad_case (test_fixture_probe.FixtureProbeTests.test_fixture_bad_case) ... ok
+test_fixture_duplicate_case_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_duplicate_case_rejected) ... ok
+test_fixture_health (test_fixture_probe.FixtureProbeTests.test_fixture_health) ... {"fixture": "azure-partner-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T12:06:48.841712+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 51604, "server_ip": "127.0.0.1", "server_port": 45819}
+ok
+test_fixture_path_and_aggregate_header_bounds (test_fixture_probe.FixtureProbeTests.test_fixture_path_and_aggregate_header_bounds) ... ok
+test_fixture_post_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_post_rejected) ... ok
+test_fixture_probe_records_actual_peer_port (test_fixture_probe.FixtureProbeTests.test_fixture_probe_records_actual_peer_port) ... {"fixture": "azure-partner-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T12:06:48.852679+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 51648, "server_ip": "127.0.0.1", "server_port": 45819}
+ok
+test_fixture_rejects_unknown_paths (test_fixture_probe.FixtureProbeTests.test_fixture_rejects_unknown_paths) ... ok
+test_fixture_request_body_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_request_body_rejected) ... ok
+test_invalid_parameters_before_network (test_fixture_probe.FixtureProbeTests.test_invalid_parameters_before_network) ... ok
+test_new_out_has_private_permissions (test_fixture_probe.FixtureProbeTests.test_new_out_has_private_permissions) ... ok
+test_nonclobber_existing_out (test_fixture_probe.FixtureProbeTests.test_nonclobber_existing_out) ... ok
+test_nonclobber_symlink (test_fixture_probe.FixtureProbeTests.test_nonclobber_symlink) ... ok
+test_probe_rejects_dns_before_network (test_fixture_probe.FixtureProbeTests.test_probe_rejects_dns_before_network) ... ok
+test_production_stream_only_origin_8080 (test_fixture_probe.FixtureProbeTests.test_production_stream_only_origin_8080) ... ok
+test_proxy_environment_cannot_redirect_probe_or_trigger_dns (test_fixture_probe.FixtureProbeTests.test_proxy_environment_cannot_redirect_probe_or_trigger_dns) ... {"fixture": "azure-partner-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T12:06:48.881763+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 42881, "server_ip": "127.0.0.1", "server_port": 45819}
+ok
+test_readiness_identity_uses_explicit_local_source (test_fixture_probe.FixtureProbeTests.test_readiness_identity_uses_explicit_local_source) ... {"fixture": "azure-partner-origin-v1", "case_id": "local-readiness-case", "time_utc": "2026-11-04T12:06:48.886409+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 44655, "server_ip": "127.0.0.1", "server_port": 45819}
+ok
+test_stream_bounds_and_parameter_strictness (test_fixture_probe.FixtureProbeTests.test_stream_bounds_and_parameter_strictness) ... ok
+test_stream_rejected_on_non_stream_listener (test_fixture_probe.FixtureProbeTests.test_stream_rejected_on_non_stream_listener) ... ok
+test_write_once_preserves_prior_evidence (test_fixture_probe.FixtureProbeTests.test_write_once_preserves_prior_evidence) ... ok
+test_malformed_or_wrong_identity_rejected (test_fixture_probe.IdentityTests.test_malformed_or_wrong_identity_rejected) ... ok
+test_origin_private_and_approved_translated_peer (test_fixture_probe.IdentityTests.test_origin_private_and_approved_translated_peer) ... ok
+test_private_original_source_or_unapproved_public_peer_rejected (test_fixture_probe.IdentityTests.test_private_original_source_or_unapproved_public_peer_rejected) ... ok
+test_actual_tuple_mismatch_stops_before_http (test_fixture_probe.MockSocketTests.test_actual_tuple_mismatch_stops_before_http) ... ok
+test_bind_failure_has_completed_result_without_syn (test_fixture_probe.MockSocketTests.test_bind_failure_has_completed_result_without_syn) ... ok
+test_existing_connection_evidence_not_overwritten_or_connected (test_fixture_probe.MockSocketTests.test_existing_connection_evidence_not_overwritten_or_connected) ... ok
+test_partial_write_is_not_reported_as_http_not_sent (test_fixture_probe.MockSocketTests.test_partial_write_is_not_reported_as_http_not_sent) ... ok
+test_public_destination_and_actual_translated_peer_are_separate (test_fixture_probe.MockSocketTests.test_public_destination_and_actual_translated_peer_are_separate) ... ok
+test_timeout_retains_preconnect_tuple_and_http_not_sent (test_fixture_probe.MockSocketTests.test_timeout_retains_preconnect_tuple_and_http_not_sent) ... ok
+test_unapproved_peer_preserved_as_mismatch (test_fixture_probe.MockSocketTests.test_unapproved_peer_preserved_as_mismatch) ... ok
+test_wrong_bound_source_aborts_before_syn (test_fixture_probe.MockSocketTests.test_wrong_bound_source_aborts_before_syn) ... ok
+test_installed_tools_validated_without_running_them (test_fixture_probe.ToolReadinessTests.test_installed_tools_validated_without_running_them) ... ok
+test_missing_tools_or_wrappers_rejected (test_fixture_probe.ToolReadinessTests.test_missing_tools_or_wrappers_rejected) ... ok
+test_empty_response_inconclusive_not_match (test_operator.IdentityTests.test_empty_response_inconclusive_not_match) ... ok
+test_every_required_projection_field_mismatch_rejected (test_operator.IdentityTests.test_every_required_projection_field_mismatch_rejected) ... ok
+test_matching_metadata_not_policy_proof (test_operator.IdentityTests.test_matching_metadata_not_policy_proof) ... ok
+test_actual_wrong_vendor_rejected (test_operator.OperatorTests.test_actual_wrong_vendor_rejected) ... ok
+test_bootstrap_profile_absent_is_explicit_blocker (test_operator.OperatorTests.test_bootstrap_profile_absent_is_explicit_blocker) ... ok
+test_config_local_only_six_fields_nonclobber (test_operator.OperatorTests.test_config_local_only_six_fields_nonclobber) ... ok
+test_config_origin_role (test_operator.OperatorTests.test_config_origin_role) ... ok
+test_config_rejects_documentation_origin (test_operator.OperatorTests.test_config_rejects_documentation_origin) ... ok
+test_config_rejects_unsafe_pool (test_operator.OperatorTests.test_config_rejects_unsafe_pool) ... ok
+test_disabled_no_reads (test_operator.OperatorTests.test_disabled_no_reads) ... ok
+test_empty_responses_not_identity_proof (test_operator.OperatorTests.test_empty_responses_not_identity_proof) ... ok
+test_existing_output_refused (test_operator.OperatorTests.test_existing_output_refused) ... ok
+test_invalid_uuid_no_reads (test_operator.OperatorTests.test_invalid_uuid_no_reads) ... ok
+test_missing_extension_no_resource_reads (test_operator.OperatorTests.test_missing_extension_no_resource_reads) ... ok
+test_missing_nic_targets_rejected_before_azure_reads (test_operator.OperatorTests.test_missing_nic_targets_rejected_before_azure_reads) ... ok
+test_missing_vm_targets_rejected_before_azure_reads (test_operator.OperatorTests.test_missing_vm_targets_rejected_before_azure_reads) ... ok
+test_omitted_optional_vendor_and_intent_outputs (test_operator.OperatorTests.test_omitted_optional_vendor_and_intent_outputs) ... ok
+test_omitted_required_owned_id_still_rejected (test_operator.OperatorTests.test_omitted_required_owned_id_still_rejected) ... ok
+test_private_handling_notice_and_unredacted_operator_text (test_operator.OperatorTests.test_private_handling_notice_and_unredacted_operator_text) ... ok
+test_read_failures_preserved_and_collection_continues (test_operator.OperatorTests.test_read_failures_preserved_and_collection_continues) ... ok
+test_scoped_projected_readonly (test_operator.OperatorTests.test_scoped_projected_readonly) ... ok
+test_vm_substitute_no_reads (test_operator.OperatorTests.test_vm_substitute_no_reads) ... ok
+test_wrong_external_hub_no_reads (test_operator.OperatorTests.test_wrong_external_hub_no_reads) ... ok
+test_wrong_nic_targets_rejected_before_azure_reads (test_operator.OperatorTests.test_wrong_nic_targets_rejected_before_azure_reads) ... ok
+test_wrong_subscription_no_reads (test_operator.OperatorTests.test_wrong_subscription_no_reads) ... ok
+test_wrong_vm_targets_rejected_before_azure_reads (test_operator.OperatorTests.test_wrong_vm_targets_rejected_before_azure_reads) ... ok
+
+----------------------------------------------------------------------
+Ran 87 tests in 40.093s
+
+OK

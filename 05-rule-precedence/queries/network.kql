@@ -1,0 +1,11 @@
+let fw = "/subscriptions/REPLACE/resourceGroups/inspection-policy/providers/Microsoft.Network/azureFirewalls/lab-firewall";
+let start = datetime(2000-01-01T00:00:00Z);
+let finish = datetime(2000-01-01T00:05:00Z);
+AZFWNetworkRule
+| where _ResourceId =~ fw and TimeGenerated between (start .. finish)
+| where SourceIp == "10.10.1.10" and DestinationIp == "10.20.1.10"
+| where DestinationPort in (8080,8081)
+| project TimeGenerated, SourceIp, SourcePort, DestinationIp, DestinationPort,
+          Protocol, Action, ActionReason, Policy, RuleCollectionGroup, RuleCollection, Rule
+| order by TimeGenerated asc
+// Actual source port/time correlate to client evidence. No HTTP case header here.

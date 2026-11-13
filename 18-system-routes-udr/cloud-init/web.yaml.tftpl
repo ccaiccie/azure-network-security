@@ -1,0 +1,19 @@
+#cloud-config
+# Lab web server: one page on TCP 8080. The log line shows the client address it saw.
+write_files:
+  - path: /srv/lab/index.html
+    content: "vm-b ok\n"
+  - path: /etc/systemd/system/lab-web.service
+    content: |
+      [Unit]
+      Description=Lab web service
+      After=network-online.target
+      [Service]
+      WorkingDirectory=/srv/lab
+      ExecStart=/usr/bin/python3 -m http.server 8080 --bind 0.0.0.0
+      Restart=always
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - [systemctl, daemon-reload]
+  - [systemctl, enable, --now, lab-web.service]

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+umask 077
+exec /usr/bin/python3 -I /opt/azure-forced-lab/controller.py control "$@"

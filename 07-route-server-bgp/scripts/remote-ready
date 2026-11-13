@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Read-only local loopback/fixture readiness; no cloud-path or HA inference.
+set -euo pipefail
+exec /usr/bin/python3 -I /opt/azure-routeserver-lab/server.py --check-local-ready \
+  --config "${RS_LAB_CONFIG:-/etc/azure-routeserver-lab.json}"

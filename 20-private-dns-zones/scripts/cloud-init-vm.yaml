@@ -1,0 +1,7 @@
+#cloud-config
+# Runs once at first boot of vm-app-1 and vm-spoke-1. Installs the stdlib-only DNS client used by the activities.
+write_files:
+  - path: /opt/lab/dnsq.py
+    permissions: "0755"
+    encoding: b64
+    content: ${dnsq_b64}

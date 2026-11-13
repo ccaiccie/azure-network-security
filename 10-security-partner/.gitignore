@@ -1,0 +1,29 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.auto.tfvars
+*.auto.tfvars.json
+!terraform.tfvars.example
+crash.log
+evidence/
+*.pem
+# Keep the genuine .terraform.lock.hcl produced by an approved terraform init.
+
+__pycache__/
+*.pyc
+
+build/
+*.pem
+*.crt
+*.key
+*.pfx
+*.p12
+runtime-config.*/
+# Private working directories used by the future operator runbook.
+spp-plan-*/
+spp-review-*/
+spp-runtime-*/
+profiles/*.json
+!profiles/provider-profile.example.json

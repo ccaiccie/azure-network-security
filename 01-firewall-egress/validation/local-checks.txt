@@ -1,0 +1,45 @@
+PASS bash syntax: check-local.sh
+PASS bash syntax: collect-control-plane.sh
+PASS bash syntax: guest-tests.sh
+PASS: no split comparison operators in any HCL file
+PASS: FQDN lowercase check uses intact equality
+PASS: split-operator guard detects original regression
+PASS: provider exact pin
+PASS: no automatic provider registration
+PASS: computed firewall address
+PASS: explicit private workload subnet
+PASS: firewall DNS proxy
+PASS: spoke DNS uses firewall
+PASS: network mode mutually exclusive
+PASS: application mode mutually exclusive
+PASS: network allow only TCP443
+PASS: route references computed firewall
+PASS: subnet route association
+PASS: subnet NSG association
+PASS: both forwarded peering flags
+PASS: strict platform DNS rule
+PASS: password login disabled
+PASS: no private key resource
+PASS: no Terraform provisioner
+PASS: no NAT gateway resource
+PASS: no DNAT collection
+PASS: Bastion Standard tunnel
+PASS: resource-specific logs
+PASS: required log categories
+PASS: workload NIC has no public IP field
+PASS: nonoverlapping VNet CIDRs
+PASS: firewall subnet is /26 in hub
+PASS: Bastion subnet is separate /26
+PASS: VM IP is usable inside workload subnet
+30 source-contract checks passed. This is NOT Terraform/provider or runtime validation.
+test_application_mode_does_not_report_network_note (__main__.GuestHarness.test_application_mode_does_not_report_network_note) ... ok
+test_collects_all_cases_without_claiming_pass (__main__.GuestHarness.test_collects_all_cases_without_claiming_pass) ... ok
+test_missing_dig_marks_bypass_not_run (__main__.GuestHarness.test_missing_dig_marks_bypass_not_run) ... ok
+test_rejects_unapproved_positive_host (__main__.GuestHarness.test_rejects_unapproved_positive_host) ... ok
+test_rejects_wrong_machine (__main__.GuestHarness.test_rejects_wrong_machine) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.733s
+
+OK
+NOT RUN terraform fmt/init/validate: Terraform executable unavailable.

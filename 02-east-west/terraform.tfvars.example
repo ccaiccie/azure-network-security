@@ -1,0 +1,16 @@
+# Example only. Copy locally to terraform.tfvars and replace placeholders.
+subscription_id     = "00000000-0000-0000-0000-000000000000"
+resource_group_name = "inspection-east-west"
+location            = "eastus"
+admin_username      = "labadmin"
+vm_size             = "Standard_B1s"
+# Resolve a real approved region-specific image version; this is deliberately invalid.
+image_version = "REPLACE_WITH_APPROVED_VERSION"
+explicit_remote_routes = true
+return_route_blackhole = false
+# Existing PUBLIC key only:
+# export TF_VAR_ssh_public_key="$(cat "$HOME/.ssh/your-approved-key.pub")"
+tags = { owner = "replace-with-approved-label" }
+
+enable_same_vnet = false
+same_vnet_return_route_enabled = true

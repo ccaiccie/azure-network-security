@@ -1,0 +1,14 @@
+# The annotation makes the frontend a private address from the node subnet.
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-lb-internal
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  selector:
+    app: echo
+  ports:
+    - port: 80
+      targetPort: 8080

@@ -1,0 +1,13 @@
+# Replace every placeholder after reviewing costs, permissions, public exposure and image prerequisites.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-gwlb"
+location = "REPLACE_WITH_AVAILABLE_APPROVED_REGION"
+image_id = "REPLACE_WITH_EXISTING_APPROVED_SAME_SUBSCRIPTION_IMAGE_VERSION_ID"
+ssh_public_key = "REPLACE_WITH_EXISTING_PUBLIC_SSH_KEY_ONLY"
+client_public_ip = "REPLACE_WITH_AUTHORIZED_STABLE_PUBLIC_CLIENT_IPV4"
+deploy_lab = false
+image_prerequisites_confirmed = false
+appliances_ready = false
+application_ready = false
+enable_chain = false
+test_paths_enabled = false

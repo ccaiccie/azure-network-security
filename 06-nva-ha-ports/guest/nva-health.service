@@ -1,0 +1,21 @@
+[Unit]
+Description=Unprivileged synthetic NVA HTTP health endpoint
+Requires=nva-health-monitor.service
+After=nva-health-monitor.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /opt/azure-nva-lab/controller.py health
+DynamicUser=yes
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

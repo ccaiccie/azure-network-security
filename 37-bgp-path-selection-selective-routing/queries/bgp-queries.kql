@@ -1,0 +1,17 @@
+// Designed, not tested. VPN gateway diagnostic logs sent to a Log Analytics workspace by a diagnostic setting.
+// Route Server has no comparable log table that this lab relies on: use the learned and advertised route commands instead.
+// Category, table and column names depend on the destination mode; check current Microsoft docs.
+
+// BGP session and route changes on the VPN gateway
+AzureDiagnostics
+| where Category == "RouteDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, OperationName, Message
+| order by TimeGenerated desc
+
+// Gateway diagnostic events about tunnels (state changes)
+AzureDiagnostics
+| where Category == "TunnelDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, status_s, stateChangeReason_s
+| order by TimeGenerated desc

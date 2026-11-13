@@ -1,0 +1,26 @@
+// Saved queries for the Log Analytics workspace (gate 2). Table and column names depend on the log mode:
+// the resource-specific tables are assumed here. Check the schema in your own workspace and current Microsoft docs.
+
+// 1. Which policy and rule matched? Parent rules show the parent name in the Policy column.
+AZFWNetworkRule
+| order by TimeGenerated desc
+| project TimeGenerated, SourceIp, DestinationIp, DestinationPort, Action, Policy, RuleCollectionGroup, RuleCollection, Rule
+
+// 2. Hits per policy and rule collection group over a day (is a child rule ever hit?)
+AZFWNetworkRule
+| where TimeGenerated > ago(1d)
+| summarize hits = count() by Policy, RuleCollectionGroup, RuleCollection, Rule, Action
+
+// 3. Denied traffic that matched no rule (the Rule column is empty or a default deny text)
+AZFWNetworkRule
+| where Action == "Deny" and isempty(Rule)
+| summarize denied = count() by SourceIp, DestinationIp, DestinationPort
+
+// 4. DNAT hits: which DNAT rule translated which public address
+AZFWNatRule
+| order by TimeGenerated desc
+| project TimeGenerated, SourceIp, DestinationIp, DestinationPort, TranslatedIp, TranslatedPort, Policy, RuleCollectionGroup, Rule
+
+// 5. Application rule hits per policy
+AZFWApplicationRule
+| summarize hits = count() by Policy, Fqdn, Action

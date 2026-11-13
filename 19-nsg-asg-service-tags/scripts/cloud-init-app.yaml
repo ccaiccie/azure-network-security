@@ -1,0 +1,22 @@
+#cloud-config
+# Runs once on app-1 at first boot. Starts a tiny HTTP listener on TCP 8080 so the allow rule has something to reach.
+write_files:
+  - path: /opt/lab/index.html
+    content: |
+      app-1 reached on tcp/8080
+  - path: /etc/systemd/system/lab-listener.service
+    content: |
+      [Unit]
+      Description=Lab listener on tcp/8080
+      After=network-online.target
+
+      [Service]
+      WorkingDirectory=/opt/lab
+      ExecStart=/usr/bin/python3 -m http.server 8080 --bind 0.0.0.0
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - systemctl daemon-reload
+  - systemctl enable --now lab-listener.service

@@ -1,0 +1,16 @@
+# Intentionally incomplete. No deployment until separately authorized.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-tls"
+location = "eastus" # Example only. Recheck Premium/App Service/Bastion/VM capacity.
+origin_name = "REPLACE-WITH-APPROVED-UNIQUE-NAME"
+operator_cidr = "REPLACE_WITH_APPROVED_OPERATOR_PUBLIC_IPV4/32"
+image_version = "REPLACE_WITH_CONCRETE_APPROVED_IMAGE_VERSION"
+# Supply TF_VAR_ssh_public_key from an existing PUBLIC key file.
+deploy_lab = false
+enable_tls_inspection = false
+tls_prerequisites_confirmed = false
+origin_fixture_ready = false
+# Identifier-only values after explicit security approval; no PFX/key/secret values.
+tls_secret_uri = null
+tls_identity_id = null
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

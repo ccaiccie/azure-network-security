@@ -1,0 +1,29 @@
+# Copy to terraform.tfvars. Never put secrets here. Every gate stays false until you decide.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+
+# Gate 1: small hourly cost
+deploy_workload      = false
+admin_ssh_public_key = ""
+
+# Gate 2: COSTLY. Bastion bills per hour from creation. Both switches are needed.
+deploy_bastion      = false
+accept_bastion_cost = false
+bastion_sku         = "Basic"
+
+# Standard or higher only
+bastion_native_client  = false
+bastion_ip_connect     = false
+bastion_shareable_link = false
+
+# Gate 3: COSTLY and subscription-wide. Defender for Servers Plan 2, per server per month. Both switches are needed.
+deploy_defender_servers = false
+accept_defender_cost    = false
+
+# Temporary public IP for the JIT demonstration only
+vm_public_ip = false
+
+# Break/fix switches (cost nothing)
+bastion_nsg_include_gatewaymanager = true
+nic_nsg_blocks_ssh                 = false
+peer_spoke_to_hub                  = true

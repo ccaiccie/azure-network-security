@@ -1,0 +1,19 @@
+# Template only, deliberately invalid identifiers until independently reviewed.
+# DO NOT put PSK, private key or other sensitive data here or in any committed file.
+subscription_id = "REPLACE-WITH-APPROVED-SUBSCRIPTION-UUID"
+location = "REPLACE-WITH-APPROVED-AZ-REGION"
+resource_group_name = "inspection-hybrid"
+ssh_public_key = "REPLACE-WITH-EXISTING-PUBLIC-OPENSSH-KEY"
+image_id = "REPLACE-WITH-APPROVED-CONCRETE-COMPUTE-GALLERY-IMAGE-VERSION-ID"
+admin_username = "labadmin"
+vm_size = "Standard_B1s"
+deploy_lab = false
+image_prerequisites_confirmed = false
+create_connections = false
+connections_ready = false
+private_routes_verified = false
+fixtures_ready = false
+test_paths_enabled = false
+allow_test_flow = false
+# vpn_shared_key is intentionally absent. Operator secure input only at connection stage.
+tags = { purpose = "disposable-hybrid-inspection-lab" }

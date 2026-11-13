@@ -1,0 +1,11 @@
+{
+  "case": "Global Reach prefix overlap",
+  "symptom": "Global Reach is Connected but site A cannot reach part of site B. Both circuits are healthy.",
+  "evidence": {
+    "provider_state": "Provisioned",
+    "arp_primary": "up",
+    "bgp_primary": "Established",
+    "overlap_with": "172.16.10.0/24 is advertised by site A and by site B"
+  },
+  "answer": "Two sites advertise overlapping prefixes. Renumber or remove one, and check the /29 too."
+}

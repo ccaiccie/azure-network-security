@@ -1,0 +1,36 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+location2       = "northeurope"
+name_prefix     = "vwan32"
+
+# Gate 1: hub 1, custom route tables, three VNet connections (a Standard hub bills by the hour).
+deploy_hub1 = false
+
+# Gate 2: one small VM per spoke. Paste the text of your public key.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 3: the simulated branch (vm-edge, vm-lan).
+deploy_branch_sim = false
+
+# Gate 4: hub 1 VPN gateway, VPN site and BGP connection. Use a long lab-only key, never a real one.
+deploy_vpn     = false
+shared_key     = ""
+vpn_scale_unit = 1
+
+# Gate 5: hub 2 in the second region.
+deploy_hub2 = false
+
+# Gate 6: an ExpressRoute gateway in hub 1 (no circuit is created).
+deploy_er_gateway     = false
+er_circuit_peering_id = ""
+
+# Gate 7: vm-nva in the shared spoke peering with the hub router.
+deploy_nva_bgp = false
+
+# Switches that cost nothing
+fault                  = "none" # none, label_typo, shared_none, branch_assoc_default
+hub_routing_preference = "ExpressRoute"
+allow_branch_to_branch = true
+static_routes          = false

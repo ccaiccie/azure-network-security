@@ -1,0 +1,36 @@
+{
+  "reviewed_utc": "2026-11-04T13:30:46.311391+00:00",
+  "scope": "Owned all-Azure non-BGP Vnet2Vnet VPN hybrid Firewall teaching draft",
+  "local_tests": {
+    "status": "PASS",
+    "count": 94,
+    "fixture_guarded_loopback_and_command_mocks": 51,
+    "operator_fake_cli": 35,
+    "route_selection_model": 8
+  },
+  "syntax": {
+    "python_ast": 6,
+    "shell_helpers": 5,
+    "service_ini_structure": 1,
+    "readme_bash_fences": 14
+  },
+  "source_assertions": 219,
+  "source_assertions_note": "Source text/brace/identity invariants, NOT HCL parsing or provider graph evaluation",
+  "terraform_mock_plan_cases_supplied": 17,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable/provider cache absent; no install/download attempted",
+  "hcl_parser": "ABSENT; grammar/types/plan graph not validated",
+  "provider_schema": "AzureRM5.12.0 NOT VALIDATED; pinned doc fetches unavailable, current primary docs reviewed",
+  "provider_lock": "NOT GENERATED",
+  "cloud_init_source_estimate_bytes": 20668,
+  "cloud_init_source_estimate_note": "gzip/base64 source length +8192-byte reserve, NOT Terraform-rendered YAML/custom_data",
+  "service_netlink": "AF_NETLINK allowed for startup address read; capabilities empty; regression static only",
+  "real_guest_systemd_cloudinit": "NOT RUN",
+  "cloud_gateway_crypto_routes_management_firewall_cleanup": "NOT RUN",
+  "psk": "No real key generated/read/transmitted; operator supplies approved input only with enabled connections; plans/state/backups contain it",
+  "connection_gets": "Default skipped; explicit per-invocation informed response acknowledgment required; client-side projection not a secrecy boundary",
+  "real_expressroute_fastpath_bgp_transport_failover": "NOT IMPLEMENTED / NOT TESTED",
+  "deployments": 0,
+  "repository_changes": 0,
+  "secret_operations": 0,
+  "connection_removal_contract": "After verified isolation: clear connection readiness and connection creation together, withdraw PSK input to null, retain closed substrate and management; source/mocks only, no real deletion tested"
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "ZScaler",
+  "zia_cloud": "mock-cloud",
+  "tenant_reference": "mock-tenant",
+  "location_reference": "mock-location",
+  "license_reference": "mock-license-reference-not-a-license",
+  "compatibility_reference": "https://example.invalid/mock-support",
+  "azure_application_id": "22222222-2222-2222-2222-222222222222",
+  "azure_principal_object_id": "33333333-3333-3333-3333-333333333333",
+  "approved_scope": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/inspection-spp",
+  "approved_role_reference": "mock-approved-role",
+  "grant_expiry_reference": "mock-expiry",
+  "routing_owner_reference": "mock-supported-owner",
+  "primary_category_reference": "mock-D1-category",
+  "alternate_category_reference": "mock-D2-category",
+  "primary_rule_reference": "mock-primary-rule",
+  "alternate_block_rule_reference": "mock-alternate-block",
+  "policy_activation_reference": "mock-activation",
+  "evidence_reference": "MOCK-ONLY-NOT-A-REAL-PROFILE"
+}

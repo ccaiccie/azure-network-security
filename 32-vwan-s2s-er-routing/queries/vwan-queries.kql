@@ -1,0 +1,27 @@
+// Designed, not tested. Virtual WAN gateway diagnostic logs, sent to a Log Analytics workspace by a diagnostic setting.
+// Category names, table names and column names depend on the destination mode (AzureDiagnostics or resource-specific tables);
+// check current Microsoft docs. Route tables themselves have no log: use effective routes for routing questions.
+
+// Tunnel state changes on the hub VPN gateway
+AzureDiagnostics
+| where Category == "TunnelDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, remoteIP_s, status_s, stateChangeReason_s
+| order by TimeGenerated desc
+
+// BGP route changes seen by the hub VPN gateway: what was learned from the branch
+AzureDiagnostics
+| where Category == "RouteDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, prefix_s, nextHop_s, asPath_s, operation_s
+| order by TimeGenerated desc
+
+// IKE negotiation problems
+AzureDiagnostics
+| where Category == "IKEDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, Message
+| order by TimeGenerated desc
+
+// Metric names worth charting on the hub (check the exact names in the portal): BGP peer status,
+// BGP routes advertised and learned, tunnel ingress and egress bytes, gateway scale-unit utilisation.

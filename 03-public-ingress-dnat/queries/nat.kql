@@ -1,0 +1,11 @@
+// Replace both placeholders with actual authorized values. Matching DNAT rows only.
+AZFWNatRule
+| where TimeGenerated > ago(30m)
+| where _ResourceId =~ "FIREWALL_RESOURCE_ID"
+| where DestinationIp == "ACTUAL_FIREWALL_PUBLIC_IPV4"
+| where DestinationPort == 8443
+| project TimeGenerated, SourceIp, SourcePort, DestinationIp, DestinationPort,
+          Protocol, TranslatedIp, TranslatedPort,
+          Policy, RuleCollectionGroup, RuleCollection, Rule, _ResourceId
+| order by TimeGenerated asc
+// No Action or TranslatedSourceIp column. Obtain instance I:q from backend JSON.

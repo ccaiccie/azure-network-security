@@ -1,0 +1,16 @@
+{
+  "case": "FastPath enabled but traffic still via the gateway",
+  "symptom": "Connection shows FastPath true. Latency to 10.80.1.100 is unchanged and the gateway packet rate rises with the traffic.",
+  "evidence": {
+    "provider_state": "Provisioned",
+    "arp_primary": "up",
+    "bgp_primary": "Established",
+    "arp_secondary": "up",
+    "bgp_secondary": "Established",
+    "fastpath_flag": true,
+    "gateway_pps_follows_traffic": true,
+    "destination": "Basic Load Balancer frontend 10.80.1.100",
+    "gateway_sku": "ErGw3AZ"
+  },
+  "answer": "The destination type is not supported by FastPath, so the edge falls back to the gateway. The flag stays true."
+}

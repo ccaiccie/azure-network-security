@@ -1,0 +1,11 @@
+# Intentionally incomplete. No deployment while required values are placeholders.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-nva"
+location = "REPLACE_WITH_APPROVED_AVAILABLE_REGION"
+image_id = "REPLACE_WITH_APPROVED_VERSIONED_COMPUTE_GALLERY_IMAGE_ARM_ID"
+# Supply TF_VAR_ssh_public_key from an existing approved PUBLIC SSH key.
+# Image must contain every documented tool and start with clean guest routing/filter state.
+deploy_lab = false
+image_prerequisites_confirmed = false
+nva_zones = null # Unzoned is NOT zone-resilient. Optional approved distinct pair: ["1","2"].
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

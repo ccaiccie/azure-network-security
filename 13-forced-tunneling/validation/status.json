@@ -1,0 +1,27 @@
+{
+  "scenario": 13,
+  "scope": "Azure peered perimeter simulator; no VPN/ExpressRoute",
+  "date_utc": "2026-11-04",
+  "local_tests": {
+    "fixture_guarded_loopback_and_mocks": 61,
+    "controller_fully_mocked": 70,
+    "operator_fake_cli": 25,
+    "pure_route_model": 8,
+    "total": 164,
+    "result": "PASS"
+  },
+  "source_assertions": 126,
+  "syntax": {
+    "python_ast": 8,
+    "bash_helpers": 7,
+    "service_ini": 2,
+    "readme_bash_fences": 14
+  },
+  "terraform_mock_plans_supplied": 12,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable/provider cache absent",
+  "provider_schema": "NOT VALIDATED",
+  "azure_guest_kernel_runtime": "NOT RUN",
+  "vpn_expressroute": "NOT IMPLEMENTED",
+  "compressed_source_plus_reserve_bytes": 32836,
+  "no_live_operations": true
+}

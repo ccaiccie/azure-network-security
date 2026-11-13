@@ -1,0 +1,37 @@
+test_bad_case (__main__.FixtureTests.test_bad_case) ... ok
+test_both_names_healthy (__main__.FixtureTests.test_both_names_healthy) ... {"case_id": "local-case", "fixture": "azure-policy-origin-v1", "host": "allowed.policy.test:8080", "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 33378, "server_ip": "127.0.0.1", "server_port": 39477, "time_utc": "2026-11-04T08:38:38.592443+00:00", "user_agent": "azure-policy-lab/local-case", "xff_untrusted": ""}
+{"case_id": "local-case", "fixture": "azure-policy-origin-v1", "host": "denied.policy.test:8080", "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 33384, "server_ip": "127.0.0.1", "server_port": 39477, "time_utc": "2026-11-04T08:38:38.593561+00:00", "user_agent": "azure-policy-lab/local-case", "xff_untrusted": ""}
+ok
+test_bounded_headers (__main__.FixtureTests.test_bounded_headers) ... ok
+test_bounded_path (__main__.FixtureTests.test_bounded_path) ... ok
+test_cli_rejects_other_port (__main__.FixtureTests.test_cli_rejects_other_port) ... ok
+test_cli_rejects_public_bind (__main__.FixtureTests.test_cli_rejects_public_bind) ... ok
+test_health (__main__.FixtureTests.test_health) ... {"case_id": "local-case", "fixture": "azure-policy-origin-v1", "host": "allowed.policy.test:8080", "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 33410, "server_ip": "127.0.0.1", "server_port": 39477, "time_utc": "2026-11-04T08:38:38.820842+00:00", "user_agent": "azure-policy-lab/local-case", "xff_untrusted": ""}
+ok
+test_nonget (__main__.FixtureTests.test_nonget) ... ok
+test_paths_exact (__main__.FixtureTests.test_paths_exact) ... ok
+test_socket_read_timeout (__main__.FixtureTests.test_socket_read_timeout) ... ok
+test_wrong_host_or_port (__main__.FixtureTests.test_wrong_host_or_port) ... ok
+test_xff_explicit_untrusted (__main__.FixtureTests.test_xff_explicit_untrusted) ... {"case_id": "local-case", "fixture": "azure-policy-origin-v1", "host": "allowed.policy.test:8080", "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 33488, "server_ip": "127.0.0.1", "server_port": 39477, "time_utc": "2026-11-04T08:38:38.830884+00:00", "user_agent": "azure-policy-lab/local-case", "xff_untrusted": "arbitrary"}
+ok
+test_alternate_port (__main__.HelperTests.test_alternate_port) ... ok
+test_application_source_class (__main__.HelperTests.test_application_source_class) ... ok
+test_bad_dns_stops_before_request (__main__.HelperTests.test_bad_dns_stops_before_request) ... ok
+test_collector_resource_calls_scoped_and_readonly (__main__.HelperTests.test_collector_resource_calls_scoped_and_readonly) ... ok
+test_collector_wrong_subscription_stops (__main__.HelperTests.test_collector_wrong_subscription_stops) ... ok
+test_denied_host_can_succeed_under_network_mode (__main__.HelperTests.test_denied_host_can_succeed_under_network_mode) ... ok
+test_network_source_class (__main__.HelperTests.test_network_source_class) ... ok
+test_proxy_and_config_disabled (__main__.HelperTests.test_proxy_and_config_disabled) ... ok
+test_proxy_error_not_fixture (__main__.HelperTests.test_proxy_error_not_fixture) ... ok
+test_ready_wrong_role_stops_without_network (__main__.HelperTests.test_ready_wrong_role_stops_without_network) ... ok
+test_transport_failure_recorded (__main__.HelperTests.test_transport_failure_recorded) ... ok
+test_unexpected_peer_flagged (__main__.HelperTests.test_unexpected_peer_flagged) ... ok
+test_unknown_case_rejected (__main__.HelperTests.test_unknown_case_rejected) ... ok
+test_user_agent_matches_case (__main__.HelperTests.test_user_agent_matches_case) ... ok
+test_wrong_role (__main__.HelperTests.test_wrong_role) ... ok
+test_wrong_vm (__main__.HelperTests.test_wrong_vm) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 9.937s
+
+OK

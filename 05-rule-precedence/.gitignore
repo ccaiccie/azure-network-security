@@ -1,0 +1,22 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.auto.tfvars
+*.auto.tfvars.json
+!terraform.tfvars.example
+crash.log
+evidence/
+*.pem
+# Keep the genuine .terraform.lock.hcl produced by an approved terraform init.
+
+__pycache__/
+*.pyc
+
+build/
+*.pem
+*.crt
+*.key
+*.pfx
+*.p12

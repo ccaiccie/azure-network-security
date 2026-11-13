@@ -1,0 +1,32 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id    = "00000000-0000-0000-0000-000000000000"
+location           = "westeurope"
+secondary_location = "northeurope"
+name_prefix        = "avnm25"
+
+# Gate 1: network manager and the static group (spoke-a, spoke-b)
+deploy_avnm = false
+
+# Gate 2: hub-and-spoke connectivity configurations, then commit one of them
+deploy_connectivity     = false
+active_connectivity     = "v1" # v2 adds direct connectivity; back to v1 is the rollback
+delete_existing_peering = true
+use_hub_gateway         = false # the lab hub has no gateway
+
+# Gate 3: security admin rules
+deploy_security_admin = false
+admin_rule_action     = "Deny" # Allow | Deny | AlwaysAllow
+nsg_allows_app_port   = true
+app_port              = 8080
+
+# Gate 4: dynamic group fed by Azure Policy (tag env = prod)
+deploy_dynamic_group = false
+spoke_c_env          = "dev"
+
+# Gate 5: three small VMs and an NSG (billable). Paste the text of your public key, not a path.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 6: a spoke in a second region; then add the region to deployment_regions
+deploy_second_region = false
+deployment_regions   = ["westeurope"]

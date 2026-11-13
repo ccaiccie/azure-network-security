@@ -1,0 +1,7 @@
+// Designed, not tested. Needs enable_diagnostics. Confirm metric names in the portal.
+AzureMetrics
+| where TimeGenerated > ago(1d)
+| where ResourceProvider =~ "MICROSOFT.NETWORK"
+| where MetricName in ("BgpAvailability", "ArpAvailability")
+| summarize AvgAvailability = avg(Average) by Resource, MetricName, bin(TimeGenerated, 5m)
+| order by TimeGenerated asc

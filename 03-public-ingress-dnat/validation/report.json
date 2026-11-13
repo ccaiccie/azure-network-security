@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-11-04T07:49:35.987780+00:00",
+  "status": "draft-not-Terraform-validated-not-deployed",
+  "passed": {
+    "bash_syntax_scripts": 4,
+    "source_contract_checks": 48,
+    "local_unit_tests": 26,
+    "markdown_bash_fences": 19
+  },
+  "supplied_mock_plan_runs": 11,
+  "executed_mock_plan_runs": 0,
+  "resource_declarations": 25,
+  "unpublished_baseline_resource_instances": 24,
+  "published_baseline_resource_instances": 25,
+  "local_network_scope": "Only 127.0.0.1:8080 for synthetic fixture tests; curl/Azure/Terraform/sudo/systemctl commands were fake. No external/Azure request or real service change.",
+  "provider_pin": "hashicorp/azurerm = 5.12.0",
+  "provider_lock_file_present": false,
+  "image_version": "Required concrete operator-selected version; latest rejected.",
+  "not_run": [
+    "terraform fmt",
+    "terraform init -backend=false",
+    "terraform validate",
+    "terraform test",
+    "real terraform plan/apply/destroy",
+    "systemd unit verification or service startup",
+    "Azure boot/listener/source/route/traffic/log verification"
+  ],
+  "cloud_resources_queried_or_changed": false,
+  "repository_edited_or_pushed": false,
+  "region_capacity_note": "Verified 4 Nov 2026: Microsoft lists new East US Firewall Standard deployments blocked. Original eastus default unchanged; explicit region approval required."
+}

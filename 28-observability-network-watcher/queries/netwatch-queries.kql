@@ -1,0 +1,24 @@
+// Designed, not tested. Table and column names are as documented when this was written: run `<Table> | getschema` in your workspace first.
+
+// 1. Traffic Analytics: did anything arrive at all? (break/fix 3)
+NTANetAnalytics
+| where TimeGenerated > ago(2h)
+| summarize records = count(), newest = max(TimeGenerated)
+
+// 2. Flows between the lab VMs, allowed and denied
+NTANetAnalytics
+| where TimeGenerated > ago(1h)
+| where SrcIp == "10.80.0.10" and DestIp == "10.81.0.10"
+| summarize flows = count() by FlowStatus, DestPort, FlowType
+
+// 3. Azure Firewall network rule decisions (structured table)
+AZFWNetworkRule
+| where TimeGenerated > ago(1h)
+| where SourceIp == "10.80.0.10" and DestinationIp == "10.81.0.10"
+| project TimeGenerated, Protocol, DestinationPort, Action, Rule, RuleCollection
+| order by TimeGenerated desc
+
+// 4. Connection Monitor results (break/fix 4)
+NWConnectionMonitorTestResult
+| where TimeGenerated > ago(1h)
+| summarize failedTests = countif(TestResult != "Pass"), tests = count(), checks = sum(ChecksTotal), checksFailed = sum(ChecksFailed) by TestGroupName, TestConfigurationName

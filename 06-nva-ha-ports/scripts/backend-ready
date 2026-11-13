@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Read-only backend-local readiness; no Azure path or HA inference.
+set -euo pipefail
+exec python3 - "${NVA_LAB_CONFIG:-/etc/azure-nva-lab.json}" <<'PY'
+import json,subprocess,sys,time
+from pathlib import Path
+from urllib.request import ProxyHandler,Request,build_opener
+c=json.loads(Path(sys.argv[1]).read_text());assert c['role']=='backend' and c['private_ip']=='10.20.1.20'
+ips=subprocess.run(['ip','-4','-o','addr','show'],check=True,capture_output=True,text=True).stdout
+assert ' 10.20.1.20/' in ips
+opener=build_opener(ProxyHandler({}))
+for port in (8080,8081):
+    subprocess.run(['systemctl','is-active',f'azure-nva-fixture@{port}.service'],check=True)
+    case=f'local-ready-{port}-{time.time_ns()}';error=None
+    for attempt in range(10):
+        try:
+            req=Request(f'http://10.20.1.20:{port}/probe',headers={'X-Lab-Case-ID':case})
+            with opener.open(req,timeout=2) as response:row=json.load(response);assert response.status==200
+            assert (row.get('fixture'),row.get('case_id'),row.get('server_ip'),row.get('server_port'),row.get('peer_ip'))==('azure-nva-origin-v1',case,'10.20.1.20',port,'10.20.1.20')
+            print(json.dumps(row));error=None;break
+        except (OSError,ValueError,AssertionError) as exc:error=exc;time.sleep(1)
+    if error is not None:raise SystemExit(f'NOT READY:{port}:{error}')
+print('LOCAL_FIXTURES_READY:8080 and8081 on B only, no routing/failover claim')
+PY

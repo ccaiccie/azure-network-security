@@ -1,0 +1,29 @@
+{
+  "scenario": 15,
+  "scope": "Front Door Premium to public WAF_v2 Application Gateway to restricted public App Service; external certificate, approved identity access and DNS prerequisites",
+  "date_utc": "2026-11-04",
+  "python_tests": {
+    "probe_fully_mocked": 31,
+    "operator_publisher_fake_cli": 28,
+    "total": 59,
+    "result": "PASS"
+  },
+  "node_fixture_contract_groups": 13,
+  "node_fixture_contract_result": "PASS",
+  "source_assertions": 147,
+  "syntax": {
+    "python_ast": 5,
+    "bash_helpers": 6,
+    "readme_bash_fences": 7,
+    "node_fixture_syntax": "PASS"
+  },
+  "terraform_mock_plans_supplied": 16,
+  "terraform_mock_plans_run": 0,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable and initialized provider cache absent",
+  "provider_schema": "NOT VALIDATED",
+  "hcl_parser": "NOT AVAILABLE",
+  "azure_tls_waf_dns_certificate_runtime": "NOT RUN",
+  "private_link_variant": "NOT IMPLEMENTED; reference only",
+  "ambiguous_duplicate_fdid_acceptance": "Unverified; any allowed ambiguous duplicate blocks edge publication",
+  "no_live_operations": true
+}

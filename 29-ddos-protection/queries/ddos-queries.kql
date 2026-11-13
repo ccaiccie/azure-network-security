@@ -1,0 +1,23 @@
+// Saved queries for the Log Analytics workspace. Category names are the stable part;
+// column names depend on the table schema in your workspace, so check them in the query editor.
+// A quiet lab returns no rows: these logs only exist while mitigation is active.
+
+// 1. When did mitigation start and stop?
+AzureDiagnostics
+| where Category == "DDoSProtectionNotifications"
+| order by TimeGenerated desc
+
+// 2. Dropped and forwarded flows during an attack, in five-minute bins
+AzureDiagnostics
+| where Category == "DDoSMitigationFlowLogs"
+| summarize flows = count() by bin(TimeGenerated, 5m), Resource
+
+// 3. Attack summaries
+AzureDiagnostics
+| where Category == "DDoSMitigationReports"
+| order by TimeGenerated desc
+
+// 4. Is anything arriving from this IP at all? (proves the diagnostic setting works)
+AzureDiagnostics
+| where ResourceType == "PUBLICIPADDRESSES"
+| summarize rows = count() by Category

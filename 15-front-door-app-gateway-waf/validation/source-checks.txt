@@ -1,0 +1,1 @@
+PASS 147 selected source assertions. No HCL semantics, provider schema, real TLS/WAF or Azure verification.

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Future authorized guest actions only; status is read-only.
+set -euo pipefail
+exec /usr/bin/python3 -I /opt/azure-nva-lab/controller.py control "$@"

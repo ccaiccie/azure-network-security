@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-11-04T08:54:04.460887+00:00",
+  "bash_scripts_parsed": 5,
+  "markdown_bash_fences_parsed": 12,
+  "source_assertions_passed": 98,
+  "local_tests_passed": 44,
+  "fixture_tests": 12,
+  "fake_tool_tests": 24,
+  "mock_readiness_tests": 8,
+  "terraform_mock_plan_runs_supplied_not_run": 11,
+  "terraform_available": false,
+  "hcl_parser_available": false,
+  "provider_validated": false,
+  "azure_operations_run": false,
+  "azure_runtime_tested": false,
+  "key_or_secret_operations": false
+}

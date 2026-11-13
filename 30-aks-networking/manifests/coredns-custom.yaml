@@ -1,0 +1,16 @@
+# Adds query logging to CoreDNS through the documented customisation ConfigMap.
+# A key ending in .override adds directives to the default server block; .server adds a new block.
+# Restart CoreDNS afterwards: kubectl -n kube-system rollout restart deployment coredns
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  log.override: |
+    log
+  # Example of a forwarder for an on-premises zone (replace the zone and the server first):
+  # corp.server: |
+  #   corp.example:53 {
+  #     forward . 10.50.1.4
+  #   }

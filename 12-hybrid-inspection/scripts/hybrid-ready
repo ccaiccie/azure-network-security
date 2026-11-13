@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Read-only role, local NIC, expected systemd units and source-bound local HTTP.
+set -euo pipefail
+exec /usr/bin/python3 -I /opt/azure-hybrid-lab/server.py --check-local-ready \
+  --config "${HYBRID_LAB_CONFIG:-/etc/azure-hybrid-lab.json}"

@@ -1,0 +1,24 @@
+#cloud-config
+# Designed, not tested. The stand-in on-premises DNS server: dnsmasq with a conditional forwarder.
+# ${inbound_ip} is the inbound endpoint address that Terraform fills in.
+package_update: true
+packages:
+  - dnsmasq
+  - dnsutils
+write_files:
+  - path: /etc/dnsmasq.d/lab.conf
+    content: |
+      # listen only on the VM address so the local stub resolver on 127.0.0.53 keeps working
+      bind-interfaces
+      listen-address=10.60.1.10
+      no-resolv
+      log-queries
+      log-facility=/var/log/dnsmasq.log
+      # the on-premises zone, answered locally
+      address=/files.corp.example.com/10.60.1.30
+      # conditional forwarder: the PUBLIC zone name goes to the inbound endpoint
+      server=/blob.core.windows.net/${inbound_ip}
+      # everything else: Azure-provided DNS (only a lab shortcut; a real site uses its own upstream)
+      server=168.63.129.16
+runcmd:
+  - systemctl restart dnsmasq

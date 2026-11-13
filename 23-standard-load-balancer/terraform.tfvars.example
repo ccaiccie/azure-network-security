@@ -1,0 +1,19 @@
+# Copy to terraform.tfvars (kept out of source control). Every gate defaults to false.
+subscription_id     = "00000000-0000-0000-0000-000000000000"
+location            = "westeurope"
+resource_group_name = "std-lb-lab"
+
+# Needed only when deploy_vms is true.
+admin_ssh_public_key = ""
+
+# Use [] in a region without availability zones.
+frontend_zones = ["1", "2", "3"]
+
+session_persistence  = "Default"
+floating_ip          = false
+deploy_vms           = false
+enable_ha_ports_rule = false
+create_nat_rule      = false
+create_public_lb     = false
+create_global_lb     = false
+break_fix            = "none"

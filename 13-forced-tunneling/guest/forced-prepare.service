@@ -1,0 +1,19 @@
+[Unit]
+Description=Prepare closed owned perimeter forwarding policy after every boot
+Wants=network-online.target
+After=network-online.target
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -I /opt/azure-forced-lab/controller.py control boot
+RemainAfterExit=yes
+UMask=0077
+NoNewPrivileges=yes
+ProtectHome=yes
+PrivateTmp=yes
+# Root/CAP_NET_ADMIN is deliberately required for this approved future guest controller.
+# No restrictive address-family filter: ip/nft/conntrack need AF_NETLINK.
+
+[Install]
+WantedBy=multi-user.target

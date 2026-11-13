@@ -1,0 +1,10 @@
+# Designed, not tested. Denies all ingress and egress for every pod in namespace lab.
+# Names stop resolving until np-allow-dns.yaml is applied.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: lab
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]

@@ -1,0 +1,7 @@
+// Designed, not tested. Throughput per circuit, to see traffic move during a failover.
+AzureMetrics
+| where TimeGenerated > ago(6h)
+| where ResourceProvider =~ "MICROSOFT.NETWORK"
+| where MetricName in ("BitsInPerSecond", "BitsOutPerSecond")
+| summarize AvgBps = avg(Average) by Resource, MetricName, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc

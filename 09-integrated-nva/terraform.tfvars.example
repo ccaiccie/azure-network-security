@@ -1,0 +1,19 @@
+# Intentionally invalid placeholders; no deployment, licenses, keys or credentials.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-partner"
+location = "REPLACE_WITH_APPROVED_AVAILABLE_REGION"
+image_id = "REPLACE_WITH_APPROVED_VERSIONED_COMPUTE_GALLERY_IMAGE_ARM_ID"
+# Existing PUBLIC key via TF_VAR_ssh_public_key only.
+deploy_lab = false
+image_prerequisites_confirmed = false
+vendor_ready = false
+enable_internet_intent = false
+fixtures_ready = false
+internet_routes_verified = false
+vendor_deny_policy_verified = false
+test_paths_enabled = false
+egress_public_ips = []
+vendor_profile = null
+# Later provide a reviewed object matching profiles/vendor-profile.example.json.
+# JSON runtime public-address files are separate from this vendor profile.
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

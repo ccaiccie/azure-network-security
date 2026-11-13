@@ -1,0 +1,1 @@
+19 Markdown Bash fences passed bash -n without execution.

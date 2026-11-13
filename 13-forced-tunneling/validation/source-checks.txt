@@ -1,0 +1,2 @@
+PASS 126 source assertions. Compressed source estimate+reserve=32836 bytes; NOT Terraform-rendered payload.
+No HCL semantics, provider/schema, kernel policy, service startup or Azure execution verified.

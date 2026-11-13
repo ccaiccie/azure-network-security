@@ -1,0 +1,56 @@
+Scope: offline mocks and loopback HTTP only; no actual Azure, guest network/security commands, package installs or Terraform actions.
+Command: python3 -B -m unittest discover -s tests -p test_fixture_probe.py -v
+test_early_stream_eof_is_not_complete (test_fixture_probe.BoundedFailureTests.test_early_stream_eof_is_not_complete) ... ok
+test_malformed_response_saved_without_success (test_fixture_probe.BoundedFailureTests.test_malformed_response_saved_without_success) ... ok
+test_slow_headers_total_deadline_without_reconnect (test_fixture_probe.BoundedFailureTests.test_slow_headers_total_deadline_without_reconnect) ... ok
+test_total_deadline_also_works_outside_main_thread (test_fixture_probe.BoundedFailureTests.test_total_deadline_also_works_outside_main_thread) ... ok
+test_direct_probe_records_identity_and_original_tuple (test_fixture_probe.FixtureProbeTests.test_direct_probe_records_identity_and_original_tuple) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:01:56.645499+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 39071, "server_ip": "127.0.0.1", "server_port": 39801}
+ok
+test_finite_stream_explicit_completion (test_fixture_probe.FixtureProbeTests.test_finite_stream_explicit_completion) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:01:56.649488+00:00", "frame": 0, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 41787, "server_ip": "127.0.0.1", "server_port": 39801}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:01:57.649942+00:00", "frame": 1, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 41787, "server_ip": "127.0.0.1", "server_port": 39801, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:01:58.650832+00:00", "frame": 2, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 41787, "server_ip": "127.0.0.1", "server_port": 39801, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:01:59.651429+00:00", "frame": 3, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 41787, "server_ip": "127.0.0.1", "server_port": 39801, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:02:00.652092+00:00", "frame": 4, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 41787, "server_ip": "127.0.0.1", "server_port": 39801, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:02:01.649951+00:00", "frame": 5, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 41787, "server_ip": "127.0.0.1", "server_port": 39801, "stream_end": true}
+ok
+test_fixture_bad_case (test_fixture_probe.FixtureProbeTests.test_fixture_bad_case) ... ok
+test_fixture_bounds (test_fixture_probe.FixtureProbeTests.test_fixture_bounds) ... ok
+test_fixture_health (test_fixture_probe.FixtureProbeTests.test_fixture_health) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:02:01.658647+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 34648, "server_ip": "127.0.0.1", "server_port": 39801}
+ok
+test_fixture_post_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_post_rejected) ... ok
+test_fixture_probe_records_actual_peer_port (test_fixture_probe.FixtureProbeTests.test_fixture_probe_records_actual_peer_port) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:02:01.660993+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 34668, "server_ip": "127.0.0.1", "server_port": 39801}
+ok
+test_fixture_rejects_unknown_paths (test_fixture_probe.FixtureProbeTests.test_fixture_rejects_unknown_paths) ... ok
+test_invalid_duration_before_network (test_fixture_probe.FixtureProbeTests.test_invalid_duration_before_network) ... ok
+test_invalid_expected_node_before_network (test_fixture_probe.FixtureProbeTests.test_invalid_expected_node_before_network) ... ok
+test_new_out_has_private_permissions (test_fixture_probe.FixtureProbeTests.test_new_out_has_private_permissions) ... ok
+test_nonclobber_existing_out (test_fixture_probe.FixtureProbeTests.test_nonclobber_existing_out) ... ok
+test_nonclobber_symlink (test_fixture_probe.FixtureProbeTests.test_nonclobber_symlink) ... ok
+test_probe_rejects_dns_before_network (test_fixture_probe.FixtureProbeTests.test_probe_rejects_dns_before_network) ... ok
+test_readiness_request_identity_uses_explicit_local_source (test_fixture_probe.FixtureProbeTests.test_readiness_request_identity_uses_explicit_local_source) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-readiness-case", "time_utc": "2026-11-04T10:02:01.668122+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 47871, "server_ip": "127.0.0.1", "server_port": 39801}
+ok
+test_stream_bounds (test_fixture_probe.FixtureProbeTests.test_stream_bounds) ... ok
+test_stream_rejected_on_non_stream_listener (test_fixture_probe.FixtureProbeTests.test_stream_rejected_on_non_stream_listener) ... ok
+test_timeout_retains_preconnect_tuple_and_http_not_sent (test_fixture_probe.FixtureProbeTests.test_timeout_retains_preconnect_tuple_and_http_not_sent) ... ok
+test_wrong_role_cli_stops_before_subprocess_or_network (test_fixture_probe.FixtureProbeTests.test_wrong_role_cli_stops_before_subprocess_or_network) ... ok
+test_actual_q_need_not_equal_client_a (test_fixture_probe.IdentityTests.test_actual_q_need_not_equal_client_a) ... ok
+test_bad_port_and_malformed_source_rejected (test_fixture_probe.IdentityTests.test_bad_port_and_malformed_source_rejected) ... ok
+test_nva1_expected_node (test_fixture_probe.IdentityTests.test_nva1_expected_node) ... ok
+test_nva2_expected_node (test_fixture_probe.IdentityTests.test_nva2_expected_node) ... ok
+test_original_source_is_not_expected_remote_identity (test_fixture_probe.IdentityTests.test_original_source_is_not_expected_remote_identity) ... ok
+test_wrong_fixture_and_destination_rejected (test_fixture_probe.IdentityTests.test_wrong_fixture_and_destination_rejected) ... ok
+test_d_on_physical_nic_is_not_loopback_readiness (test_fixture_probe.ReadinessTests.test_d_on_physical_nic_is_not_loopback_readiness) ... ok
+test_d_wrong_prefix_rejected (test_fixture_probe.ReadinessTests.test_d_wrong_prefix_rejected) ... ok
+test_failed_8081_listener_is_not_ready (test_fixture_probe.ReadinessTests.test_failed_8081_listener_is_not_ready) ... ok
+test_fixed_config_rejects_changed_addresses (test_fixture_probe.ReadinessTests.test_fixed_config_rejects_changed_addresses) ... ok
+test_inactive_listener_is_not_ready (test_fixture_probe.ReadinessTests.test_inactive_listener_is_not_ready) ... ok
+test_local_only_checks_both_units_and_listeners (test_fixture_probe.ReadinessTests.test_local_only_checks_both_units_and_listeners) ... ok
+test_remote_wrong_role_before_commands (test_fixture_probe.ReadinessTests.test_remote_wrong_role_before_commands) ... ok
+test_underlay_address_required (test_fixture_probe.ReadinessTests.test_underlay_address_required) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 5.953s
+
+OK
+
+Exit status: 0

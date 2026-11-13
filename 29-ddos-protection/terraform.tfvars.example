@@ -1,0 +1,24 @@
+# Copy to terraform.tfvars. Never put secrets here. Every gate stays false until you decide.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+
+# Gate 1: small hourly cost
+deploy_workload      = false
+admin_ssh_public_key = ""
+
+# Gate 2: small ingestion cost (needs gate 1)
+deploy_monitoring = false
+alert_email       = "ops@example.com"
+
+# Gate 3: COSTLY. A DDoS protection plan costs roughly thousands of USD per month.
+# Both switches are needed.
+deploy_ddos_network_protection = false
+accept_ddos_plan_cost          = false
+
+# Gate 4: COSTLY. IP Protection is billed per protected IP per month. Not together with gate 3.
+deploy_ip_protection = false
+
+# Break/fix switches (cost nothing)
+link_vnet_to_plan            = true
+pip_web_mode_override        = ""
+alert_on_spare_ip_by_mistake = false

@@ -1,0 +1,11 @@
+// FUTURE approved operator query. Set actual time/FQDN/client tuple from private evidence.
+let start = datetime(2000-01-01T00:00:00Z);
+let end = datetime(2000-01-01T00:01:00Z);
+let host = "REPLACE.blob.core.windows.net";
+AZFWApplicationRule
+| where TimeGenerated between (start .. end)
+| where SourceIp in ("10.10.1.10", "10.10.1.11") and Fqdn =~ host and DestinationPort == 443
+| project TimeGenerated, SourceIp, SourcePort, Fqdn, DestinationPort, Protocol, Action, RuleCollectionGroup, RuleCollection, Rule, IsTlsInspected
+| order by TimeGenerated asc
+// No TargetUrl/body/x-ms-client-request-id visibility is promised for Standard non-decrypted HTTPS.
+// Empty results,403 and matching configuration do not establish inspection.

@@ -1,0 +1,21 @@
+# Intentionally invalid placeholders. No deployment or secret/PSK/grant creation.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-spp"
+location = "REPLACE_WITH_APPROVED_AVAILABLE_REGION"
+image_id = "REPLACE_WITH_APPROVED_VERSIONED_COMPUTE_GALLERY_IMAGE_ARM_ID"
+vpn_scale_unit = 1
+# Existing PUBLIC key via TF_VAR_ssh_public_key only.
+deploy_lab = false
+image_prerequisites_confirmed = false
+enable_spp = false
+provider_onboarding_verified = false
+tunnels_verified = false
+provider_routing_configured = false
+enable_source_default = false
+protected_routes_verified = false
+fixtures_ready = false
+provider_block_policy_verified = false
+test_paths_enabled = false
+egress_public_ips = []
+provider_profile = null
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

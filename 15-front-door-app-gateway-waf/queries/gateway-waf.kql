@@ -1,0 +1,11 @@
+// Future private query: replace exact scoped ID, UTC interval and case UUID.
+// Do not export DetailedData/request bodies or infer a block from status alone.
+let gateway = "REPLACE_WITH_GUARDED_GATEWAY_ID";
+let case_id = "REPLACE_WITH_CASE_UUID";
+AGWFirewallLogs
+| where _ResourceId =~ gateway
+| where TimeGenerated between (datetime(2000-01-01T00:00:00Z) .. datetime(2000-01-01T00:01:00Z))
+| where RequestUri contains case_id
+| project TimeGenerated, TransactionId, Action, RuleId, PolicyId, PolicyScope,
+          ClientIp, ClientPort, Hostname, RuleSetType, RuleSetVersion, InstanceId
+| order by TimeGenerated asc

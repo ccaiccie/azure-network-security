@@ -1,0 +1,10 @@
+# Intentionally invalid placeholders: supply only independently approved values.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-routeserver"
+location = "REPLACE_WITH_APPROVED_AVAILABLE_REGION"
+image_id = "REPLACE_WITH_APPROVED_VERSIONED_COMPUTE_GALLERY_IMAGE_ARM_ID"
+frr_version = "REPLACE_WITH_VERIFIED_EXACT_FRR_10.4_FAMILY_VERSION"
+# Supply TF_VAR_ssh_public_key from an existing approved PUBLIC key, never private key.
+deploy_lab = false
+image_prerequisites_confirmed = false
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

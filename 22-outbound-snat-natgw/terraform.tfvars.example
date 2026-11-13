@@ -1,0 +1,28 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "snat22"
+
+# Gate 1: three small VMs (billable). Paste the text of your public key, not a path.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 2: NAT gateway on snet-nat
+deploy_nat_gateway          = false
+nat_idle_timeout_minutes    = 4
+nat_public_ip_prefix_length = 0 # 0 = one public IP; 28 to 31 = a prefix
+nat_on_fw_subnet            = false
+
+# Gate 3: outbound-only public load balancer for vm-lb
+deploy_lb_outbound      = false
+lb_allocated_ports      = 1024 # Activity 5 sets 8
+lb_idle_timeout_minutes = 4
+
+# Gate 4: Azure Firewall and a route table on snet-fw (the most expensive gate)
+deploy_firewall = false
+
+# Gate 5: instance-level public IP on vm-nat (needs deploy_vms)
+attach_vm_public_ip = false
+
+# Private subnet flag, inverted: false makes snet-nat, snet-lb and snet-fw private subnets
+default_outbound_access_enabled = true

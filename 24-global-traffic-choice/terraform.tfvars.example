@@ -1,0 +1,31 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "gtc24"
+
+# Your public address as a /32 (this value is an RFC 5737 example; replace it).
+my_ip_cidr = "203.0.113.50/32"
+
+# Gate 1: two nginx VMs behind a public Standard load balancer (billable). Paste the text of your public key, not a path.
+deploy_backends      = false
+admin_ssh_public_key = ""
+
+# Gate 2: Application Gateway Standard_v2 (billable)
+deploy_app_gateway         = false
+appgw_only_from_front_door = false
+appgw_min_capacity         = 0
+appgw_max_capacity         = 2
+
+# Gate 3: Front Door Standard profile
+deploy_front_door = false
+
+# Gate 4: Traffic Manager
+deploy_traffic_manager    = false
+tm_routing_method         = "Priority"
+tm_ttl_seconds            = 30
+tm_probe_interval_seconds = 30
+tm_tolerated_failures     = 3
+
+# Probe paths. Activity 6 changes appgw_probe_path to a path that does not exist, then back.
+probe_path       = "/healthz"
+appgw_probe_path = "/healthz"

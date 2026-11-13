@@ -1,0 +1,18 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80 default_server;
+        server_name _;
+        default_type text/plain;
+        location = /healthz { return 200 "ok\n"; }
+        location / {
+          return 200 "host=$hostname\nremote_addr=$remote_addr\nx_forwarded_for=$http_x_forwarded_for\nx_azure_clientip=$http_x_azure_clientip\nx_forwarded_proto=$http_x_forwarded_proto\nhost_header=$http_host\n";
+        }
+      }
+runcmd:
+  - systemctl restart nginx

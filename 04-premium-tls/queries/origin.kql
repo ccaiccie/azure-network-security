@@ -1,0 +1,8 @@
+let origin = "/subscriptions/REPLACE/resourceGroups/inspection-tls/providers/Microsoft.Web/sites/REPLACE";
+let start = datetime(2000-01-01T00:00:00Z);
+let finish = datetime(2000-01-01T00:05:00Z);
+AppServiceHTTPLogs
+| where _ResourceId =~ origin and TimeGenerated between (start .. finish)
+| project TimeGenerated, CIp, CsHost, CsMethod, CsUriStem, CsUriQuery, ScStatus, SPort, TimeTaken, UserAgent
+| order by TimeGenerated asc
+// Run each block separately. Frontend CIp is not Node socket_peer.

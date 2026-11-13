@@ -1,0 +1,12 @@
+{
+  "case": "Circuit up but BGP down on one link",
+  "symptom": "Circuit Provisioned, traffic works, BgpAvailability is 0 on the secondary path.",
+  "evidence": {
+    "provider_state": "Provisioned",
+    "arp_primary": "up",
+    "bgp_primary": "Established",
+    "arp_secondary": "up",
+    "bgp_secondary": "Idle"
+  },
+  "answer": "The secondary neighbour is mis-set. Fix it and alert on both paths."
+}

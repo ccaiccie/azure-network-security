@@ -1,0 +1,23 @@
+# Copy to terraform.tfvars. Never put secrets here. Every gate stays false until you decide.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+
+# Gate 1: COSTLY. Azure Firewall bills per hour from creation. Both switches are needed.
+deploy_firewall      = false
+accept_firewall_cost = false
+firewall_policy_choice = "child-a"
+
+# Gate 2: small ingestion cost
+deploy_analytics = false
+
+# Gate 3: free, audit only
+deploy_policy_audit = false
+
+# Policy tier (Premium adds IDPS; check current pricing)
+policy_sku = "Standard"
+
+# Break/fix switches (cost nothing)
+child_allow_blocked_range    = false
+ipg_app_a_missing_prefix     = false
+associate_policy_to_firewall = true
+child_conflicting_dnat       = false

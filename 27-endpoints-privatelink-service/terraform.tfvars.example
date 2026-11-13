@@ -1,0 +1,33 @@
+# Copy to terraform.tfvars and edit. Every gate is false and break_fix is none by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "pl27"
+
+# Optional: your workstation's public IP (plain address), only if Terraform gets 403 reading the storage account.
+admin_source_ip = ""
+
+# Gate 1: vm-se-1 and vm-plain-1 (billable). Paste the text of your public key, not a path.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 2: lab storage account, firewall Deny, VNet rule for snet-se
+deploy_storage = false
+
+# Gate 3: blob private endpoint and the privatelink zone (needs gate 2)
+deploy_private_endpoint = false
+
+# Gate 4: service endpoint policy on snet-se, and a second account outside it
+deploy_se_policy = false
+
+# Gate 5: backend VM, Standard internal load balancer, Private Link Service, consumer endpoint (billable)
+deploy_pls = false
+
+# Switches
+disable_public_access = false
+attach_se_policy      = false
+pe_nsg_deny_se        = false
+enable_proxy_protocol = false
+pls_nat_ip_count      = 1
+
+# Break/fix selector: none | public_open | pe_pending | zone_unlinked | pls_pending | nsg_ignored
+break_fix = "none"

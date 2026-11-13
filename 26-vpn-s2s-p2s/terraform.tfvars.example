@@ -1,0 +1,36 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "vpn26"
+
+# Gate 1: the VPN gateway (billable, 30 to 45 minutes to create). Decide active_active before you apply.
+deploy_vpn_gateway = false
+vpn_sku            = "VpnGw1AZ"
+active_active      = false
+
+# Gate 2: simulated on-premises VNet, vm-edge, vm-lan and vm-app (billable). Paste the text of your public key.
+deploy_onprem_sim    = false
+admin_ssh_public_key = ""
+
+# Gate 3: local network gateway and the S2S connection. Use a long lab-only key, never a real one.
+deploy_s2s          = false
+shared_key          = ""
+lng_prefixes        = ["10.70.2.0/24"]
+custom_ipsec_policy = false
+dpd_timeout_seconds = 45
+
+# Switches for Activity 5 (BGP and APIPA)
+enable_bgp     = false
+use_apipa      = false
+azure_bgp_asn  = 65010
+onprem_bgp_asn = 65020
+onprem_bgp_ip  = "169.254.21.2"
+
+# Gate 4: point-to-site (Activity 7)
+deploy_p2s                = false
+p2s_address_pool          = "172.16.201.0/24"
+p2s_auth_type             = "certificate" # or "entra"
+p2s_protocols             = ["OpenVPN", "IkeV2"]
+p2s_root_cert_public_data = ""
+entra_tenant_id           = ""
+entra_audience            = ""

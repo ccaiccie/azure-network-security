@@ -1,0 +1,23 @@
+# Copy to terraform.tfvars and edit. Every gate is false and break_fix is none by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "ds31"
+
+# Documentation prefix (RFC 3849) as an example. If Azure refuses it, use a ULA /48 such as fd00:db8:31::/48.
+ipv6_vnet_prefix = "2001:db8:31::/48"
+
+# Gate 1: vm-web-1 and vm-client-1 (billable). Paste the text of your public key, not a path.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 2: dual-stack Standard public load balancer (needs gate 1; billable)
+deploy_lb = false
+
+# Gate 3: public IPv4 and IPv6 on vm-client-1 (needs gate 1; billable)
+deploy_client_ips = false
+
+# Gate 4: second dual-stack VNet and peering
+deploy_peer = false
+
+# Break/fix selector: none | nsg_v4_only | no_aaaa | udr_v4_only
+break_fix = "none"

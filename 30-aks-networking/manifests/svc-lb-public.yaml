@@ -1,0 +1,13 @@
+# Policy Cluster (the default): the pod sees a node address as the client.
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-lb
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  selector:
+    app: echo
+  ports:
+    - port: 80
+      targetPort: 8080

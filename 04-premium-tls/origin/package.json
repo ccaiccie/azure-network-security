@@ -1,0 +1,8 @@
+{
+  "name": "azure-tls-controlled-origin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Synthetic TLS inspection origin behind App Service managed HTTPS; no dependencies or secrets",
+  "engines": { "node": "24.x" },
+  "scripts": { "start": "node server.js" }
+}

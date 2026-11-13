@@ -1,0 +1,22 @@
+[Unit]
+Description=Unprivileged HTTP GWLB structural health on private IP port 8008
+Requires=gwlb-prepare.service
+After=gwlb-prepare.service gwlb-monitor.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/azure-gwlb-lab/controller.py health
+Restart=on-failure
+RestartSec=2
+User=nobody
+Group=nogroup
+UMask=0077
+NoNewPrivileges=yes
+ProtectHome=yes
+ProtectSystem=strict
+PrivateTmp=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET
+
+[Install]
+WantedBy=multi-user.target

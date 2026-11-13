@@ -1,0 +1,17 @@
+# Copy to terraform.tfvars and edit locally. This file alone deploys nothing.
+subscription_id     = "00000000-0000-0000-0000-000000000000"
+resource_group_name = "rg-egress-demo"
+location            = "eastus"
+admin_username      = "labadmin"
+vm_size             = "Standard_B1s"
+image_version       = "latest" # Resolve and pin an approved image version before real deployment.
+policy_mode         = "network"
+allowed_fqdns       = ["www.microsoft.com", "api.ipify.org"]
+
+# Supply the PUBLIC key via an environment variable instead of putting it here:
+# export TF_VAR_ssh_public_key="$(cat "$HOME/.ssh/your-approved-key.pub")"
+# Do not put private keys, passwords or Azure client secrets into any tfvars file.
+
+tags = {
+  owner = "replace-with-approved-owner-label"
+}

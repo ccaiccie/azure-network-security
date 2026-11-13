@@ -1,0 +1,13 @@
+// Replace resource ID and UTC bounds from the actual evidence, not examples.
+let fw = "/subscriptions/REPLACE/resourceGroups/inspection-tls/providers/Microsoft.Network/azureFirewalls/lab-firewall";
+let start = datetime(2000-01-01T00:00:00Z);
+let finish = datetime(2000-01-01T00:05:00Z);
+AZFWApplicationRule
+| where _ResourceId =~ fw and TimeGenerated between (start .. finish)
+| where SourceIp == "10.10.1.10" and DestinationPort == 443
+| project TimeGenerated, SourceIp, SourcePort, Fqdn, TargetUrl, DestinationPort,
+          Protocol, Action, ActionReason, IsTlsInspected, IsExplicitProxyRequest,
+          Policy, RuleCollectionGroup, RuleCollection, Rule
+| order by TimeGenerated asc
+// Correlate source port/time with curl. No DestinationIp column in this table.
+// No case header is exposed here. A Deny row plus origin absence, not curl alone.

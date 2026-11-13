@@ -1,0 +1,90 @@
+PASS bash syntax: check-local.sh
+PASS bash syntax: client-probe.sh
+PASS bash syntax: collect-control-plane.sh
+PASS bash syntax: guest-ready.sh
+PASS: intact comparison operators
+PASS: exact provider pin
+PASS: no automatic provider registration
+PASS: publication explicitly gated
+PASS: publication default off
+PASS: public client required and single host
+PASS: client CIDR validity
+PASS: client canonical form
+PASS: documentation sources rejected
+PASS: DNAT actual computed P
+PASS: DNAT actual source variable
+PASS: DNAT exact public port
+PASS: DNAT exact backend port
+PASS: DNAT backend destination
+PASS: group and collection identity
+PASS: no other firewall collections
+PASS: no custom SNAT policy
+PASS: no management NIC forced tunnel
+PASS: only two peering objects
+PASS: forwarded traffic explicit
+PASS: backend private subnet
+PASS: backend single fixed IP
+PASS: computed frontend F
+PASS: standalone route resources consume tested specs
+PASS: no inline route configuration
+PASS: None route has no IP
+PASS: blackhole entire firewall subnet
+PASS: NSG consumes tested specs
+PASS: NSG translated source is firewall subnet
+PASS: no outbound NSG allow
+PASS: private SSH only
+PASS: SSH passwords disabled
+PASS: no generated private key
+PASS: no provisioners
+PASS: no package downloads
+PASS: owned service startup
+PASS: owned readiness captured
+PASS: concrete image required
+PASS: Bastion separate native path
+PASS: Dedicated NAT logs
+PASS: curl ignores user config
+PASS: curl plain HTTP literal P
+PASS: curl no redirects or insecure bypass
+PASS: probe checks translated peer subnet
+PASS: declared source not asserted verified
+PASS: negative results remain review
+PASS: backend NIC no public IP
+PASS: experiment flags do not change custom data
+48 source-contract checks passed; NOT HCL/provider/runtime validation.
+test_read_only_collector_captures_unpublished_group_and_hub_subnets (__main__.CollectorTests.test_read_only_collector_captures_unpublished_group_and_hub_subnets) ... ok
+test_never_serves_files (__main__.FixtureTests.test_never_serves_files) ... {"case": "/../../etc/passwd", "fixture_role": "backend", "peer_ip": "127.0.0.1", "peer_port": 44662, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:49:36.857912+00:00"}
+ok
+test_ready_rejects_inactive_owned_service (__main__.FixtureTests.test_ready_rejects_inactive_owned_service) ... ok
+test_ready_rejects_wrong_machine (__main__.FixtureTests.test_ready_rejects_wrong_machine) ... ok
+test_ready_uses_local_real_response (__main__.FixtureTests.test_ready_uses_local_real_response) ... {"case": "/ready-local", "fixture_role": "backend", "peer_ip": "127.0.0.1", "peer_port": 44664, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:49:37.266225+00:00"}
+ok
+test_real_loopback_identity (__main__.FixtureTests.test_real_loopback_identity) ... {"case": "/ready-local", "fixture_role": "backend", "peer_ip": "127.0.0.1", "peer_port": 44680, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:49:37.281028+00:00"}
+ok
+test_rejects_long_path (__main__.FixtureTests.test_rejects_long_path) ... ok
+test_rejects_post (__main__.FixtureTests.test_rejects_post) ... ok
+test_xff_cannot_override_peer_identity (__main__.FixtureTests.test_xff_cannot_override_peer_identity) ... {"case": "/ready-local", "fixture_role": "backend", "peer_ip": "127.0.0.1", "peer_port": 44702, "server_ip": "127.0.0.1", "server_port": 8080, "time_utc": "2026-11-04T07:49:37.283925+00:00"}
+ok
+test_excluded_source_records_negative_without_verdict (__main__.ProbeTests.test_excluded_source_records_negative_without_verdict) ... ok
+test_excluded_source_requires_different_public_ip (__main__.ProbeTests.test_excluded_source_requires_different_public_ip) ... ok
+test_listener_and_blackhole_failures_are_not_policy_verdicts (__main__.ProbeTests.test_listener_and_blackhole_failures_are_not_policy_verdicts) ... ok
+test_non_200_status_cannot_be_positive_identity_match (__main__.ProbeTests.test_non_200_status_cannot_be_positive_identity_match) ... ok
+test_positive_recognizes_instance_source_not_client (__main__.ProbeTests.test_positive_recognizes_instance_source_not_client) ... ok
+test_public_client_source_at_backend_is_mismatch (__main__.ProbeTests.test_public_client_source_at_backend_is_mismatch) ... ok
+test_rejects_broad_allowed_source (__main__.ProbeTests.test_rejects_broad_allowed_source) ... ok
+test_rejects_documentation_target_before_curl (__main__.ProbeTests.test_rejects_documentation_target_before_curl) ... ok
+test_rejects_private_declared_client (__main__.ProbeTests.test_rejects_private_declared_client) ... ok
+test_unpublished_port_targets_8444 (__main__.ProbeTests.test_unpublished_port_targets_8444) ... ok
+test_withdrawal_uses_fresh_public_8443 (__main__.ProbeTests.test_withdrawal_uses_fresh_public_8443) ... ok
+test_eof_still_restores (__main__.RunbookTests.test_eof_still_restores) ... ok
+test_inactive_status_under_errexit_still_restores (__main__.RunbookTests.test_inactive_status_under_errexit_still_restores) ... ok
+test_manual_cli_resources_are_subscription_scoped (__main__.RunbookTests.test_manual_cli_resources_are_subscription_scoped) ... ok
+test_not_ready_does_not_stop_service (__main__.RunbookTests.test_not_ready_does_not_stop_service) ... ok
+test_restore_failure_is_reported_not_hidden (__main__.RunbookTests.test_restore_failure_is_reported_not_hidden) ... ok
+test_stop_failure_still_restores (__main__.RunbookTests.test_stop_failure_still_restores) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 3.166s
+
+OK
+PASS Markdown Bash syntax: 19 fences; no commands executed by this syntax-check step.
+NOT RUN terraform fmt/init/validate/test: Terraform unavailable.

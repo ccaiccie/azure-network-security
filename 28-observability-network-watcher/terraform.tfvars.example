@@ -1,0 +1,32 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "nw28"
+
+# Gate 1: two small VMs (billable). Paste the text of your public key, not a path.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 2: Log Analytics workspace and storage account
+deploy_monitoring = false
+
+# Gate 3: virtual network flow logs (needs gate 2)
+deploy_flow_logs          = false
+traffic_analytics_enabled = true # false: storage only, the workspace stays empty (break/fix 3)
+# traffic_analytics_interval = 10  # 10 or 60 minutes
+
+# Gate 4: Connection Monitor (needs gates 1 and 2)
+deploy_connection_monitor = false
+monitor_protocol          = "Tcp" # Icmp probes fail on hosts that filter ICMP
+monitor_rtt_threshold_ms  = 100   # 1 is the false-alarm case
+
+# Gate 5: hub VNet and Azure Firewall Standard (EXPENSIVE, needs gate 2)
+deploy_firewall  = false
+symmetric_return = true # false: replies bypass the firewall (break/fix 2)
+
+# Switches
+app_port            = 8080
+nsg_allows_app_port = true # false: ping works, TCP fails (break/fix 1)
+
+# true only if the subscription has no NetworkWatcher_<region> resource
+create_network_watcher = false

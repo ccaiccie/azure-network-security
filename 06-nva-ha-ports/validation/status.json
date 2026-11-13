@@ -1,0 +1,27 @@
+{
+  "checked_utc": "2026-11-04T09:44:00Z",
+  "artifact": "scenario06-linux-nva-ha-ports-source-draft",
+  "source_assertions_passed": 135,
+  "local_mock_and_loopback_tests_passed": 56,
+  "python_ast_files": 6,
+  "bash_helpers": 7,
+  "systemd_ini_structures": 4,
+  "readme_bash_fences": 14,
+  "terraform_mock_plan_cases_supplied": 10,
+  "terraform_mock_plan_cases_run": 0,
+  "terraform_executable_available": false,
+  "terraform_fmt": "NOT RUN",
+  "terraform_init": "NOT RUN",
+  "terraform_validate": "NOT RUN",
+  "terraform_test": "NOT RUN",
+  "nft_syntax_or_kernel_execution": "NOT RUN",
+  "azure_runtime": "NOT RUN",
+  "deployment_performed": false,
+  "real_guest_security_changes_performed": false,
+  "limitations": [
+    "No HCL/parser/provider schema validation or genuine provider lockfile.",
+    "Source text assertions and fake controller/CLI tests are not nft/kernel/Azure/HA proof.",
+    "Existing approved versioned tool-complete image required.",
+    "No VM crash or state-loss implementation, no conntrack replication, no vendor NGFW behavior."
+  ]
+}

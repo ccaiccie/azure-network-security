@@ -1,0 +1,16 @@
+# Copy to terraform.tfvars. Only subscription_id is required. Every gate stays false until you need it.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+# name_prefix     = "cap36"
+# location_a      = "westeurope"
+# location_b      = "northeurope"
+
+# Open one gate at a time, in this order:
+# deploy_region_a        = true
+# deploy_region_b        = true
+# enable_peering         = true
+# deploy_firewall_policy = true
+# link_private_dns       = true
+# deploy_onprem_sim      = true
+# deploy_firewalls       = true   # billable
+# deploy_resolvers       = true   # billable
+# deploy_vpn_sim         = true   # billable; also set vpn_shared_key through an environment variable

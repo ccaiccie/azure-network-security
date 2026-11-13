@@ -1,0 +1,33 @@
+#cloud-config
+# Runs once at first boot. Serves a one-line page on TCP 8080 over IPv4 and IPv6 (python3 http.server bound to ::),
+# and asks netplan for DHCPv6 on eth0 in case the image does not do it by itself (check current Azure and Ubuntu docs).
+write_files:
+  - path: /srv/www/index.html
+    permissions: "0644"
+    content: |
+      hello from ${vm_name}
+  - path: /etc/systemd/system/lab-web.service
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Lab web page on TCP 8080 for IPv4 and IPv6
+      After=network-online.target
+
+      [Service]
+      ExecStart=/usr/bin/python3 -m http.server 8080 --bind :: --directory /srv/www
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+  - path: /etc/netplan/60-lab-dhcp6.yaml
+    permissions: "0600"
+    content: |
+      network:
+        version: 2
+        ethernets:
+          eth0:
+            dhcp6: true
+runcmd:
+  - netplan apply
+  - systemctl daemon-reload
+  - systemctl enable --now lab-web.service

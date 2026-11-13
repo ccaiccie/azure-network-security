@@ -1,0 +1,5 @@
+#cloud-config
+# Designed, not tested. Installs the DNS test tools (dig, nslookup) and nothing else.
+package_update: true
+packages:
+  - dnsutils

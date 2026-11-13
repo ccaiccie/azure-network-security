@@ -1,0 +1,21 @@
+[Unit]
+Description=Verify GWLB owned bridge and publish fresh structural health
+Requires=gwlb-prepare.service
+After=gwlb-prepare.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/azure-gwlb-lab/controller.py monitor
+Restart=on-failure
+RestartSec=2
+User=root
+UMask=0077
+NoNewPrivileges=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/run/azure-gwlb-lab
+CapabilityBoundingSet=CAP_NET_ADMIN
+RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

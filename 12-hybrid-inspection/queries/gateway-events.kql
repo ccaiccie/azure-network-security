@@ -1,0 +1,16 @@
+// Review privately. Replace these placeholders from exact declared output IDs and case UTC.
+// Diagnostic delivery is asynchronous. Empty/missing rows do not prove a healthy tunnel.
+// Text fields may contain sensitive topology/metadata and require review before sharing.
+let start_time = datetime(YYYY-MM-DDTHH:MM:SSZ);
+let end_time = datetime(YYYY-MM-DDTHH:MM:SSZ);
+let gateway_id = '/subscriptions/APPROVED-UUID/resourceGroups/inspection-hybrid/providers/Microsoft.Network/virtualNetworkGateways/hub-vpn-gateway';
+AzureDiagnostics
+| where TimeGenerated between (start_time .. end_time)
+| where _ResourceId =~ gateway_id
+| where Category in ('GatewayDiagnosticLog','TunnelDiagnosticLog','RouteDiagnosticLog')
+| project TimeGenerated, Category, OperationName,
+          Message = column_ifexists('Message', ''),
+          RemoteIP = column_ifexists('remoteIP_s', ''),
+          Instance = column_ifexists('instance_s', '')
+| order by TimeGenerated asc
+// Schema-dependent fields may be empty. Inspect approved table schema, not guessed tunnel health.

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Designed, not tested. Boot script (cloud-init custom data) for an FRR NVA. Terraform fills in the template variables.
+set -eux
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get install -y frr
+sysctl -w net.ipv4.ip_forward=1
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-forward.conf
+sed -i 's/^bgpd=no/bgpd=yes/' /etc/frr/daemons
+
+cat > /etc/frr/lab.env <<'ENVEOF'
+HOSTNAME=${hostname}
+ASN=${asn}
+ROUTER_ID=${router_id}
+RS_IPS="%{ for ip in rs_ips }${ip} %{ endfor }"
+ANNOUNCE="10.99.0.0/24"
+PREPEND=0
+LOCALPREF=0
+MED=0
+COMMUNITY=""
+AGGREGATE=""
+FILTER=""
+ENVEOF
+
+cat > /usr/local/bin/frr-render.sh <<'RENDEREOF'
+${render_script}
+RENDEREOF
+chmod +x /usr/local/bin/frr-render.sh
+systemctl enable frr
+/usr/local/bin/frr-render.sh

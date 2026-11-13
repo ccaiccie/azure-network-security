@@ -1,0 +1,27 @@
+[Unit]
+Description=Close and withdraw the isolated GWLB teaching bridge on every boot
+Wants=network-online.target
+After=network-online.target
+Before=gwlb-monitor.service gwlb-health.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/azure-gwlb-lab/controller.py control boot
+RemainAfterExit=yes
+User=root
+UMask=0077
+TimeoutStartSec=120
+NoNewPrivileges=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/azure-gwlb-lab /run/azure-gwlb-lab
+StateDirectory=azure-gwlb-lab
+StateDirectoryMode=0755
+RuntimeDirectory=azure-gwlb-lab
+RuntimeDirectoryMode=0755
+RuntimeDirectoryPreserve=yes
+CapabilityBoundingSet=CAP_NET_ADMIN
+RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

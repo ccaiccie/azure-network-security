@@ -1,0 +1,8 @@
+// Separate application-mode scenario; do not expect its Allow rows in network mode.
+AZFWApplicationRule
+| where TimeGenerated > ago(1h)
+| where _ResourceId =~ "FIREWALL_RESOURCE_ID"
+| where SourceIp == "10.20.1.4"
+| project TimeGenerated, SourceIp, SourcePort, Fqdn, Protocol, Action,
+          ActionReason, RuleCollectionGroup, RuleCollection, Rule, IsTlsInspected
+| order by TimeGenerated asc

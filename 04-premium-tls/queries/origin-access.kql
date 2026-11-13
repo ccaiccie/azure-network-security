@@ -1,0 +1,9 @@
+let origin = "/subscriptions/REPLACE/resourceGroups/inspection-tls/providers/Microsoft.Web/sites/REPLACE";
+let start = datetime(2000-01-01T00:00:00Z);
+let finish = datetime(2000-01-01T00:05:00Z);
+AppServiceIPSecAuditLogs
+| where _ResourceId =~ origin and TimeGenerated between (start .. finish)
+| project TimeGenerated, CIp, CsHost, Result, Details, ServiceEndpoint, XForwardedFor
+| order by TimeGenerated asc
+// Expect frontend allow through rule allow-lab-firewall from P where emitted;
+// direct operator preflight is a separate source. Missing logs are inconclusive.

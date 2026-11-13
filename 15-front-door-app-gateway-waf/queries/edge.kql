@@ -1,0 +1,20 @@
+// Front Door uses AzureDiagnostics in this module. Field availability/type must
+// be verified from actual schema; missing column/empty record is not a pass.
+let profile = "REPLACE_WITH_GUARDED_FRONTDOOR_PROFILE_ID";
+let case_id = "REPLACE_WITH_CASE_UUID";
+AzureDiagnostics
+| where ResourceId =~ profile
+| where TimeGenerated between (datetime(2000-01-01T00:00:00Z) .. datetime(2000-01-01T00:01:00Z))
+| where Category in ("FrontDoorAccessLog", "FrontDoorWebApplicationFirewallLog")
+| extend Request = tostring(column_ifexists("requestUri_s", ""))
+| where Request contains case_id
+| project TimeGenerated, Category,
+          TrackingReference=tostring(column_ifexists("trackingReference_s", "")),
+          Action=tostring(column_ifexists("action_s", "")),
+          RuleName=tostring(column_ifexists("ruleName_s", "")),
+          ClientIp=tostring(column_ifexists("clientIP_s", "")),
+          SocketIp=tostring(column_ifexists("socketIP_s", "")),
+          HttpStatus=tostring(column_ifexists("httpStatusCode_s", "")),
+          OriginIp=tostring(column_ifexists("originIP_s", "")),
+          CacheStatus=tostring(column_ifexists("cacheStatus_s", ""))
+| order by TimeGenerated asc

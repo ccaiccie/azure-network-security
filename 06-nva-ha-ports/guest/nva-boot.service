@@ -1,0 +1,14 @@
+[Unit]
+Description=Restore owned synthetic NVA policy, closed first
+Wants=network-online.target
+After=network-online.target
+Before=nva-health-monitor.service nva-health.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -I /opt/azure-nva-lab/controller.py control boot
+RemainAfterExit=yes
+UMask=0022
+
+[Install]
+WantedBy=multi-user.target

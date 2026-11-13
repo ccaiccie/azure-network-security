@@ -1,0 +1,13 @@
+test_api_failure_retains_completion_and_partial_files (test_operator.CollectorTests.test_api_failure_retains_completion_and_partial_files) ... ok
+test_disabled_state_no_azure (test_operator.CollectorTests.test_disabled_state_no_azure) ... ok
+test_existing_empty_directory_refused (test_operator.CollectorTests.test_existing_empty_directory_refused) ... ok
+test_existing_evidence_unchanged (test_operator.CollectorTests.test_existing_evidence_unchanged) ... ok
+test_snapshot_scoped_and_nonempty (test_operator.CollectorTests.test_snapshot_scoped_and_nonempty) ... ok
+test_symlink_refused (test_operator.CollectorTests.test_symlink_refused) ... ok
+test_two_runs_keep_independent_snapshots (test_operator.CollectorTests.test_two_runs_keep_independent_snapshots) ... ok
+test_wrong_subscription_no_azure (test_operator.CollectorTests.test_wrong_subscription_no_azure) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.620s
+
+OK

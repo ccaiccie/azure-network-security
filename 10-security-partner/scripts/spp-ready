@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Read-only client tools/NIC check; origin also checks exact units and local HTTP.
+set -euo pipefail
+exec /usr/bin/python3 -I /opt/azure-spp-lab/server.py --check-local-ready \
+  --config "${SPP_LAB_CONFIG:-/etc/azure-spp-lab.json}"

@@ -1,0 +1,14 @@
+{
+  "case": "Gateway CPU saturation",
+  "symptom": "Slow transfers at peak. Circuit utilisation is 30 percent. Gateway CPU is 94 percent.",
+  "evidence": {
+    "provider_state": "Provisioned",
+    "arp_primary": "up",
+    "bgp_primary": "Established",
+    "gateway_cpu_percent": 94,
+    "circuit_utilisation_percent": 30,
+    "gateway_sku": "ErGw1AZ",
+    "fastpath_flag": false
+  },
+  "answer": "The gateway is the bottleneck. Resize, move to ErGwScale or use FastPath for supported flows."
+}

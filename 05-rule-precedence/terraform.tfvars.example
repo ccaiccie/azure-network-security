@@ -1,0 +1,11 @@
+# Intentionally incomplete, gates closed. Never use fake test identifiers to deploy.
+subscription_id = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-policy"
+location = "REPLACE_WITH_APPROVED_AVAILABLE_REGION"
+image_version = "REPLACE_WITH_CONCRETE_APPROVED_IMAGE_VERSION"
+# Supply TF_VAR_ssh_public_key from an existing approved public key file.
+deploy_lab = false
+fixtures_ready = false
+policy_mode = "closed"
+experiments_confirmed = false
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

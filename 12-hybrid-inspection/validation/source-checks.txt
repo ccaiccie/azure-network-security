@@ -1,0 +1,2 @@
+PASS 219 source assertions; 17 supplied mock plans NOT RUN; compressed cloud-init source estimate 20668 bytes including 8192-byte reserve.
+These are source-text checks, not HCL parsing, Terraform rendering, provider schema, Azure or guest runtime evidence.

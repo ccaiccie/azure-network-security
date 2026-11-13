@@ -1,0 +1,41 @@
+{
+  "_recovery_history": {
+    "status": "HISTORICAL_NOT_CURRENT_ACCEPTANCE",
+    "original_sha256": "ae9af9a1f578792f1e1ac201509c6687bee6d2aae9f9ad1be4b513df9cb70135",
+    "scope": "Prior authoring evidence preserved for context. PASS and NOT RUN values below refer only to that prior work, not this recovered release.",
+    "path_policy": "Private absolute producer paths replaced by descriptive historical-authoring or historical-temporary identifiers; these are not package-relative links.",
+    "current_evidence": "See RECOVERY.md and the external FINAL-ACCEPTANCE.json for fresh qualification and exact delivered ZIP hashes."
+  },
+  "reviewed_utc": "2026-11-04T12:19:55.595656+00:00",
+  "scope": "Azure-side SPP/VPN/fixture source draft; ZIA integration remains external",
+  "local_tests": {
+    "status": "PASS",
+    "count": 97,
+    "fixture_probe_tests": 71,
+    "operator_fake_cli_tests": 26
+  },
+  "syntax": {
+    "python_ast": 5,
+    "bash_helpers": 6,
+    "service_ini_structure": 1,
+    "readme_bash_fences": 12
+  },
+  "source_assertions": 166,
+  "source_assertions_note": "Text/AST/brace counts, not HCL/provider grammar or execution",
+  "terraform_mock_plan_cases_supplied": 13,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable/cache absent",
+  "provider_schema": "NOT VALIDATED: AzureRM5.12.0 executable unavailable",
+  "provider_lock": "NOT GENERATED",
+  "cloud_init_payload_estimate_bytes": 60872,
+  "zia_license_authorization_onboarding_tunnels_hub_routing_policy_logs": "EXTERNAL PREREQUISITES; NOT RUN",
+  "cloud_and_actual_guest": "NOT RUN",
+  "response_prefix_limit_bytes": 8192,
+  "sensitive_response_headers": "REDACTED in evidence",
+  "egress_pool_limit": 16,
+  "deployments": 0,
+  "repository_changes": 0,
+  "vpn_connection_collection": "Default skipped; optional --acknowledge-full-vpn-response per invocation. All real API behavior unrun.",
+  "vpn_key_schema": "Exact2025-05-01 Swagger documents link sharedKey omitted from Get/List and legacy connection key deprecated/unused; no PSK receipt asserted.",
+  "collector_privacy": "Client-side stdout filtering, not server minimization. Full returned metadata/tags/diagnostics and retained declared outputs/profile text require private review; no general automatic redaction.",
+  "target_identity_guards": "Six core network IDs, two origin public-IP IDs, three VM IDs, exact app/origin1/origin2 NIC map and optional SPP ID; local fake-CLI tests only."
+}

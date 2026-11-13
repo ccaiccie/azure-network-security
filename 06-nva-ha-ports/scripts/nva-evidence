@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# FUTURE read-only guest evidence and optional bounded synthetic-flow capture.
+set -euo pipefail
+umask 077
+SECONDS_TO_CAPTURE=0; OUT=''
+while (($#)); do
+  case "$1" in
+    --capture-seconds) SECONDS_TO_CAPTURE=${2:?Missing seconds}; shift 2 ;;
+    --out) OUT=${2:?Missing new output path}; shift 2 ;;
+    *) printf 'Usage: sudo nva-evidence [--capture-seconds 0..120] [--out NEW_DIR]\n' >&2; exit 2 ;;
+  esac
+done
+[[ "$SECONDS_TO_CAPTURE" =~ ^[0-9]+$ ]] && ((SECONDS_TO_CAPTURE<=120)) || exit 2
+[[ $EUID -eq 0 ]] || { printf 'Root is required to READ nft/conntrack and capture only the approved synthetic tuple.\n' >&2; exit 2; }
+for tool in python3 ip nft conntrack curl timeout tcpdump; do command -v "$tool" >/dev/null || exit 2; done
+CONFIG=${NVA_LAB_CONFIG:-/etc/azure-nva-lab.json}
+NVA_IP=$(python3 - "$CONFIG" <<'PY'
+import json,sys
+from pathlib import Path
+c=json.loads(Path(sys.argv[1]).read_text());assert c['role'] in ('nva1','nva2')
+assert c['private_ip']=={'nva1':'10.0.2.4','nva2':'10.0.2.5'}[c['role']]
+print(c['private_ip'])
+PY
+)
+ip -4 -o addr show | grep -Fq " $NVA_IP/" || exit 2
+OUT=${OUT:-"$HOME/nva-evidence/node-$(date -u +%Y%m%dT%H%M%SZ)-$$"}
+mkdir -p -- "$(dirname -- "$OUT")"
+mkdir -- "$OUT" || { printf 'Choose a NEW nonexistent evidence path.\n' >&2; exit 2; }
+printf 'started_utc=%s\nnode_ip=%s\n' "$(date -u +%FT%TZ)" "$NVA_IP" > "$OUT/timing.txt"
+trap 'status=$?; printf "completed_utc=%s\nshell_exit=%s\n" "$(date -u +%FT%TZ)" "$status" >> "$OUT/timing.txt"' EXIT
+snapshot() {
+  local phase=$1
+  /usr/local/bin/nva-control status > "$OUT/$phase-status.json"
+  ip -j -4 addr show > "$OUT/$phase-ip.json"
+  ip -j route show > "$OUT/$phase-guest-routes.json"
+  ip route get 10.10.1.10 > "$OUT/$phase-route-to-app.txt"
+  ip route get 10.20.1.20 > "$OUT/$phase-route-to-backend.txt"
+  nft -j list table inet azure_nva_lab > "$OUT/$phase-nft.json"
+  set +e
+  conntrack -L -p tcp --orig-src 10.10.1.10 --orig-dst 10.20.1.20 > "$OUT/$phase-conntrack.txt" 2> "$OUT/$phase-conntrack.stderr"
+  local rc=$?
+  set -e
+  printf 'exit=%s\n' "$rc" > "$OUT/$phase-conntrack-exit.txt"
+  # Empty table and command failure differ; retain stderr/exit rather than invent state.
+  set +e
+  curl -q -4 --noproxy '*' --proxy '' --connect-timeout 2 --max-time 3 \
+    --silent --show-error --output "$OUT/$phase-health.json" --write-out 'http=%{http_code}\n' \
+    "http://$NVA_IP:8008/healthz" > "$OUT/$phase-health-code.txt" 2> "$OUT/$phase-health.stderr"
+  rc=$?
+  set -e
+  printf 'curl_exit=%s\n' "$rc" >> "$OUT/$phase-health-code.txt"
+}
+snapshot before
+if ((SECONDS_TO_CAPTURE>0)); then
+  printf 'Capture started UTC=%s duration=%s\n' "$(date -u +%FT%TZ)" "$SECONDS_TO_CAPTURE"
+  set +e
+  timeout --signal=INT --kill-after=5 "$SECONDS_TO_CAPTURE" tcpdump -i any -nn -s 0 \
+    -w "$OUT/transit.pcap" 'tcp and host 10.10.1.10 and host 10.20.1.20 and (port 8080 or port 8081)' \
+    > "$OUT/capture.stdout" 2> "$OUT/capture.stderr"
+  RC=$?
+  set -e
+  printf 'capture_exit=%s\ncompleted_utc=%s\n' "$RC" "$(date -u +%FT%TZ)" > "$OUT/capture-result.txt"
+  [[ "$RC" -eq 0 || "$RC" -eq 124 ]] || { printf 'Capture failed; inspect retained error and do not infer flow symmetry.\n' >&2; exit "$RC"; }
+fi
+snapshot after
+printf 'Guest evidence saved to %s; correlate both nodes and client/backend tuple. No HA outcome inferred.\n' "$OUT"

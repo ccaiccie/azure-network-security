@@ -1,0 +1,38 @@
+{
+  "_recovery_history": {
+    "status": "HISTORICAL_NOT_CURRENT_ACCEPTANCE",
+    "original_sha256": "eca2d961787022c1d50c85c7d252aeb507eeda5f229d46265e7e1cc59d0a5cb2",
+    "scope": "Prior authoring evidence preserved for context. PASS and NOT RUN values below refer only to that prior work, not this recovered release.",
+    "path_policy": "Private absolute producer paths replaced by descriptive historical-authoring or historical-temporary identifiers; these are not package-relative links.",
+    "current_evidence": "See RECOVERY.md and the external FINAL-ACCEPTANCE.json for fresh qualification and exact delivered ZIP hashes."
+  },
+  "reviewed_utc": "2026-11-04T12:07:32.740287+00:00",
+  "scope": "generic Azure substrate/harness source draft; external vendor integration remains a prerequisite",
+  "local_tests": {
+    "status": "PASS",
+    "count": 87,
+    "fixture_probe_tests": 61,
+    "operator_and_identity_mock_tests": 26
+  },
+  "syntax": {
+    "python_ast": 6,
+    "bash_helpers": 6,
+    "service_ini_structure": 1,
+    "readme_bash_fences": 11
+  },
+  "source_assertions": 168,
+  "source_assertions_note": "Text/AST/brace counts only, not HCL grammar/provider validation",
+  "terraform_mock_plan_cases_supplied": 12,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable/cache absent",
+  "provider_schema": "NOT VALIDATED: AzureRM5.12.0 executable unavailable",
+  "provider_lock": "NOT GENERATED",
+  "cloud_init_payload_estimate_bytes": 52652,
+  "vendor_selection_license_install_policy_logs": "EXTERNAL PREREQUISITES; NOT RUN",
+  "cloud_and_actual_guest": "NOT RUN",
+  "management_correction": "Unconnected10.40/16 management VNet with app-only nongateway/nonforwarded peering; actual reachability NOT RUN",
+  "egress_pool_limit": 16,
+  "deployments": 0,
+  "repository_changes": 0,
+  "collector_privacy": "Client-side stdout filtering only; CLI can receive secret-bearing full responses; diagnostics and declared outputs/profile text require private review, no automatic redaction",
+  "target_identity_guards": "Six core owned network IDs, both exact VM IDs, exact app/origin NIC map and supplied optional intent/external-profile relationships; mocks only"
+}

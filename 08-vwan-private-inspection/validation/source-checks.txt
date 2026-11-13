@@ -1,0 +1,2 @@
+Payload base64 lengths +8KiB metadata reserve=42576 bytes; estimate, not Terraform rendered custom_data.
+PASS 636 source assertions. Bracket/text/AST checks do not validate HCL/provider/Azure behavior.

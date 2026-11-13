@@ -1,0 +1,14 @@
+# Designed, not tested. A PUBLIC LoadBalancer Service on a userDefinedRouting cluster.
+# The request arrives by the load balancer; the reply follows the route table to the firewall (asymmetric).
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-lb
+  namespace: lab
+spec:
+  type: LoadBalancer
+  selector:
+    app: echo
+  ports:
+    - port: 80
+      targetPort: 8080

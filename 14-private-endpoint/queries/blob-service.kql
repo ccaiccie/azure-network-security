@@ -1,0 +1,13 @@
+// FUTURE approved operator query. Scope to owned account and helper's exact case UUID.
+// No AuthenticationHash, AuthorizationDetails, URI query strings or token material selected.
+let start = datetime(2000-01-01T00:00:00Z);
+let end = datetime(2000-01-01T00:01:00Z);
+let account = "REPLACE_WITH_OWNED_ACCOUNT";
+let caseId = "00000000-0000-0000-0000-000000000000";
+StorageBlobLogs
+| where TimeGenerated between (start .. end)
+| where AccountName == account and ClientRequestId == caseId
+| project TimeGenerated, OperationName, StatusCode, StatusText, AuthenticationType, ClientRequestId, RequesterObjectId, CallerIpAddress, TlsVersion
+| order by TimeGenerated asc
+// CallerIpAddress is an observation, not an assumed S=F or original A socket.
+// Service ClientRequestId is not available for a request blocked before HTTP write.

@@ -1,0 +1,27 @@
+#cloud-config
+# Runs once at first boot of dns-fwd. Installs the DNS client and a tiny UDP forwarder, then starts the forwarder.
+# systemd-resolved listens only on 127.0.0.53, so the forwarder binds the VM's own address.
+write_files:
+  - path: /opt/lab/dnsq.py
+    permissions: "0755"
+    encoding: b64
+    content: ${dnsq_b64}
+  - path: /opt/lab/forward.py
+    permissions: "0755"
+    encoding: b64
+    content: ${forward_b64}
+  - path: /etc/systemd/system/lab-forwarder.service
+    content: |
+      [Unit]
+      Description=Lab DNS forwarder
+      After=network-online.target
+
+      [Service]
+      ExecStart=/usr/bin/python3 /opt/lab/forward.py ${listen_ip} ${upstream}
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - systemctl daemon-reload
+  - systemctl enable --now lab-forwarder.service

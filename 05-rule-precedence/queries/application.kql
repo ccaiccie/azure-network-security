@@ -1,0 +1,12 @@
+let fw = "/subscriptions/REPLACE/resourceGroups/inspection-policy/providers/Microsoft.Network/azureFirewalls/lab-firewall";
+let start = datetime(2000-01-01T00:00:00Z);
+let finish = datetime(2000-01-01T00:05:00Z);
+AZFWApplicationRule
+| where _ResourceId =~ fw and TimeGenerated between (start .. finish)
+| where SourceIp == "10.10.1.10"
+| project TimeGenerated, SourceIp, SourcePort, Fqdn, TargetUrl, DestinationPort,
+          Protocol, Action, ActionReason, IsTlsInspected, Policy,
+          RuleCollectionGroup, RuleCollection, Rule
+| order by TimeGenerated asc
+// HTTP, no TLS inspection. No DestinationIp column in this table.
+// Do not use missing application rows as sole proof of network precedence.

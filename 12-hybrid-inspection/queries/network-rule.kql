@@ -1,0 +1,18 @@
+// Fill ALL placeholders from the actual probe result.json and Terraform outputs.
+// Log delivery is asynchronous. Zero rows, delayed rows or a timeout are inconclusive.
+// Use a narrow UTC window surrounding the case, then re-query after ingestion.
+let start_time = datetime(YYYY-MM-DDTHH:MM:SSZ);
+let end_time = datetime(YYYY-MM-DDTHH:MM:SSZ);
+let firewall_id = '/subscriptions/APPROVED-UUID/resourceGroups/inspection-hybrid/providers/Microsoft.Network/azureFirewalls/hub-firewall';
+let client_ip = '172.16.10.10';
+let client_port = 0; // Replace with actual attempted_local[1], never assume a port.
+let destination_ip = '10.20.1.20';
+let destination_port = 8080;
+AZFWNetworkRule
+| where TimeGenerated between (start_time .. end_time)
+| where _ResourceId =~ firewall_id
+| where SourceIp == client_ip and toint(SourcePort) == client_port
+| where DestinationIp == destination_ip and toint(DestinationPort) == destination_port
+| project TimeGenerated, SourceIp, SourcePort, DestinationIp, DestinationPort,
+          Protocol, Action, Policy, RuleCollectionGroup, RuleCollection, Rule
+| order by TimeGenerated asc

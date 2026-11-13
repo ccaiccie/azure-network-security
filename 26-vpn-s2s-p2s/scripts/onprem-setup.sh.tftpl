@@ -1,0 +1,82 @@
+#!/bin/bash
+# Designed, not tested. Boot script for vm-edge, the simulated on-premises VPN device (templatefile, run once by cloud-init).
+# It installs strongSwan and FRR, brings up one route-based IPsec tunnel per Azure gateway public IP, and clamps TCP MSS.
+# BGP is NOT configured here: scripts/onprem-bgp.sh does that in Activity 5 so you can change it without rebuilding the VM.
+set -eux
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+apt-get install -y strongswan-swanctl charon-systemd frr iptables
+
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-vpn26.conf
+sysctl --system
+sed -i 's/^bgpd=no/bgpd=yes/' /etc/frr/daemons
+
+# One XFRM interface per tunnel (a route-based "VTI"). Traffic routed into xfrmN is encrypted by the child SA with if_id 4N.
+cat > /usr/local/sbin/vpn26-net.sh <<'NETEOF'
+#!/bin/bash
+ip addr add 10.70.255.1/32 dev lo 2>/dev/null || true
+%{ for i, pip in azure_pips ~}
+ip link add xfrm${i} type xfrm dev eth0 if_id ${42 + i} 2>/dev/null || true
+ip link set xfrm${i} mtu 1400 up
+%{ endfor ~}
+iptables -t mangle -C FORWARD -p tcp --tcp-flags SYN,RST SYN -o xfrm+ -j TCPMSS --set-mss 1350 2>/dev/null \
+  || iptables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o xfrm+ -j TCPMSS --set-mss 1350
+NETEOF
+chmod +x /usr/local/sbin/vpn26-net.sh
+
+cat > /etc/systemd/system/vpn26-net.service <<'UNITEOF'
+[Unit]
+Description=vpn26 XFRM interfaces and MSS clamp
+Before=strongswan.service
+After=network-online.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/vpn26-net.sh
+[Install]
+WantedBy=multi-user.target
+UNITEOF
+
+# The Azure VM's public IP is a 1:1 NAT, so the device sees only its private address. Use the public IP as the IKE identity,
+# because the local network gateway names the device by that address.
+cat > /etc/swanctl/conf.d/vpn26.conf <<'SWEOF'
+connections {
+%{ for i, pip in azure_pips ~}
+  azure${i} {
+    version = 2
+    remote_addrs = ${pip}
+    proposals = ${ike_prop}
+    dpd_delay = 10s
+    local { auth = psk
+            id = ${onprem_pip} }
+    remote { auth = psk
+             id = ${pip} }
+    children {
+      azure${i} {
+        local_ts = 0.0.0.0/0
+        remote_ts = 0.0.0.0/0
+        esp_proposals = ${esp_prop}
+        if_id_in = ${42 + i}
+        if_id_out = ${42 + i}
+        start_action = start
+        dpd_action = restart
+      }
+    }
+  }
+%{ endfor ~}
+}
+secrets {
+%{ for i, pip in azure_pips ~}
+  ike-azure${i} {
+    id = ${pip}
+    secret = "${shared_key}"
+  }
+%{ endfor ~}
+}
+SWEOF
+chmod 600 /etc/swanctl/conf.d/vpn26.conf
+
+systemctl daemon-reload
+systemctl enable --now vpn26-net.service
+systemctl enable --now strongswan
+swanctl --load-all || true

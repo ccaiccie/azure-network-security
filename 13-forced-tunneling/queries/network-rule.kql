@@ -1,0 +1,13 @@
+// FUTURE operator query. Replace the time window and actual D after reviewing private evidence.
+// AZFWNetworkRule is Firewall evidence, not guest nftables or public NAT telemetry.
+let start = datetime(2000-01-01T00:00:00Z);
+let end = datetime(2000-01-01T00:01:00Z);
+let actualD = "REPLACE_WITH_ACTUAL_ORIGIN_PUBLIC_IPV4";
+AZFWNetworkRule
+| where TimeGenerated between (start .. end)
+| where SourceIp == "10.20.1.10" and DestinationIp == actualD
+| where DestinationPort in (8080,8081,8082)
+| project TimeGenerated, SourceIp, SourcePort, DestinationIp, DestinationPort, Protocol, Action, RuleCollectionGroup, RuleCollection, Rule
+| order by TimeGenerated asc
+// Correlate each fresh bound client tuple and its UTC. Empty results are inconclusive.
+// HTTP case identifiers do not exist in a SYN blocked before HTTP write.

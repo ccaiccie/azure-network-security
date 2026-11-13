@@ -1,0 +1,31 @@
+module "lab" {
+  count                         = var.deploy_lab ? 1 : 0
+  source                        = "./module"
+  subscription_id               = var.subscription_id
+  resource_group_name           = var.resource_group_name
+  location                      = var.location
+  admin_username                = var.admin_username
+  ssh_public_key                = var.ssh_public_key
+  vm_size                       = var.vm_size
+  image_id                      = var.image_id
+  storage_account_name          = var.storage_account_name
+  deploy_lab                    = var.deploy_lab
+  image_prerequisites_confirmed = var.image_prerequisites_confirmed
+  identity_access_authorized    = var.identity_access_authorized
+  pe_ready                      = var.pe_ready
+  dns_enabled                   = var.dns_enabled
+  dns_verified                  = var.dns_verified
+  routes_verified               = var.routes_verified
+  pe_ingress_enabled            = var.pe_ingress_enabled
+  client_paths_enabled          = var.client_paths_enabled
+  seed_paths_enabled            = var.seed_paths_enabled
+  allow_client_blob             = var.allow_client_blob
+  allow_seed_blob               = var.allow_seed_blob
+  grant_reader_role             = var.grant_reader_role
+  grant_seed_role               = var.grant_seed_role
+  isolation_verified            = var.isolation_verified
+  route_experiment_acknowledged = var.route_experiment_acknowledged
+  pe_network_policies           = var.pe_network_policies
+  install_pe_host_route         = var.install_pe_host_route
+  tags                          = var.tags
+}

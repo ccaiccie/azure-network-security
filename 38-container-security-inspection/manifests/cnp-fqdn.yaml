@@ -1,0 +1,28 @@
+# Designed, not tested. OPTIONAL. Needs the Cilium dataplane with the Advanced Container Networking Services
+# feature (check current Microsoft docs for status, pricing and the exact policy kinds). Without it
+# kubectl reports an unknown kind: skip this file.
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: client-egress-fqdn
+  namespace: lab
+spec:
+  endpointSelector:
+    matchLabels:
+      app: client
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - {port: "53", protocol: ANY}
+          rules:
+            dns:
+              - matchPattern: "*"
+    - toFQDNs:
+        - matchName: "example.com"
+      toPorts:
+        - ports:
+            - {port: "443", protocol: TCP}

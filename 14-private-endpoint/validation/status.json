@@ -1,0 +1,28 @@
+{
+  "scenario": 14,
+  "scope": "Azure Firewall Standard application inspection of an owned Blob Private Endpoint; separate seed and reader identities",
+  "date_utc": "2026-11-04",
+  "local_tests": {
+    "guest_helper_fully_mocked": 52,
+    "operator_fake_cli": 28,
+    "pure_route_policy_model": 8,
+    "total": 88,
+    "result": "PASS"
+  },
+  "source_assertions": 144,
+  "syntax": {
+    "python_ast": 5,
+    "bash_helpers": 5,
+    "service_ini": 0,
+    "readme_bash_fences": 9
+  },
+  "terraform_mock_plans_supplied": 17,
+  "terraform_mock_plans_run": 0,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable and initialized provider cache absent",
+  "provider_schema": "NOT VALIDATED",
+  "hcl_parser": "NOT AVAILABLE",
+  "azure_guest_tls_dns_token_blob_runtime": "NOT RUN",
+  "actual_rendered_custom_data": "NOT VERIFIED",
+  "compressed_source_plus_reserve_bytes": 15640,
+  "no_live_operations": true
+}

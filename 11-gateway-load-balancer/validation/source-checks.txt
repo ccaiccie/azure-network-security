@@ -1,0 +1,3 @@
+nva: gzip/base64 source payload+8KiB reserve=24008 bytes, NOT Terraform-rendered custom_data.
+app: gzip/base64 source payload+8KiB reserve=16044 bytes, NOT Terraform-rendered custom_data.
+PASS 208 source assertions including text/brace counts. No HCL/provider/nft/kernel/cloud validation implied.

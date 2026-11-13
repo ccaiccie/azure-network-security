@@ -1,0 +1,70 @@
+test_activate_closed_first_and_still_withdrawn (test_local.ControlTests.test_activate_closed_first_and_still_withdrawn) ... ok
+test_active_experiment_lock_blocks_mutation_not_status (test_local.ControlTests.test_active_experiment_lock_blocks_mutation_not_status) ... ok
+test_advertise_requires_open_readiness (test_local.ControlTests.test_advertise_requires_open_readiness) ... ok
+test_advertise_valid_open (test_local.ControlTests.test_advertise_valid_open) ... ok
+test_boot_closed (test_local.ControlTests.test_boot_closed) ... ok
+test_close_preserves_sysctls_but_blocks_forwarding (test_local.ControlTests.test_close_preserves_sysctls_but_blocks_forwarding) ... ok
+test_digest_ignores_counters_not_policy (test_local.ControlTests.test_digest_ignores_counters_not_policy) ... ok
+test_explicit_confirmation_before_writes (test_local.ControlTests.test_explicit_confirmation_before_writes) ... ok
+test_fail_forwarding_restores_exact_state_without_sysctl_toggle (test_local.ControlTests.test_fail_forwarding_restores_exact_state_without_sysctl_toggle) ... ok
+test_failure_duration_bounds (test_local.ControlTests.test_failure_duration_bounds) ... ok
+test_failure_events_persist_start_and_restoration (test_local.ControlTests.test_failure_events_persist_start_and_restoration) ... ok
+test_failure_requires_verified_open (test_local.ControlTests.test_failure_requires_verified_open) ... ok
+test_hangup_finally_restores (test_local.ControlTests.test_hangup_finally_restores) ... ok
+test_health_snapshot_false (test_local.ControlTests.test_health_snapshot_false) ... ok
+test_health_snapshot_fresh_stale_missing_future (test_local.ControlTests.test_health_snapshot_fresh_stale_missing_future) ... ok
+test_interrupt_finally_restores (test_local.ControlTests.test_interrupt_finally_restores) ... ok
+test_ip_forward_not_ready (test_local.ControlTests.test_ip_forward_not_ready) ... ok
+test_leftover_recovery_allows_close_after_lock_release (test_local.ControlTests.test_leftover_recovery_allows_close_after_lock_release) ... ok
+test_loose_conntrack_not_ready (test_local.ControlTests.test_loose_conntrack_not_ready) ... ok
+test_nat_not_ready (test_local.ControlTests.test_nat_not_ready) ... ok
+test_nft_closed_has_no_forward_accept (test_local.ControlTests.test_nft_closed_has_no_forward_accept) ... ok
+test_nft_open_exact_syn_and_established (test_local.ControlTests.test_nft_open_exact_syn_and_established) ... ok
+test_pending_recovery_blocks_baseline_changes (test_local.ControlTests.test_pending_recovery_blocks_baseline_changes) ... ok
+test_policy_drift_not_ready (test_local.ControlTests.test_policy_drift_not_ready) ... ok
+test_real_set_values_sequence_mocked_commands (test_local.ControlTests.test_real_set_values_sequence_mocked_commands) ... ok
+test_recover_after_closed_reboot_restores_recorded_owned_values (test_local.ControlTests.test_recover_after_closed_reboot_restores_recorded_owned_values) ... ok
+test_recovery_record_prevents_second_failure (test_local.ControlTests.test_recovery_record_prevents_second_failure) ... ok
+test_redirect_drift_not_ready (test_local.ControlTests.test_redirect_drift_not_ready) ... ok
+test_restore_original_closes_and_restores_owned_values (test_local.ControlTests.test_restore_original_closes_and_restores_owned_values) ... ok
+test_rpf_not_ready (test_local.ControlTests.test_rpf_not_ready) ... ok
+test_status_no_files_written (test_local.ControlTests.test_status_no_files_written) ... ok
+test_three_signal_handlers (test_local.ControlTests.test_three_signal_handlers) ... ok
+test_withdraw_does_not_bless_policy_drift (test_local.ControlTests.test_withdraw_does_not_bless_policy_drift) ... ok
+test_withdraw_does_not_reload_policy_or_sysctls (test_local.ControlTests.test_withdraw_does_not_reload_policy_or_sysctls) ... ok
+test_withdraw_for_restores_without_table_reload (test_local.ControlTests.test_withdraw_for_restores_without_table_reload) ... ok
+test_wrong_node_recovery_rejected (test_local.ControlTests.test_wrong_node_recovery_rejected) ... ok
+test_direct_short_probe_records_identity_and_tuple (test_local.FixtureProbeTests.test_direct_short_probe_records_identity_and_tuple) ... {"fixture": "azure-nva-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T09:43:40.990796+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 51001, "server_ip": "127.0.0.1", "server_port": 36361}
+ok
+test_finite_stream_explicit_completion_no_reconnect (test_local.FixtureProbeTests.test_finite_stream_explicit_completion_no_reconnect) ... {"fixture": "azure-nva-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T09:43:40.992730+00:00", "frame": 0, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 39961, "server_ip": "127.0.0.1", "server_port": 36361}
+{"fixture": "azure-nva-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T09:43:41.993604+00:00", "frame": 1, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 39961, "server_ip": "127.0.0.1", "server_port": 36361, "stream_end": false}
+{"fixture": "azure-nva-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T09:43:42.994931+00:00", "frame": 2, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 39961, "server_ip": "127.0.0.1", "server_port": 36361, "stream_end": false}
+{"fixture": "azure-nva-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T09:43:44.000043+00:00", "frame": 3, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 39961, "server_ip": "127.0.0.1", "server_port": 36361, "stream_end": false}
+{"fixture": "azure-nva-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T09:43:45.000776+00:00", "frame": 4, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 39961, "server_ip": "127.0.0.1", "server_port": 36361, "stream_end": false}
+{"fixture": "azure-nva-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T09:43:45.993591+00:00", "frame": 5, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 39961, "server_ip": "127.0.0.1", "server_port": 36361, "stream_end": true}
+ok
+test_fixture_bad_case (test_local.FixtureProbeTests.test_fixture_bad_case) ... ok
+test_fixture_bounds (test_local.FixtureProbeTests.test_fixture_bounds) ... ok
+test_fixture_health (test_local.FixtureProbeTests.test_fixture_health) ... {"fixture": "azure-nva-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T09:43:46.001363+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 48916, "server_ip": "127.0.0.1", "server_port": 36361}
+ok
+test_fixture_probe_identity (test_local.FixtureProbeTests.test_fixture_probe_identity) ... {"fixture": "azure-nva-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T09:43:46.002685+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 48932, "server_ip": "127.0.0.1", "server_port": 36361}
+ok
+test_fixture_rejects_unknown_query_path (test_local.FixtureProbeTests.test_fixture_rejects_unknown_query_path) ... ok
+test_nonclobber_existing_out (test_local.FixtureProbeTests.test_nonclobber_existing_out) ... ok
+test_nonclobber_symlink (test_local.FixtureProbeTests.test_nonclobber_symlink) ... ok
+test_stream_bounds (test_local.FixtureProbeTests.test_stream_bounds) ... ok
+test_timeout_retains_preconnect_tuple_and_no_case_sent (test_local.FixtureProbeTests.test_timeout_retains_preconnect_tuple_and_no_case_sent) ... ok
+test_wrong_role_cli_stops_before_network (test_local.FixtureProbeTests.test_wrong_role_cli_stops_before_network) ... ok
+test_api_failure_retains_completion_and_partial_files (test_operator.CollectorTests.test_api_failure_retains_completion_and_partial_files) ... ok
+test_disabled_state_no_azure (test_operator.CollectorTests.test_disabled_state_no_azure) ... ok
+test_existing_empty_directory_refused (test_operator.CollectorTests.test_existing_empty_directory_refused) ... ok
+test_existing_evidence_unchanged (test_operator.CollectorTests.test_existing_evidence_unchanged) ... ok
+test_snapshot_scoped_and_nonempty (test_operator.CollectorTests.test_snapshot_scoped_and_nonempty) ... ok
+test_symlink_refused (test_operator.CollectorTests.test_symlink_refused) ... ok
+test_two_runs_keep_independent_snapshots (test_operator.CollectorTests.test_two_runs_keep_independent_snapshots) ... ok
+test_wrong_subscription_no_azure (test_operator.CollectorTests.test_wrong_subscription_no_azure) ... ok
+
+----------------------------------------------------------------------
+Ran 56 tests in 10.392s
+
+OK

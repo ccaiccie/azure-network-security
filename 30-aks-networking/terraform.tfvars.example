@@ -1,0 +1,36 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "aks30"
+
+# Gate 1: one small AKS cluster (billable)
+deploy_aks = false
+
+# Gate 2: on-premises stand-in VM (billable). Paste the text of your public key, not a path.
+deploy_onprem_vm     = false
+admin_ssh_public_key = ""
+
+# Gate 3: managed NGINX ingress (needs deploy_aks)
+enable_app_routing = false
+
+# Gate 4: second node pool in snet-nodes2 (needs deploy_aks)
+add_second_pool = false
+
+# Behaviour switches. Changing cni_mode, enable_cilium, outbound_type or private_cluster replaces the cluster.
+cni_mode              = "overlay"
+enable_cilium         = false
+outbound_type         = "loadBalancer"
+private_cluster       = false
+api_authorized_ranges = []
+
+# Activity 5: set true to link the private zone to the AKS VNet
+link_private_zone = false
+
+# Activity 4: 10.40.1.0/24 works for overlay; 10.244.0.0/16 reproduces break/fix case 1
+onprem_allowed_source = "10.40.1.0/24"
+
+# Ranges (see the sizing section of the guide)
+node_subnet_cidr = "10.40.1.0/24"
+pod_cidr         = "10.244.0.0/16"
+service_cidr     = "172.20.0.0/16"
+dns_service_ip   = "172.20.0.10"

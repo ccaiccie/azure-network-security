@@ -1,0 +1,11 @@
+#cloud-config
+# Every lab VM serves a one-line page on the app port, so a curl from another VM proves the path.
+write_files:
+  - path: /usr/local/bin/lab-http.sh
+    permissions: "0755"
+    content: |
+      #!/bin/sh
+      mkdir -p /tmp/www && echo "hello from $(hostname)" > /tmp/www/index.html
+      cd /tmp/www && exec python3 -m http.server ${app_port}
+runcmd:
+  - [ sh, -c, "nohup /usr/local/bin/lab-http.sh >/var/log/lab-http.log 2>&1 &" ]

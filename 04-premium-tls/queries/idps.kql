@@ -1,0 +1,10 @@
+let fw = "/subscriptions/REPLACE/resourceGroups/inspection-tls/providers/Microsoft.Network/azureFirewalls/lab-firewall";
+let start = datetime(2000-01-01T00:00:00Z);
+let finish = datetime(2000-01-01T00:05:00Z);
+AZFWIdpsSignature
+| where _ResourceId =~ fw and TimeGenerated between (start .. finish)
+| where SourceIp == "10.10.1.10"
+| project TimeGenerated, SourceIp, SourcePort, DestinationIp, DestinationPort,
+          Protocol, SignatureId, Description, Category, Severity, Action
+| order by TimeGenerated asc
+// Empty benign results do not prove IDPS inspection or prevention.

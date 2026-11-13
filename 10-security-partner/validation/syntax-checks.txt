@@ -1,0 +1,8 @@
+HISTORICAL RECORD, NOT CURRENT RELEASE ACCEPTANCE
+All PASS and NOT RUN results below describe prior authoring work.
+Original bytes SHA256: 3fc144ac80ccd6d07ee5f89d7c7f0c7ec72db024496edb3377ff0187865fd9d3
+Private producer paths use descriptive historical identifiers.
+Fresh status: RECOVERY.md and external FINAL-ACCEPTANCE.json.
+
+PASS Python AST=5; Bash helpers=6; service INI structure=1; Markdown Bash fences=12.
+No HCL parser, systemd semantic/service execution or HCL/provider validation is implied.

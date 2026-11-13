@@ -1,0 +1,165 @@
+test_backend_has_no_unoverridden_guest_boundaries (test_controller.BackendUnitTests.test_backend_has_no_unoverridden_guest_boundaries) ... ok
+test_checks_detects_each_owned_readiness_drift (test_controller.BackendUnitTests.test_checks_detects_each_owned_readiness_drift) ... ok
+test_checks_tunnel_failure_and_session_gate_are_honest_local_scope (test_controller.BackendUnitTests.test_checks_tunnel_failure_and_session_gate_are_honest_local_scope) ... ok
+test_digest_ignores_nft_handles_indexes_and_counter_values (test_controller.BackendUnitTests.test_digest_ignores_nft_handles_indexes_and_counter_values) ... ok
+test_exports_changes_both_peers_and_soft_refreshes_both (test_controller.BackendUnitTests.test_exports_changes_both_peers_and_soft_refreshes_both) ... ok
+test_exports_rejects_missing_filter_even_when_commands_succeed (test_controller.BackendUnitTests.test_exports_rejects_missing_filter_even_when_commands_succeed) ... ok
+test_exports_rejects_silent_partial_peer_changes_in_both_directions (test_controller.BackendUnitTests.test_exports_rejects_silent_partial_peer_changes_in_both_directions) ... ok
+test_frr_baseline_accepts_both_rendered_nodes (test_controller.BackendUnitTests.test_frr_baseline_accepts_both_rendered_nodes) ... ok
+test_frr_baseline_rejects_unsafe_routes_neighbors_and_route_map_bodies (test_controller.BackendUnitTests.test_frr_baseline_rejects_unsafe_routes_neighbors_and_route_map_bodies) ... ok
+test_frr_exact_approved_version_is_required (test_controller.BackendUnitTests.test_frr_exact_approved_version_is_required) ... ok
+test_frr_explicitly_disabled_import_check_is_rejected (test_controller.BackendUnitTests.test_frr_explicitly_disabled_import_check_is_rejected) ... ok
+test_frr_import_check_enabled_default_can_be_omitted_from_runtime_render (test_controller.BackendUnitTests.test_frr_import_check_enabled_default_can_be_omitted_from_runtime_render) ... ok
+test_frr_missing_required_norib_or_exact_prefix_is_rejected (test_controller.BackendUnitTests.test_frr_missing_required_norib_or_exact_prefix_is_rejected) ... ok
+test_owned_policy_apply_checks_then_replaces_only_its_table (test_controller.BackendUnitTests.test_owned_policy_apply_checks_then_replaces_only_its_table) ... ok
+test_recursive_destination_route_fails_before_fixture_network (test_controller.BackendUnitTests.test_recursive_destination_route_fails_before_fixture_network) ... ok
+test_sessions_need_both_actual_instances (test_controller.BackendUnitTests.test_sessions_need_both_actual_instances) ... ok
+test_set_values_does_not_persist_failed_verification (test_controller.BackendUnitTests.test_set_values_does_not_persist_failed_verification) ... ok
+test_set_values_writes_ip_forward_before_hardening_then_verifies (test_controller.BackendUnitTests.test_set_values_writes_ip_forward_before_hardening_then_verifies) ... ok
+test_shutdown_validates_peer_before_configure (test_controller.BackendUnitTests.test_shutdown_validates_peer_before_configure) ... ok
+test_strict_values_capture_original_once_and_forwarding_first (test_controller.BackendUnitTests.test_strict_values_capture_original_once_and_forwarding_first) ... ok
+test_tunnel_checks_both_fixtures_from_node_specific_overlay (test_controller.BackendUnitTests.test_tunnel_checks_both_fixtures_from_node_specific_overlay) ... ok
+test_values_reads_only_owned_scopes (test_controller.BackendUnitTests.test_values_reads_only_owned_scopes) ... ok
+test_verify_withdrawn_checks_each_actual_peer_and_limits_observation_scope (test_controller.BackendUnitTests.test_verify_withdrawn_checks_each_actual_peer_and_limits_observation_scope) ... ok
+test_verify_withdrawn_rejects_either_peer_open_or_missing_closed_filter (test_controller.BackendUnitTests.test_verify_withdrawn_rejects_either_peer_open_or_missing_closed_filter) ... ok
+test_verify_withdrawn_rejects_nonempty_or_unknown_advertisement_reports (test_controller.BackendUnitTests.test_verify_withdrawn_rejects_nonempty_or_unknown_advertisement_reports) ... ok
+test_all_fixed_role_addresses_validate (test_controller.ConfigurationTests.test_all_fixed_role_addresses_validate) ... ok
+test_boolean_asn_is_not_an_integer_configuration_value (test_controller.ConfigurationTests.test_boolean_asn_is_not_an_integer_configuration_value) ... ok
+test_configuration_validation_survives_python_optimization (test_controller.ConfigurationTests.test_configuration_validation_survives_python_optimization) ... ok
+test_fixed_addresses_cannot_be_changed (test_controller.ConfigurationTests.test_fixed_addresses_cannot_be_changed) ... ok
+test_integer_encoded_peer_addresses_are_rejected (test_controller.ConfigurationTests.test_integer_encoded_peer_addresses_are_rejected) ... ok
+test_local_asn_cannot_equal_actual_route_server_asn (test_controller.ConfigurationTests.test_local_asn_cannot_equal_actual_route_server_asn) ... ok
+test_only_approved_frr_release_shape_is_allowed (test_controller.ConfigurationTests.test_only_approved_frr_release_shape_is_allowed) ... ok
+test_peer_ip_validation_rejects_duplicates_out_of_subnet_v6_and_non_ip (test_controller.ConfigurationTests.test_peer_ip_validation_rejects_duplicates_out_of_subnet_v6_and_non_ip) ... ok
+test_signal_handlers_use_bounded_finally_exit_and_do_not_swallow_signal (test_controller.ConfigurationTests.test_signal_handlers_use_bounded_finally_exit_and_do_not_swallow_signal) ... ok
+test_advertise_opens_only_after_checks (test_controller.GateTests.test_advertise_opens_only_after_checks) ... ok
+test_advertise_refuses_closed_unprepared_state (test_controller.GateTests.test_advertise_refuses_closed_unprepared_state) ... ok
+test_advertise_requires_both_sessions_and_readiness (test_controller.GateTests.test_advertise_requires_both_sessions_and_readiness) ... ok
+test_boot_is_closed_and_renders_deny_all (test_controller.GateTests.test_boot_is_closed_and_renders_deny_all) ... ok
+test_close_closes_data_even_when_bgp_withdrawal_raises (test_controller.GateTests.test_close_closes_data_even_when_bgp_withdrawal_raises) ... ok
+test_close_withdraws_then_closes (test_controller.GateTests.test_close_withdraws_then_closes) ... ok
+test_mutations_require_explicit_confirmation (test_controller.GateTests.test_mutations_require_explicit_confirmation) ... ok
+test_mutations_require_root (test_controller.GateTests.test_mutations_require_root) ... ok
+test_prepare_readiness_failure_closes_data_and_keeps_export_closed (test_controller.GateTests.test_prepare_readiness_failure_closes_data_and_keeps_export_closed) ... ok
+test_prepare_withdraws_before_enabling_owned_forwarding (test_controller.GateTests.test_prepare_withdraws_before_enabling_owned_forwarding) ... ok
+test_readonly_check_does_not_need_confirmation_or_root (test_controller.GateTests.test_readonly_check_does_not_need_confirmation_or_root) ... ok
+test_remote_boot_never_configures_bgp_or_opens_forwarding (test_controller.GateTests.test_remote_boot_never_configures_bgp_or_opens_forwarding) ... ok
+test_status_is_closed_without_mutation_or_root (test_controller.GateTests.test_status_is_closed_without_mutation_or_root) ... ok
+test_withdraw_keeps_forwarding_open (test_controller.GateTests.test_withdraw_keeps_forwarding_open) ... ok
+test_all_bounded_actions_restore_exact_saved_state_without_sleeping (test_controller.RecoveryTests.test_all_bounded_actions_restore_exact_saved_state_without_sleeping) ... ok
+test_body_exception_restores_state_and_preserves_original_error (test_controller.RecoveryTests.test_body_exception_restores_state_and_preserves_original_error) ... ok
+test_duration_bounds_rejected_before_experiment (test_controller.RecoveryTests.test_duration_bounds_rejected_before_experiment) ... ok
+test_each_restoration_stage_failure_runs_both_safety_actions (test_controller.RecoveryTests.test_each_restoration_stage_failure_runs_both_safety_actions) ... ok
+test_early_restoration_failure_attempts_withdraw_and_close (test_controller.RecoveryTests.test_early_restoration_failure_attempts_withdraw_and_close) ... ok
+test_experiment_needs_advertised_open_state_and_both_sessions (test_controller.RecoveryTests.test_experiment_needs_advertised_open_state_and_both_sessions) ... ok
+test_failed_open_policy_restore_still_attempts_closed_policy (test_controller.RecoveryTests.test_failed_open_policy_restore_still_attempts_closed_policy) ... ok
+test_failed_restoration_readiness_withdraws_and_retains_marker (test_controller.RecoveryTests.test_failed_restoration_readiness_withdraws_and_retains_marker) ... ok
+test_failed_safety_actions_record_uncertainty_without_claiming_closed (test_controller.RecoveryTests.test_failed_safety_actions_record_uncertainty_without_claiming_closed) ... ok
+test_failed_withdraw_does_not_prevent_successful_emergency_data_close (test_controller.RecoveryTests.test_failed_withdraw_does_not_prevent_successful_emergency_data_close) ... ok
+test_failure_events_have_parseable_ordered_utc_timestamps (test_controller.RecoveryTests.test_failure_events_have_parseable_ordered_utc_timestamps) ... ok
+test_failure_interval_keeps_bgp_exports_and_sessions_alive (test_controller.RecoveryTests.test_failure_interval_keeps_bgp_exports_and_sessions_alive) ... ok
+test_held_lock_blocks_close_without_claiming_success (test_controller.RecoveryTests.test_held_lock_blocks_close_without_claiming_success) ... ok
+test_interrupt_restores_state_then_propagates_exit (test_controller.RecoveryTests.test_interrupt_restores_state_then_propagates_exit) ... ok
+test_live_restore_preserves_recorded_disabled_peer_and_sysctls (test_controller.RecoveryTests.test_live_restore_preserves_recorded_disabled_peer_and_sysctls) ... ok
+test_manual_recovery_failure_remains_withdrawn_and_pending (test_controller.RecoveryTests.test_manual_recovery_failure_remains_withdrawn_and_pending) ... ok
+test_manual_recovery_withdraws_first_checks_and_reopens_last (test_controller.RecoveryTests.test_manual_recovery_withdraws_first_checks_and_reopens_last) ... ok
+test_peer_selection_rejects_guessed_other_and_missing_ips (test_controller.RecoveryTests.test_peer_selection_rejects_guessed_other_and_missing_ips) ... ok
+test_pending_recovery_blocks_reopening_baseline_change_and_overlap (test_controller.RecoveryTests.test_pending_recovery_blocks_reopening_baseline_change_and_overlap) ... ok
+test_pending_recovery_still_allows_withdraw_and_emergency_close (test_controller.RecoveryTests.test_pending_recovery_still_allows_withdraw_and_emergency_close) ... ok
+test_recover_rejects_other_node_before_guest_actions (test_controller.RecoveryTests.test_recover_rejects_other_node_before_guest_actions) ... ok
+test_recover_without_marker_is_not_success (test_controller.RecoveryTests.test_recover_without_marker_is_not_success) ... ok
+test_restore_original_is_scoped_and_removes_owned_persistence (test_controller.RecoveryTests.test_restore_original_is_scoped_and_removes_owned_persistence) ... ok
+test_restore_original_rejects_wrong_node (test_controller.RecoveryTests.test_restore_original_rejects_wrong_node) ... ok
+test_session_action_only_disables_selected_actual_peer (test_controller.RecoveryTests.test_session_action_only_disables_selected_actual_peer) ... ok
+test_withdraw_interval_does_not_close_data_plane (test_controller.RecoveryTests.test_withdraw_interval_does_not_close_data_plane) ... ok
+test_8081_named_deny_precedes_every_forward_allow (test_controller.RenderingTests.test_8081_named_deny_precedes_every_forward_allow) ... ok
+test_closed_policy_has_no_forward_accept_but_preserves_control (test_controller.RenderingTests.test_closed_policy_has_no_forward_accept_but_preserves_control) ... ok
+test_controller_never_flushes_or_syncs_conntrack_or_global_rules (test_controller.RenderingTests.test_controller_never_flushes_or_syncs_conntrack_or_global_rules) ... ok
+test_frr_exact_prefix_control_policy_and_versioned_path_preference (test_controller.RenderingTests.test_frr_exact_prefix_control_policy_and_versioned_path_preference) ... ok
+test_frr_peers_are_sorted_actual_ips_and_export_closed (test_controller.RenderingTests.test_frr_peers_are_sorted_actual_ips_and_export_closed) ... ok
+test_nft_open_filter_uses_original_source_and_reverse_restored_tuple (test_controller.RenderingTests.test_nft_open_filter_uses_original_source_and_reverse_restored_tuple) ... ok
+test_nft_snat_is_per_node_exact_original_flow_only (test_controller.RenderingTests.test_nft_snat_is_per_node_exact_original_flow_only) ... ok
+test_nva_decapsulated_input_allows_only_scoped_readiness_replies (test_controller.RenderingTests.test_nva_decapsulated_input_allows_only_scoped_readiness_replies) ... ok
+test_remote_decapsulated_input_deny_precedes_outer_gre_and_host_allows (test_controller.RenderingTests.test_remote_decapsulated_input_deny_precedes_outer_gre_and_host_allows) ... ok
+test_remote_input_is_exact_per_overlay_and_has_no_forward_allow_or_snat (test_controller.RenderingTests.test_remote_input_is_exact_per_overlay_and_has_no_forward_allow_or_snat) ... ok
+test_failure_to_update_marker_retains_original_pending_marker (test_controller.TransitionTests.test_failure_to_update_marker_retains_original_pending_marker) ... ok
+test_foreign_transition_record_rejected_without_mutation_or_replacement (test_controller.TransitionTests.test_foreign_transition_record_rejected_without_mutation_or_replacement) ... ok
+test_marker_is_durable_before_first_guest_mutation_and_cleared_on_success (test_controller.TransitionTests.test_marker_is_durable_before_first_guest_mutation_and_cleared_on_success) ... ok
+test_marker_write_failure_prevents_all_guest_mutation (test_controller.TransitionTests.test_marker_write_failure_prevents_all_guest_mutation) ... ok
+test_ordinary_failure_marker_has_ordered_utc_event_times (test_controller.TransitionTests.test_ordinary_failure_marker_has_ordered_utc_event_times) ... ok
+test_ordinary_interrupt_keeps_marker_and_propagates_exit_after_safety (test_controller.TransitionTests.test_ordinary_interrupt_keeps_marker_and_propagates_exit_after_safety) ... ok
+test_partial_peer_advertise_failure_attempts_withdraw_and_keeps_uncertainty (test_controller.TransitionTests.test_partial_peer_advertise_failure_attempts_withdraw_and_keeps_uncertainty) ... ok
+test_partial_peer_failure_with_failed_safety_withdraw_never_claims_withdrawn (test_controller.TransitionTests.test_partial_peer_failure_with_failed_safety_withdraw_never_claims_withdrawn) ... ok
+test_pending_transition_blocks_reopening_experiments_and_recovery (test_controller.TransitionTests.test_pending_transition_blocks_reopening_experiments_and_recovery) ... ok
+test_readonly_check_fails_for_both_independent_pending_markers (test_controller.TransitionTests.test_readonly_check_fails_for_both_independent_pending_markers) ... ok
+test_reconcile_marker_removal_failure_keeps_uncertain_marker (test_controller.TransitionTests.test_reconcile_marker_removal_failure_keeps_uncertain_marker) ... ok
+test_reconcile_preserves_independent_bounded_recovery_record_exactly (test_controller.TransitionTests.test_reconcile_preserves_independent_bounded_recovery_record_exactly) ... ok
+test_reconcile_state_persistence_failure_does_not_clear_marker (test_controller.TransitionTests.test_reconcile_state_persistence_failure_does_not_clear_marker) ... ok
+test_reconcile_verification_failure_keeps_marker_and_uncertain_state (test_controller.TransitionTests.test_reconcile_verification_failure_keeps_marker_and_uncertain_state) ... ok
+test_reconcile_withdraws_and_closes_before_verification_and_marker_removal (test_controller.TransitionTests.test_reconcile_withdraws_and_closes_before_verification_and_marker_removal) ... ok
+test_reconcile_without_prior_marker_still_verifies_and_closes (test_controller.TransitionTests.test_reconcile_without_prior_marker_still_verifies_and_closes) ... ok
+test_state_write_failure_after_mutation_keeps_marker_and_attempts_safety (test_controller.TransitionTests.test_state_write_failure_after_mutation_keeps_marker_and_attempts_safety) ... ok
+test_status_labels_last_intent_and_reports_pending_marker_without_checking (test_controller.TransitionTests.test_status_labels_last_intent_and_reports_pending_marker_without_checking) ... ok
+test_successful_close_and_withdraw_do_not_clear_prior_uncertainty (test_controller.TransitionTests.test_successful_close_and_withdraw_do_not_clear_prior_uncertainty) ... ok
+test_early_stream_eof_is_not_complete (test_fixture_probe.BoundedFailureTests.test_early_stream_eof_is_not_complete) ... ok
+test_malformed_response_saved_without_success (test_fixture_probe.BoundedFailureTests.test_malformed_response_saved_without_success) ... ok
+test_slow_headers_total_deadline_without_reconnect (test_fixture_probe.BoundedFailureTests.test_slow_headers_total_deadline_without_reconnect) ... ok
+test_total_deadline_also_works_outside_main_thread (test_fixture_probe.BoundedFailureTests.test_total_deadline_also_works_outside_main_thread) ... ok
+test_direct_probe_records_identity_and_original_tuple (test_fixture_probe.FixtureProbeTests.test_direct_probe_records_identity_and_original_tuple) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:22:57.393519+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 56125, "server_ip": "127.0.0.1", "server_port": 33107}
+ok
+test_finite_stream_explicit_completion (test_fixture_probe.FixtureProbeTests.test_finite_stream_explicit_completion) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:22:57.397410+00:00", "frame": 0, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 34609, "server_ip": "127.0.0.1", "server_port": 33107}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:22:58.399544+00:00", "frame": 1, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 34609, "server_ip": "127.0.0.1", "server_port": 33107, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:22:59.400023+00:00", "frame": 2, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 34609, "server_ip": "127.0.0.1", "server_port": 33107, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:23:00.400589+00:00", "frame": 3, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 34609, "server_ip": "127.0.0.1", "server_port": 33107, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:23:01.401573+00:00", "frame": 4, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 34609, "server_ip": "127.0.0.1", "server_port": 33107, "stream_end": false}
+{"fixture": "azure-routeserver-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:23:02.398238+00:00", "frame": 5, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 34609, "server_ip": "127.0.0.1", "server_port": 33107, "stream_end": true}
+ok
+test_fixture_bad_case (test_fixture_probe.FixtureProbeTests.test_fixture_bad_case) ... ok
+test_fixture_bounds (test_fixture_probe.FixtureProbeTests.test_fixture_bounds) ... ok
+test_fixture_health (test_fixture_probe.FixtureProbeTests.test_fixture_health) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:23:02.408020+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 58788, "server_ip": "127.0.0.1", "server_port": 33107}
+ok
+test_fixture_post_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_post_rejected) ... ok
+test_fixture_probe_records_actual_peer_port (test_fixture_probe.FixtureProbeTests.test_fixture_probe_records_actual_peer_port) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:23:02.411011+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 58812, "server_ip": "127.0.0.1", "server_port": 33107}
+ok
+test_fixture_rejects_unknown_paths (test_fixture_probe.FixtureProbeTests.test_fixture_rejects_unknown_paths) ... ok
+test_invalid_duration_before_network (test_fixture_probe.FixtureProbeTests.test_invalid_duration_before_network) ... ok
+test_invalid_expected_node_before_network (test_fixture_probe.FixtureProbeTests.test_invalid_expected_node_before_network) ... ok
+test_new_out_has_private_permissions (test_fixture_probe.FixtureProbeTests.test_new_out_has_private_permissions) ... ok
+test_nonclobber_existing_out (test_fixture_probe.FixtureProbeTests.test_nonclobber_existing_out) ... ok
+test_nonclobber_symlink (test_fixture_probe.FixtureProbeTests.test_nonclobber_symlink) ... ok
+test_probe_rejects_dns_before_network (test_fixture_probe.FixtureProbeTests.test_probe_rejects_dns_before_network) ... ok
+test_readiness_request_identity_uses_explicit_local_source (test_fixture_probe.FixtureProbeTests.test_readiness_request_identity_uses_explicit_local_source) ... {"fixture": "azure-routeserver-origin-v1", "case_id": "local-readiness-case", "time_utc": "2026-11-04T10:23:02.421182+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 55071, "server_ip": "127.0.0.1", "server_port": 33107}
+ok
+test_stream_bounds (test_fixture_probe.FixtureProbeTests.test_stream_bounds) ... ok
+test_stream_rejected_on_non_stream_listener (test_fixture_probe.FixtureProbeTests.test_stream_rejected_on_non_stream_listener) ... ok
+test_timeout_retains_preconnect_tuple_and_http_not_sent (test_fixture_probe.FixtureProbeTests.test_timeout_retains_preconnect_tuple_and_http_not_sent) ... ok
+test_wrong_role_cli_stops_before_subprocess_or_network (test_fixture_probe.FixtureProbeTests.test_wrong_role_cli_stops_before_subprocess_or_network) ... ok
+test_actual_q_need_not_equal_client_a (test_fixture_probe.IdentityTests.test_actual_q_need_not_equal_client_a) ... ok
+test_bad_port_and_malformed_source_rejected (test_fixture_probe.IdentityTests.test_bad_port_and_malformed_source_rejected) ... ok
+test_nva1_expected_node (test_fixture_probe.IdentityTests.test_nva1_expected_node) ... ok
+test_nva2_expected_node (test_fixture_probe.IdentityTests.test_nva2_expected_node) ... ok
+test_original_source_is_not_expected_remote_identity (test_fixture_probe.IdentityTests.test_original_source_is_not_expected_remote_identity) ... ok
+test_wrong_fixture_and_destination_rejected (test_fixture_probe.IdentityTests.test_wrong_fixture_and_destination_rejected) ... ok
+test_d_on_physical_nic_is_not_loopback_readiness (test_fixture_probe.ReadinessTests.test_d_on_physical_nic_is_not_loopback_readiness) ... ok
+test_d_wrong_prefix_rejected (test_fixture_probe.ReadinessTests.test_d_wrong_prefix_rejected) ... ok
+test_failed_8081_listener_is_not_ready (test_fixture_probe.ReadinessTests.test_failed_8081_listener_is_not_ready) ... ok
+test_fixed_config_rejects_changed_addresses (test_fixture_probe.ReadinessTests.test_fixed_config_rejects_changed_addresses) ... ok
+test_inactive_listener_is_not_ready (test_fixture_probe.ReadinessTests.test_inactive_listener_is_not_ready) ... ok
+test_local_only_checks_both_units_and_listeners (test_fixture_probe.ReadinessTests.test_local_only_checks_both_units_and_listeners) ... ok
+test_remote_wrong_role_before_commands (test_fixture_probe.ReadinessTests.test_remote_wrong_role_before_commands) ... ok
+test_underlay_address_required (test_fixture_probe.ReadinessTests.test_underlay_address_required) ... ok
+test_api_failure_retains_completion_and_partial_files (test_operator.CollectorTests.test_api_failure_retains_completion_and_partial_files) ... ok
+test_disabled_state_no_azure (test_operator.CollectorTests.test_disabled_state_no_azure) ... ok
+test_existing_empty_directory_refused (test_operator.CollectorTests.test_existing_empty_directory_refused) ... ok
+test_existing_evidence_unchanged (test_operator.CollectorTests.test_existing_evidence_unchanged) ... ok
+test_malformed_routeserver_id_no_azure (test_operator.CollectorTests.test_malformed_routeserver_id_no_azure) ... ok
+test_malformed_subscription_no_azure (test_operator.CollectorTests.test_malformed_subscription_no_azure) ... ok
+test_snapshot_scoped_and_nonempty (test_operator.CollectorTests.test_snapshot_scoped_and_nonempty) ... ok
+test_symlink_refused (test_operator.CollectorTests.test_symlink_refused) ... ok
+test_two_runs_keep_independent_snapshots (test_operator.CollectorTests.test_two_runs_keep_independent_snapshots) ... ok
+test_wrong_subscription_no_azure (test_operator.CollectorTests.test_wrong_subscription_no_azure) ... ok
+
+----------------------------------------------------------------------
+Ran 150 tests in 11.122s
+
+OK

@@ -1,0 +1,1 @@
+Passed 13 offline fixture contract tests; no server, DNS, TLS or HTTP operation was performed.

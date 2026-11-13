@@ -1,0 +1,24 @@
+# Copy to a private file. Never commit real values.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+
+# location_a = "westeurope"
+# location_b = "northeurope"
+
+# Gates: all false by default. Open them one at a time (see LAB-GUIDE.md).
+# deploy_lab                = true
+# deploy_er_gateways        = true
+# deploy_test_vms           = true
+# create_circuits           = true
+# configure_private_peering = true
+# create_connections        = true
+# enable_diagnostics        = true
+
+# customer_asn = 65001  # a private ASN, example only
+
+# Weights: higher wins for Azure to on-premises. Keys are hub-circuit.
+# connection_weights = { "a-a" = 100, "a-b" = 0, "b-b" = 100, "b-a" = 0 }
+
+# circuits = {
+#   a = { service_provider_name = "FROM-YOUR-PROVIDER", peering_location = "FROM-YOUR-PROVIDER", bandwidth_in_mbps = 50, primary_peer_address_prefix = "172.31.255.0/30", secondary_peer_address_prefix = "172.31.255.4/30", vlan_id = 100 }
+#   b = { service_provider_name = "FROM-YOUR-PROVIDER", peering_location = "FROM-YOUR-PROVIDER", bandwidth_in_mbps = 50, primary_peer_address_prefix = "172.31.255.8/30", secondary_peer_address_prefix = "172.31.255.12/30", vlan_id = 200 }
+# }

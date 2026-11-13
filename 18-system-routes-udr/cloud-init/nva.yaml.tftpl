@@ -1,0 +1,33 @@
+#cloud-config
+# Lab appliance: forwards, does NOT translate addresses, and is stateful on purpose.
+write_files:
+  - path: /etc/sysctl.d/90-lab-forward.conf
+    content: |
+      net.ipv4.ip_forward = 1
+      net.ipv4.conf.all.send_redirects = 0
+      net.ipv4.conf.default.send_redirects = 0
+  - path: /usr/local/sbin/lab-nva-rules.sh
+    permissions: "0755"
+    content: |
+      #!/bin/bash
+      set -eu
+      iptables -F FORWARD
+      iptables -P FORWARD DROP
+      iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+      iptables -A FORWARD -s ${app_cidr} -d ${work_cidr} -p tcp --syn -m conntrack --ctstate NEW -j ACCEPT
+      iptables -A FORWARD -j DROP
+  - path: /etc/systemd/system/lab-nva-rules.service
+    content: |
+      [Unit]
+      Description=Lab appliance forward rules
+      After=network-online.target
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      ExecStart=/usr/local/sbin/lab-nva-rules.sh
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - [sysctl, --system]
+  - [systemctl, daemon-reload]
+  - [systemctl, enable, --now, lab-nva-rules.service]

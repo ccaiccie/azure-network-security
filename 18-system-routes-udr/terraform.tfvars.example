@@ -1,0 +1,16 @@
+# Copy to terraform.tfvars and edit. Never commit real values.
+subscription_id      = "00000000-0000-0000-0000-000000000000"
+admin_ssh_public_key = "ssh-ed25519 AAAA... replace-with-your-public-key"
+
+# Stage 2: baseline
+deploy_lab = false
+
+# Later stages: flip one at a time
+enable_udr_forward       = false
+enable_return_route      = false
+enable_blackhole_route   = false
+enable_default_route     = false
+enable_service_tag_route = false
+
+bgp_route_propagation_enabled = true
+fault                         = "none"

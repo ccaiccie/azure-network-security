@@ -1,0 +1,22 @@
+[Unit]
+Description=Read-only local NVA readiness publisher
+Requires=nva-boot.service
+After=nva-boot.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /opt/azure-nva-lab/controller.py monitor
+Restart=on-failure
+RestartSec=2
+User=root
+UMask=0022
+CapabilityBoundingSet=CAP_NET_ADMIN
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/run/azure-nva-lab
+RestrictAddressFamilies=AF_INET AF_UNIX AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target

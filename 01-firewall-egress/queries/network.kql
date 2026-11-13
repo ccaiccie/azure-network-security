@@ -1,0 +1,8 @@
+// Replace FIREWALL_RESOURCE_ID with the actual firewall_id output before querying.
+AZFWNetworkRule
+| where TimeGenerated > ago(1h)
+| where _ResourceId =~ "FIREWALL_RESOURCE_ID"
+| where SourceIp == "10.20.1.4"
+| project TimeGenerated, SourceIp, SourcePort, DestinationIp, DestinationPort,
+          Protocol, Action, ActionReason, RuleCollectionGroup, RuleCollection, Rule
+| order by TimeGenerated asc

@@ -1,0 +1,27 @@
+# Nonsecret placeholders only. Invalid values deliberately block deployment.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+resource_group_name = "inspection-pe"
+location = "CHOOSE_APPROVED_AVAILABLE_REGION"
+storage_account_name = "replacewithuniquename"
+ssh_public_key = "PASTE_EXISTING_PUBLIC_OPENSSH_KEY_ONLY"
+image_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/images/providers/Microsoft.Compute/galleries/approved/images/pe/versions/1.0.0"
+deploy_lab = false
+image_prerequisites_confirmed = false
+identity_access_authorized = false
+pe_ready = false
+dns_enabled = false
+dns_verified = false
+routes_verified = false
+pe_ingress_enabled = false
+client_paths_enabled = false
+seed_paths_enabled = false
+allow_client_blob = false
+allow_seed_blob = false
+grant_reader_role = false
+grant_seed_role = false
+isolation_verified = false
+route_experiment_acknowledged = false
+pe_network_policies = "Enabled"
+install_pe_host_route = true
+tags = { owner = "nonsensitive-cost-tag" }
+# Never put passwords, private keys, access tokens, account keys or SAS here.

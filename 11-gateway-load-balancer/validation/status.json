@@ -1,0 +1,38 @@
+{
+  "reviewed_utc": "2026-11-04T13:25:06.252231+00:00",
+  "scope": "Gateway/consumer Azure substrate and stateless Linux bridge teaching draft",
+  "local_tests": {
+    "status": "PASS",
+    "count": 85,
+    "controller_fully_mocked": 41,
+    "fixture_guarded_loopback": 30,
+    "operator_fake_cli": 14
+  },
+  "syntax": {
+    "python_ast": 7,
+    "shell_helpers": 8,
+    "service_ini_structure": 5,
+    "readme_bash_fences": 17
+  },
+  "source_assertions": 208,
+  "source_assertions_note": "Text/AST/brace invariants, not HCL/provider/nft grammar or execution",
+  "terraform_mock_plan_cases_supplied": 12,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable/provider cache absent; no install/download attempted",
+  "hcl_parser": "ABSENT; grammar/type/plan graph not validated",
+  "provider_schema": "AzureRM5.12.0 NOT VALIDATED",
+  "provider_lock": "NOT GENERATED",
+  "cloud_init_source_estimate_bytes": {
+    "nva": 24008,
+    "app": 16044
+  },
+  "cloud_init_source_estimate_note": "gzip/base64 source length +8192-byte reserve, NOT Terraform-rendered YAML/custom_data",
+  "real_nft_iproute2_kernel_systemd_cloudinit": "NOT RUN",
+  "cloud_datapath_tuple_health_mtu_failover_cleanup": "NOT RUN",
+  "controller_allow_primary": "Persistent; explicit close/reconcile/boot required; no automatic TTL",
+  "controller_recovery": "Best-effort owned closure and persistent uncertainty; no guaranteed rollback/state replication",
+  "collector_privacy": "Declared outputs/tags/errors are not automatically redacted; CLI filtering is client-side; review private evidence before sharing",
+  "deployments": 0,
+  "repository_changes": 0,
+  "controller_finalization": "Success snapshot/event is before finalization; subsequent status/health required. Pending removal is last fallible success step. Arbitrary filesystem failure can prevent durable uncertainty marker retention.",
+  "initial_observation": "First positive and bounded captures only, close both NVAs and review actual tuple/return owner before separately reopening broader controls"
+}

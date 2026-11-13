@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# Designed, not tested. Boot script (Terraform template) for vm-edge, the simulated branch device.
+# strongSwan: one route-based IKEv2 tunnel to each hub VPN gateway instance (XFRM interfaces xfrm0, xfrm1).
+# FRR: eBGP over the tunnels to the BGP address of each gateway instance (hub ASN ${hub_asn}, branch ASN ${local_asn}).
+# Terraform fills in the values; shell variables use $NAME without braces so the template engine leaves them alone.
+set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get install -y strongswan-swanctl charon-systemd frr iptables
+sed -i 's/^bgpd=no/bgpd=yes/' /etc/frr/daemons
+sysctl -w net.ipv4.ip_forward=1
+echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/99-forward.conf
+
+# the LAN prefix is reached through the Azure default gateway of the edge subnet
+ip route replace 10.80.2.0/24 via 10.80.0.1 dev eth0
+
+cat > /etc/swanctl/conf.d/hub.conf <<'EOF'
+connections {
+%{ for i, ip in gw_ips ~}
+  hub${i} {
+    version = 2
+    local_addrs = 10.80.0.10
+    remote_addrs = ${ip}
+    proposals = aes256-sha256-modp2048
+    local { auth = psk
+            id = ${local_public} }
+    remote { auth = psk
+             id = ${ip} }
+    children {
+      hub${i} {
+        local_ts = 0.0.0.0/0
+        remote_ts = 0.0.0.0/0
+        esp_proposals = aes256-sha256-modp2048
+        if_id_in = ${42 + i}
+        if_id_out = ${42 + i}
+        start_action = start
+      }
+    }
+  }
+%{ endfor ~}
+}
+secrets {
+%{ for i, ip in gw_ips ~}
+  ike-hub${i} { id = ${ip}
+                secret = "${psk}" }
+%{ endfor ~}
+}
+EOF
+
+%{ for i, ip in gw_ips ~}
+ip link add xfrm${i} type xfrm dev eth0 if_id ${42 + i} || true
+ip link set xfrm${i} mtu 1400 up
+ip route replace ${gw_bgp_ips[i]}/32 dev xfrm${i}
+%{ endfor ~}
+
+# keep TCP inside the tunnel MTU
+iptables -t mangle -A FORWARD -o xfrm+ -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1350
+
+systemctl restart strongswan
+sleep 5
+swanctl --load-all
+
+cat > /etc/frr/frr.conf <<'EOF'
+frr defaults traditional
+hostname vm-edge
+!
+router bgp ${local_asn}
+ bgp router-id 10.80.0.10
+ no bgp ebgp-requires-policy
+%{ for i, ip in gw_bgp_ips ~}
+ neighbor ${ip} remote-as ${hub_asn}
+ neighbor ${ip} ebgp-multihop 8
+ neighbor ${ip} update-source 10.80.0.10
+%{ endfor ~}
+ address-family ipv4 unicast
+  network 10.80.0.0/24
+  network 10.80.2.0/24
+ exit-address-family
+!
+EOF
+systemctl restart frr

@@ -1,0 +1,27 @@
+{
+  "reviewed_utc": "2026-11-04T10:53:44.713420+00:00",
+  "scope": "source draft, guarded loopback and fake CLI only",
+  "local_tests": {
+    "status": "PASS",
+    "count": 60,
+    "fixture_probe_tests": 47,
+    "operator_mock_tests": 13
+  },
+  "syntax": {
+    "python_ast": 5,
+    "bash_helpers": 5,
+    "service_ini_structure": 1,
+    "readme_bash_fences": 10
+  },
+  "source_assertions": 636,
+  "source_assertions_note": "Includes bracket balance/text checks, not HCL parsing",
+  "terraform_mock_plan_cases_supplied": 10,
+  "terraform_fmt_init_validate_test": "NOT RUN: executable and initialized provider cache absent",
+  "provider_schema": "NOT VALIDATED: AzureRM 5.12.0 exact executable unavailable",
+  "provider_lock": "NOT GENERATED",
+  "cloud_and_actual_guest": "NOT RUN",
+  "cloud_init_payload_estimate_bytes": 42576,
+  "firewall_effective_route_api": "UNVERIFIED candidate only; manual portal evidence required",
+  "deployments": 0,
+  "repository_changes": 0
+}

@@ -1,0 +1,17 @@
+# Intentionally incomplete. Supply authorized actual values before any real plan.
+subscription_id     = "REPLACE_WITH_APPROVED_SUBSCRIPTION_UUID"
+resource_group_name = "inspection-dnat"
+# 4 Nov 2026: Microsoft lists new East US Firewall Standard deployments blocked.
+# Recheck and explicitly approve a suitable region; the original sample is retained.
+location            = "eastus"
+vm_size             = "Standard_B1s"
+admin_username      = "labadmin"
+image_version       = "REPLACE_WITH_APPROVED_CONCRETE_VERSION"
+allowed_client_cidr = "REPLACE_WITH_ACTUAL_APPROVED_PUBLIC_IPV4/32"
+# Set TF_VAR_ssh_public_key from an existing approved PUBLIC key file.
+# No sample real client IP is authorized by this file.
+publish_dnat          = false
+# Explicitly choose true only for an approved Internet exposure plan.
+enable_default_route  = true
+return_route_blackhole = false
+tags = { owner = "REPLACE_WITH_OWNER", environment = "disposable-lab" }

@@ -1,0 +1,10 @@
+// Designed, not tested. AVNM has no data-plane log of its own. Use these ideas instead:
+// 1. Azure Activity log (control plane): who committed or changed a configuration.
+AzureActivity
+| where OperationNameValue has "Microsoft.Network/networkManagers"
+| project TimeGenerated, Caller, OperationNameValue, ActivityStatusValue, ResourceGroup
+| order by TimeGenerated desc
+
+// 2. Azure Policy compliance for the dynamic group policy (resource type: policy states, check the table in your workspace).
+// 3. VNet flow logs and traffic analytics (Network Watcher) show whether traffic was allowed or denied at the VNet;
+//    check current docs for how security admin rule decisions appear in flow log records.

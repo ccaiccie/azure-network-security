@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-11-04T08:26:20.129101+00:00",
+  "bash_scripts": 7,
+  "markdown_bash_fences": 10,
+  "source_assertions_passed": 82,
+  "node_loopback_tests_passed": 10,
+  "fake_tool_tests_passed": 26,
+  "terraform_mock_plan_runs_supplied_not_run": 11,
+  "terraform_executable_available": false,
+  "provider_validated": false,
+  "azure_operations_run": false,
+  "tls_runtime_tested": false,
+  "ca_key_generated_or_read": false,
+  "origin_zip_sha256": "93f21412db8e031c7aec88821035806a05df4528f6fcf53e4e27dc50b3942b48"
+}

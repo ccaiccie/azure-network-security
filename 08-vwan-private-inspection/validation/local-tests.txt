@@ -1,0 +1,75 @@
+test_early_stream_eof_is_not_complete (test_fixture_probe.BoundedFailureTests.test_early_stream_eof_is_not_complete) ... ok
+test_http_redirect_is_not_followed (test_fixture_probe.BoundedFailureTests.test_http_redirect_is_not_followed) ... ok
+test_malformed_response_saved_without_success (test_fixture_probe.BoundedFailureTests.test_malformed_response_saved_without_success) ... ok
+test_slow_headers_total_deadline_without_reconnect (test_fixture_probe.BoundedFailureTests.test_slow_headers_total_deadline_without_reconnect) ... ok
+test_test_network_guard_denies_external_address (test_fixture_probe.BoundedFailureTests.test_test_network_guard_denies_external_address) ... ok
+test_total_deadline_outside_main_thread (test_fixture_probe.BoundedFailureTests.test_total_deadline_outside_main_thread) ... ok
+test_wrong_source_port_is_identity_mismatch (test_fixture_probe.BoundedFailureTests.test_wrong_source_port_is_identity_mismatch) ... ok
+test_app_readiness_only_8082 (test_fixture_probe.ConfigAndReadinessTests.test_app_readiness_only_8082) ... ok
+test_backend_readiness_exact_8080_8081 (test_fixture_probe.ConfigAndReadinessTests.test_backend_readiness_exact_8080_8081) ... ok
+test_cli_uses_declared_reverse_tuple (test_fixture_probe.ConfigAndReadinessTests.test_cli_uses_declared_reverse_tuple) ... ok
+test_failed_8081_listener_is_not_ready (test_fixture_probe.ConfigAndReadinessTests.test_failed_8081_listener_is_not_ready) ... ok
+test_fixed_address_on_loopback_is_not_nic_readiness (test_fixture_probe.ConfigAndReadinessTests.test_fixed_address_on_loopback_is_not_nic_readiness) ... ok
+test_fixed_config_rejects_changes_before_commands (test_fixture_probe.ConfigAndReadinessTests.test_fixed_config_rejects_changes_before_commands) ... ok
+test_fixture_wrong_port_role_before_commands (test_fixture_probe.ConfigAndReadinessTests.test_fixture_wrong_port_role_before_commands) ... ok
+test_inactive_unit_is_not_ready (test_fixture_probe.ConfigAndReadinessTests.test_inactive_unit_is_not_ready) ... ok
+test_missing_or_extra_active_units_rejected (test_fixture_probe.ConfigAndReadinessTests.test_missing_or_extra_active_units_rejected) ... ok
+test_missing_private_nic_rejected (test_fixture_probe.ConfigAndReadinessTests.test_missing_private_nic_rejected) ... ok
+test_mode_contract (test_fixture_probe.ConfigAndReadinessTests.test_mode_contract) ... ok
+test_reverse_on_app_rejected (test_fixture_probe.ConfigAndReadinessTests.test_reverse_on_app_rejected) ... ok
+test_wrong_role_cli_stops_before_subprocess_or_network (test_fixture_probe.ConfigAndReadinessTests.test_wrong_role_cli_stops_before_subprocess_or_network) ... ok
+test_direct_probe_records_original_tuple_and_immutable_stages (test_fixture_probe.FixtureProbeTests.test_direct_probe_records_original_tuple_and_immutable_stages) ... {"fixture": "azure-vwan-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:52:46.987945+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 43195, "server_ip": "127.0.0.1", "server_port": 38319}
+ok
+test_finite_stream_explicit_completion (test_fixture_probe.FixtureProbeTests.test_finite_stream_explicit_completion) ... {"fixture": "azure-vwan-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:52:46.993376+00:00", "frame": 0, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 50947, "server_ip": "127.0.0.1", "server_port": 38319}
+{"fixture": "azure-vwan-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:52:47.994162+00:00", "frame": 1, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 50947, "server_ip": "127.0.0.1", "server_port": 38319, "stream_end": false}
+{"fixture": "azure-vwan-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:52:48.995130+00:00", "frame": 2, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 50947, "server_ip": "127.0.0.1", "server_port": 38319, "stream_end": false}
+{"fixture": "azure-vwan-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:52:49.995866+00:00", "frame": 3, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 50947, "server_ip": "127.0.0.1", "server_port": 38319, "stream_end": false}
+{"fixture": "azure-vwan-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:52:50.997697+00:00", "frame": 4, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 50947, "server_ip": "127.0.0.1", "server_port": 38319, "stream_end": false}
+{"fixture": "azure-vwan-origin-v1", "case_id": "local-stream", "time_utc": "2026-11-04T10:52:51.995718+00:00", "frame": 5, "path": "/stream", "peer_ip": "127.0.0.1", "peer_port": 50947, "server_ip": "127.0.0.1", "server_port": 38319, "stream_end": true}
+ok
+test_fixture_bad_case (test_fixture_probe.FixtureProbeTests.test_fixture_bad_case) ... ok
+test_fixture_duplicate_case_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_duplicate_case_rejected) ... ok
+test_fixture_health (test_fixture_probe.FixtureProbeTests.test_fixture_health) ... {"fixture": "azure-vwan-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:52:52.011136+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 52986, "server_ip": "127.0.0.1", "server_port": 38319}
+ok
+test_fixture_path_and_aggregate_header_bounds (test_fixture_probe.FixtureProbeTests.test_fixture_path_and_aggregate_header_bounds) ... ok
+test_fixture_post_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_post_rejected) ... ok
+test_fixture_probe_records_actual_peer_port (test_fixture_probe.FixtureProbeTests.test_fixture_probe_records_actual_peer_port) ... {"fixture": "azure-vwan-origin-v1", "case_id": "local-case", "time_utc": "2026-11-04T10:52:52.018669+00:00", "frame": 0, "path": "/probe", "peer_ip": "127.0.0.1", "peer_port": 53038, "server_ip": "127.0.0.1", "server_port": 38319}
+ok
+test_fixture_rejects_unknown_paths (test_fixture_probe.FixtureProbeTests.test_fixture_rejects_unknown_paths) ... ok
+test_fixture_request_body_rejected (test_fixture_probe.FixtureProbeTests.test_fixture_request_body_rejected) ... ok
+test_invalid_parameters_before_network (test_fixture_probe.FixtureProbeTests.test_invalid_parameters_before_network) ... ok
+test_new_out_has_private_permissions (test_fixture_probe.FixtureProbeTests.test_new_out_has_private_permissions) ... ok
+test_nonclobber_existing_out (test_fixture_probe.FixtureProbeTests.test_nonclobber_existing_out) ... ok
+test_nonclobber_symlink (test_fixture_probe.FixtureProbeTests.test_nonclobber_symlink) ... ok
+test_probe_rejects_dns_before_network (test_fixture_probe.FixtureProbeTests.test_probe_rejects_dns_before_network) ... ok
+test_production_stream_only_backend_8080 (test_fixture_probe.FixtureProbeTests.test_production_stream_only_backend_8080) ... ok
+test_readiness_identity_uses_explicit_local_source (test_fixture_probe.FixtureProbeTests.test_readiness_identity_uses_explicit_local_source) ... {"fixture": "azure-vwan-origin-v1", "case_id": "local-readiness-case", "time_utc": "2026-11-04T10:52:52.033947+00:00", "frame": 0, "path": "/health", "peer_ip": "127.0.0.1", "peer_port": 46581, "server_ip": "127.0.0.1", "server_port": 38319}
+ok
+test_stream_bounds_and_parameter_strictness (test_fixture_probe.FixtureProbeTests.test_stream_bounds_and_parameter_strictness) ... ok
+test_stream_rejected_on_non_stream_listener (test_fixture_probe.FixtureProbeTests.test_stream_rejected_on_non_stream_listener) ... ok
+test_write_once_preserves_prior_evidence (test_fixture_probe.FixtureProbeTests.test_write_once_preserves_prior_evidence) ... ok
+test_exact_original_source_and_destination (test_fixture_probe.IdentityTests.test_exact_original_source_and_destination) ... ok
+test_malformed_or_wrong_identity_rejected (test_fixture_probe.IdentityTests.test_malformed_or_wrong_identity_rejected) ... ok
+test_reverse_identity (test_fixture_probe.IdentityTests.test_reverse_identity) ... ok
+test_source_nat_or_port_translation_rejected (test_fixture_probe.IdentityTests.test_source_nat_or_port_translation_rejected) ... ok
+test_actual_tuple_mismatch_stops_before_http (test_fixture_probe.MockSocketTests.test_actual_tuple_mismatch_stops_before_http) ... ok
+test_partial_write_is_not_reported_as_http_not_sent (test_fixture_probe.MockSocketTests.test_partial_write_is_not_reported_as_http_not_sent) ... ok
+test_timeout_retains_preconnect_tuple_and_http_not_sent (test_fixture_probe.MockSocketTests.test_timeout_retains_preconnect_tuple_and_http_not_sent) ... ok
+test_bad_hub_id_prevents_calls (test_operator.OperatorTests.test_bad_hub_id_prevents_calls) ... ok
+test_candidate_is_unverified_and_failure_retained (test_operator.OperatorTests.test_candidate_is_unverified_and_failure_retained) ... ok
+test_disabled_prevents_calls (test_operator.OperatorTests.test_disabled_prevents_calls) ... ok
+test_empty_success_never_verifies_routes (test_operator.OperatorTests.test_empty_success_never_verifies_routes) ... ok
+test_existing_output_refused (test_operator.OperatorTests.test_existing_output_refused) ... ok
+test_foreign_policy_name_prevents_reads (test_operator.OperatorTests.test_foreign_policy_name_prevents_reads) ... ok
+test_foreign_secondary_id_prevents_reads (test_operator.OperatorTests.test_foreign_secondary_id_prevents_reads) ... ok
+test_invalid_candidate_rejected_before_resource_calls (test_operator.OperatorTests.test_invalid_candidate_rejected_before_resource_calls) ... ok
+test_invalid_uuid_prevents_calls (test_operator.OperatorTests.test_invalid_uuid_prevents_calls) ... ok
+test_missing_extension_no_resource_reads (test_operator.OperatorTests.test_missing_extension_no_resource_reads) ... ok
+test_partial_read_failure_preserved_and_continues (test_operator.OperatorTests.test_partial_read_failure_preserved_and_continues) ... ok
+test_scoped_readonly (test_operator.OperatorTests.test_scoped_readonly) ... ok
+test_wrong_subscription_prevents_calls (test_operator.OperatorTests.test_wrong_subscription_prevents_calls) ... ok
+
+----------------------------------------------------------------------
+Ran 60 tests in 13.574s
+
+OK

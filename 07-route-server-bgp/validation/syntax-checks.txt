@@ -1,0 +1,2 @@
+PASS Python AST=7; Bash helpers=7; service INI structure=3; Markdown Bash fences=17.
+No HCL parser, systemd semantic/service execution or nft syntax validation is implied.

@@ -1,0 +1,18 @@
+# PUBLIC non-secret example only. Replace these placeholders after review.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location = "CHOOSE_APPROVED_AVAILABLE_REGION"
+resource_group_name = "inspection-forced"
+ssh_public_key = "PASTE_EXISTING_PUBLIC_OPENSSH_KEY_ONLY"
+image_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/approved-images/providers/Microsoft.Compute/galleries/approved/images/perimeter/versions/1.0.0"
+source_mode = "preserve"
+deploy_lab = false
+image_prerequisites_confirmed = false
+fixtures_ready = false
+private_routes_verified = false
+perimeter_ready = false
+origin_access_enabled = false
+test_paths_enabled = false
+allow_test_flow = false
+snat_comparison_acknowledged = false
+# No credentials, VPN secrets, private keys or sensitive tags.
+tags = { owner = "replace-with-nonsensitive-cost-tag" }

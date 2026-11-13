@@ -1,0 +1,17 @@
+# Designed, not tested. Internal load balancer at a fixed private address for the firewall DNAT rule.
+# The ipv4 annotation name is the current one at the time of writing; check current docs.
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-ilb
+  namespace: lab
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.61.1.100"
+spec:
+  type: LoadBalancer
+  selector:
+    app: echo
+  ports:
+    - port: 80
+      targetPort: 8080

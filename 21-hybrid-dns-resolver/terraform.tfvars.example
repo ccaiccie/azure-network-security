@@ -1,0 +1,23 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "dns21"
+
+# Gate 1: DNS Private Resolver with one inbound and one outbound endpoint (billed per endpoint hour)
+deploy_resolver = false
+
+# Gate 2: forwarding ruleset, two rules, VNet links (needs deploy_resolver = true)
+deploy_ruleset = false
+
+# Gate 3: three small VMs (billable). Paste the text of your public key, not a path.
+deploy_vms           = false
+admin_ssh_public_key = ""
+
+# Gate 4: storage account + blob private endpoint + privatelink zone linked to the hub
+deploy_private_endpoint = false
+
+# Activity switches
+link_spoke_to_ruleset  = true
+link_hub_to_ruleset    = true
+corp_forward_target    = "10.60.1.10"
+spoke_uses_inbound_dns = false

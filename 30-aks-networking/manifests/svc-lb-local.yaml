@@ -1,0 +1,13 @@
+# Policy Local: no SNAT on the node, the pod sees the real client address.
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-lb-local
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  selector:
+    app: echo
+  ports:
+    - port: 80
+      targetPort: 8080

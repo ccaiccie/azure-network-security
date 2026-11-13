@@ -1,0 +1,21 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+name_prefix     = "bgp37"
+
+# Gate 1: Azure Route Server (billable by the hour).
+deploy_route_server = false
+
+# Gate 2: nva-a, nva-b and vm-app (billable). Paste the text of your public key.
+deploy_nvas          = false
+admin_ssh_public_key = ""
+
+# Gate 3 (optional): BGP-enabled VPN gateway (billable, slow).
+deploy_vpn_gateway = false
+
+# Free switches for the activities
+branch_to_branch          = false
+app_bgp_route_propagation = true
+blackhole_prefix          = ""
+nva_a_asn                 = 65001
+nva_b_asn                 = 65002

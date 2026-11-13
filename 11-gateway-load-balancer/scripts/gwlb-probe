@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+# Run only on the separately approved external client, never an Azure lab guest.
+# Support the reviewed package checkout without requiring an installation.
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ -f "$script_dir/../guest/probe.py" ]; then
+    probe_path="$script_dir/../guest/probe.py"
+else
+    probe_path=/opt/azure-gwlb-lab/probe.py
+fi
+exec /usr/bin/python3 -I "$probe_path" "$@"

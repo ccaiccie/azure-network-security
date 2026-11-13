@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars. Never put secrets here. Every gate stays false until you need it.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "westeurope"
+
+deploy_er_gateway   = false
+deploy_circuit      = false
+deploy_connection   = false
+deploy_direct_port  = false
+deploy_global_reach = false
+deploy_test_vm      = false
+deploy_alerts       = false
+
+gateway_sku     = "ErGw1AZ"
+enable_fastpath = false
+
+# admin_ssh_public_key = "ssh-ed25519 AAAA... example"
+# alert_email          = "you@example.com"
+# existing_circuit_id  = ""

@@ -1,0 +1,28 @@
+// Designed, not tested. VPN gateway diagnostic logs, sent to a Log Analytics workspace by a diagnostic setting.
+// Category names, table names and column names depend on the destination mode (AzureDiagnostics or resource-specific tables);
+// check current Microsoft docs.
+
+// Tunnel state changes (connected, disconnected)
+AzureDiagnostics
+| where Category == "TunnelDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, remoteIP_s, status_s, stateChangeReason_s
+| order by TimeGenerated desc
+
+// IKE negotiation problems: proposal mismatch, pre-shared key mismatch, traffic selector mismatch
+AzureDiagnostics
+| where Category == "IKEDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, Message
+| order by TimeGenerated desc
+
+// BGP route changes seen by the gateway
+AzureDiagnostics
+| where Category == "RouteDiagnosticLog"
+| where TimeGenerated > ago(2h)
+| project TimeGenerated, Resource, Message
+| order by TimeGenerated desc
+
+// Metrics to chart on the connection and the gateway (portal, Metrics):
+//   Connection : Tunnel Ingress Bytes, Tunnel Egress Bytes, Tunnel Ingress/Egress Packet Drop Count, Tunnel Ingress/Egress Packet Drop TS Mismatch
+//   Gateway    : BGP Peer Status, BGP Routes Advertised, BGP Routes Learned, Tunnel Average Bandwidth, P2S Connection Count

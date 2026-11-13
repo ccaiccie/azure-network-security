@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-11-04T07:15:53.771728+00:00",
+  "status": "draft-not-Terraform-validated-not-deployed",
+  "passed": {
+    "bash_syntax_scripts": 4,
+    "source_contract_checks": 42,
+    "local_unit_tests": 17
+  },
+  "local_network_test_scope": "Only 127.0.0.1 ports 8080/8081 and an ephemeral loopback port; fixture servers closed afterward. Azure/Terraform collector tools were fakes. No Azure or external endpoint requests.",
+  "systemd_verify": "Blocked: failed to create /run/systemd because executor filesystem is read-only. Unit not loaded or started.",
+  "not_run": [
+    "terraform fmt",
+    "terraform init -backend=false",
+    "terraform validate",
+    "terraform test",
+    "terraform plan",
+    "terraform apply",
+    "terraform destroy",
+    "Azure listener readiness",
+    "Azure route/traffic/log checks"
+  ],
+  "provider_pin": "hashicorp/azurerm = 5.12.0",
+  "provider_lock_file_present": false,
+  "image_version": "Required concrete operator-selected version; latest rejected.",
+  "resource_declarations": 26,
+  "baseline_resource_instances": 34,
+  "cloud_resources_changed": false,
+  "repository_edited_or_pushed": false,
+  "same_vnet_variant": "Implemented behind enable_same_vnet=false default; not Terraform/provider/Azure validated.",
+  "same_vnet_resource_instances": 41,
+  "provider_mock_plan_runs_supplied": 7,
+  "provider_mock_plan_runs_executed": 0
+}

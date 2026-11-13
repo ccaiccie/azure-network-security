@@ -1,0 +1,23 @@
+#cloud-config
+# Runs once at first boot of vm-backend-1. Installs backend.py and starts it as a service on TCP 8080.
+write_files:
+  - path: /opt/lab/backend.py
+    permissions: "0755"
+    encoding: b64
+    content: ${backend_b64}
+  - path: /etc/systemd/system/lab-backend.service
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Lab backend for the Private Link Service
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/bin/python3 /opt/lab/backend.py
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - systemctl daemon-reload
+  - systemctl enable --now lab-backend.service

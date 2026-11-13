@@ -1,0 +1,7 @@
+// Designed, not tested. Traffic analytics table for virtual network flow logs. Check the current table
+// and column names in Microsoft docs; they differ between NSG flow logs and virtual network flow logs.
+NTANetAnalytics
+| where TimeGenerated > ago(1h)
+| where FlowStatus == "Denied"
+| project TimeGenerated, SrcIp, DestIp, DestPort, L4Protocol, FlowDirection, AclRule
+| order by TimeGenerated desc

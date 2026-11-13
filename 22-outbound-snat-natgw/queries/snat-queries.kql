@@ -1,0 +1,12 @@
+// Designed, not tested. Azure Firewall structured logs: connections from snet-fw, with the rule that decided.
+// Table and column names depend on the log destination mode (resource-specific or AzureDiagnostics); check current docs.
+AZFWNetworkRule
+| where TimeGenerated > ago(1h)
+| where SourceIp startswith "10.50.3."
+| project TimeGenerated, SourceIp, DestinationIp, DestinationPort, Protocol, Action, Rule
+| order by TimeGenerated desc
+
+// NAT gateway and load balancer: use metrics, not logs. In the portal open the resource, Metrics, and chart
+//   NAT gateway : SNAT Connection Count (split by Connection State), Dropped Packets, Datapath Availability
+//   Load balancer: SNAT Connection Count (split by Connection State), Allocated SNAT Ports, Used SNAT Ports
+//   Azure Firewall: SNAT port utilization

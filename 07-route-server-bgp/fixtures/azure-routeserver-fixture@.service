@@ -1,0 +1,24 @@
+[Unit]
+Description=Private Route Server experiment origin on synthetic D port %i
+Wants=network-online.target
+Requires=rs-boot.service
+After=network-online.target rs-boot.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /opt/azure-routeserver-lab/server.py --bind 172.20.50.10 --port %i
+DynamicUser=yes
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

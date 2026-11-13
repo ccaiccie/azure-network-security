@@ -1,0 +1,9 @@
+let origin = "/subscriptions/REPLACE/resourceGroups/inspection-tls/providers/Microsoft.Web/sites/REPLACE";
+let case_id = "REPLACE_WITH_EXACT_CASE_ID";
+AppServiceConsoleLogs
+| where _ResourceId =~ origin and TimeGenerated > ago(1h)
+| where ResultDescription contains case_id
+| project TimeGenerated, Host, ContainerId, ResultDescription
+| order by TimeGenerated asc
+// Fixture JSON may have platform prefixes. Match exact case_id within JSON.
+// socket_peer is an internal platform peer; forwarded_for_untrusted is not proof.

@@ -1,0 +1,4 @@
+app source payload +8KiB metadata reserve: 24068 bytes (estimate, not Terraform-rendered custom_data).
+nva source payload +8KiB metadata reserve: 26464 bytes (estimate, not Terraform-rendered custom_data).
+remote source payload +8KiB metadata reserve: 40560 bytes (estimate, not Terraform-rendered custom_data).
+PASS 156 source assertions. No HCL/provider/FRR/nft/kernel/Azure validation implied.
