@@ -1,0 +1,33 @@
+# PAN-OS set commands for the lab (designed, not tested). Syntax depends on the PAN-OS version: check the current CLI reference.
+# Paste in configure mode on each firewall, then commit. Interface addresses come from Azure by DHCP.
+set network interface ethernet ethernet1/1 layer3 dhcp-client enable yes create-default-route no
+set network interface ethernet ethernet1/2 layer3 dhcp-client enable yes create-default-route no
+set network profiles interface-management-profile lb-probe https yes permitted-ip 168.63.129.16
+set network interface ethernet ethernet1/2 layer3 interface-management-profile lb-probe
+set zone untrust network layer3 ethernet1/1
+set zone trust network layer3 ethernet1/2
+set network virtual-router vr1 interface [ ethernet1/1 ethernet1/2 ]
+set network virtual-router vr1 routing-table ip static-route default destination 0.0.0.0/0 nexthop ip-address 10.70.1.1 interface ethernet1/1
+set network virtual-router vr1 routing-table ip static-route to-a destination 10.71.0.0/16 nexthop ip-address 10.70.2.1 interface ethernet1/2
+set network virtual-router vr1 routing-table ip static-route to-b destination 10.72.0.0/16 nexthop ip-address 10.70.2.1 interface ethernet1/2
+set network virtual-router vr1 routing-table ip static-route probe destination 168.63.129.16/32 nexthop ip-address 10.70.2.1 interface ethernet1/2
+set service tcp-8080 protocol tcp port 8080
+set address svc-orders ip-netmask 10.72.0.100/32
+set address node-subnets-a ip-netmask 10.71.0.0/22
+set address node-subnets-b ip-netmask 10.72.0.0/22
+set address-group ag-nodes static [ node-subnets-a node-subnets-b ]
+set address-group dag-a-shop-web dynamic filter "'k8s-ns-shop' and 'k8s-app-web'"
+set address-group dag-a-batch dynamic filter "'k8s-ns-shop' and 'k8s-app-batch'"
+set address-group dag-quarantine dynamic filter "'k8s-quarantine-true'"
+set profiles custom-url-category approved-saas type "URL List" list [ example.com ]
+set profiles custom-url-category aks-required type "URL List" list [ mcr.microsoft.com *.data.mcr.microsoft.com management.azure.com login.microsoftonline.com packages.microsoft.com *.hcp.westeurope.azmk8s.io ]
+# Rule 2 is placed first so a quarantine label takes effect before any allow.
+set rulebase security rules quarantine from trust to [ trust untrust ] source dag-quarantine destination any application any service any action deny log-end yes
+set rulebase security rules ew-shop-to-orders from trust to trust source dag-a-shop-web destination svc-orders application web-browsing service tcp-8080 action allow log-end yes
+set rulebase security rules ew-deny-rest from trust to trust source any destination any application any service any action deny log-end yes
+set rulebase security rules egress-saas from trust to untrust source dag-a-shop-web destination any category approved-saas application [ ssl web-browsing ] service application-default action allow log-end yes
+set rulebase security rules egress-aks-required from trust to untrust source ag-nodes destination any category aks-required application [ ssl web-browsing ] service application-default action allow log-end yes
+set rulebase security rules egress-deny from trust to untrust source any destination any application any service any action deny log-end yes
+set rulebase nat rules ew-snat from trust to trust source any destination 10.72.0.0/16 service any source-translation dynamic-ip-and-port interface-address interface ethernet1/2
+set rulebase nat rules ew-snat-a from trust to trust source any destination 10.71.0.0/16 service any source-translation dynamic-ip-and-port interface-address interface ethernet1/2
+set rulebase nat rules egress-snat from trust to untrust source any destination any service any source-translation dynamic-ip-and-port interface-address interface ethernet1/1

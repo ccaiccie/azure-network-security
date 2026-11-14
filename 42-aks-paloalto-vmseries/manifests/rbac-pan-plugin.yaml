@@ -1,0 +1,39 @@
+# Read-only access for a Panorama Kubernetes plugin or the register script (designed, not tested).
+# Check current Palo Alto Networks documentation for the exact resources and verbs the plugin needs.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pan-plugin
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pan-plugin-read
+rules:
+  - apiGroups: [""]
+    resources: ["namespaces", "pods", "services", "nodes", "endpoints"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: pan-plugin-read
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pan-plugin-read
+subjects:
+  - kind: ServiceAccount
+    name: pan-plugin
+    namespace: kube-system
+---
+# Since Kubernetes 1.24 a token Secret is not created automatically; this declares a long-lived one.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pan-plugin-token
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: pan-plugin
+type: kubernetes.io/service-account-token

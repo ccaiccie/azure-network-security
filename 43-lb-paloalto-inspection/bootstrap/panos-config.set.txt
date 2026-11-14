@@ -1,0 +1,39 @@
+# PAN-OS set commands for Scenario 43 (designed, not tested). Syntax depends on the PAN-OS version: check the current CLI reference.
+# Paste in configure mode on each firewall, then commit. Interface addresses come from Azure by DHCP.
+# 203.0.113.80 stands for the public frontend address of your public load balancer: replace it with the real address.
+set network interface ethernet ethernet1/1 layer3 dhcp-client enable yes create-default-route no
+set network interface ethernet ethernet1/2 layer3 dhcp-client enable yes create-default-route no
+# Probe answer: https on the data interfaces, only for the platform address.
+set network profiles interface-management-profile lb-probe https yes
+set network profiles interface-management-profile lb-probe permitted-ip 168.63.129.16
+set network interface ethernet ethernet1/1 layer3 interface-management-profile lb-probe
+set network interface ethernet ethernet1/2 layer3 interface-management-profile lb-probe
+set zone untrust network layer3 ethernet1/1
+set zone trust network layer3 ethernet1/2
+# Two virtual routers: the probe source 168.63.129.16 needs a different reply route on each side.
+set network virtual-router vr-untrust interface ethernet1/1
+set network virtual-router vr-trust interface ethernet1/2
+set network virtual-router vr-untrust routing-table ip static-route default destination 0.0.0.0/0 nexthop ip-address 10.80.1.1 interface ethernet1/1
+set network virtual-router vr-untrust routing-table ip static-route probe destination 168.63.129.16/32 nexthop ip-address 10.80.1.1 interface ethernet1/1
+set network virtual-router vr-untrust routing-table ip static-route to-app destination 10.81.0.0/16 nexthop next-vr vr-trust
+set network virtual-router vr-trust routing-table ip static-route probe destination 168.63.129.16/32 nexthop ip-address 10.80.2.1 interface ethernet1/2
+set network virtual-router vr-trust routing-table ip static-route to-app destination 10.81.0.0/16 nexthop ip-address 10.80.2.1 interface ethernet1/2
+set network virtual-router vr-trust routing-table ip static-route default destination 0.0.0.0/0 nexthop next-vr vr-untrust
+set address fe-web ip-netmask 203.0.113.80/32
+set address web-ilb ip-netmask 10.81.0.10/32
+set address web-subnet ip-netmask 10.81.0.0/24
+set address bad-src ip-netmask 198.51.100.66/32
+set address-group blocklist static bad-src
+# Rule 1 is first so a blocked source is dropped before any allow.
+set rulebase security rules block-bad-src from untrust to [ untrust trust ] source blocklist destination any application any service any action deny log-end yes
+set rulebase security rules web-in from untrust to trust source any destination fe-web application web-browsing service service-http action allow log-end yes
+set rulebase security rules web-in profile-setting group default
+set rulebase security rules web-out from trust to untrust source web-subnet destination any application [ ssl web-browsing ] service application-default action allow log-end yes
+set rulebase security rules deny-log-all from any to any source any destination any application any service any action deny log-end yes
+# Inbound: destination NAT on the frontend address (floating IP on), plus source NAT to the trust interface so the reply returns here.
+set rulebase nat rules dnat-web from untrust to untrust source any destination fe-web service service-http destination-translation translated-address web-ilb
+set rulebase nat rules dnat-web source-translation dynamic-ip-and-port interface-address interface ethernet1/2
+# Outbound: source NAT to the untrust interface; the public load balancer or a NAT Gateway translates again.
+set rulebase nat rules egress-snat from trust to untrust source any destination any service any source-translation dynamic-ip-and-port interface-address interface ethernet1/1
+# If plb_floating_ip is false, the destination is the firewall's own untrust address (fw1 10.80.1.4, fw2 10.80.1.5). Write the
+# dnat-web destination as that address instead; the two settings must always agree (break/fix case 3).

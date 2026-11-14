@@ -1,0 +1,26 @@
+# Cluster B, namespace orders: default deny, and ingress from the firewall NAT addresses on 8080.
+# After source NAT the caller is 10.70.2.4 or 10.70.2.5, so the policy names that range. Designed, not tested.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: orders
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-firewall
+  namespace: orders
+spec:
+  podSelector:
+    matchLabels: {app: orders}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - ipBlock:
+            cidr: 10.70.2.4/31
+      ports:
+        - {protocol: TCP, port: 8080}

@@ -1,0 +1,31 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id  = "00000000-0000-0000-0000-000000000000"
+location         = "westeurope"
+name_prefix      = "cs42"
+mgmt_source_cidr = "203.0.113.50/32" # replace with your own public address
+
+# Gate 1: two VM-Series VMs, the ILB, public IPs and routes (billable)
+deploy_firewalls = false
+
+# Gate 2: two AKS clusters with outbound type userDefinedRouting (billable; needs gate 1)
+deploy_aks = false
+
+# Gate 3: NSG rules on the node subnets (free)
+enable_cheap_layer = false
+
+# Marketplace terms: accept them yourself (see LAB-GUIDE.md) or set true after reading them.
+accept_marketplace_terms = false
+
+# Image and size: check current Palo Alto Networks and Azure Marketplace documentation.
+vmseries_publisher = "paloaltonetworks"
+vmseries_offer     = "vmseries-flex"
+vmseries_sku       = "byol"
+vmseries_version   = "latest"
+vmseries_size      = "Standard_D3_v2"
+
+# Secrets: do NOT put them here. Use TF_VAR_admin_password and TF_VAR_bootstrap_access_key.
+
+# Behaviour switches. Changing cni_mode or network_policy replaces the clusters.
+cni_mode               = "node_subnet"
+network_policy         = "cilium"
+use_availability_zones = false

@@ -1,0 +1,9 @@
+# Example init-cfg.txt for a bootstrap package. Check current Palo Alto Networks documentation for parameters and versions.
+type=dhcp-client
+hostname=cs43-fw1
+dns-primary=168.63.129.16
+panorama-server=
+tplname=
+dgname=
+vm-auth-key=
+authcodes=

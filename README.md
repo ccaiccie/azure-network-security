@@ -49,4 +49,6 @@ Companion code for the **Azure network security** video series. There is one fol
 | 36 | [Capstone: a multi-region enterprise network, designed, routed, inspected and broken](36-capstone-multiregion/) | `36-capstone-multiregion/` |
 | 37 | [BGP path selection and selective routing across Azure VPN Gateway, Route Server, ExpressRoute and Virtual WAN](37-bgp-path-selection-selective-routing/) | `37-bgp-path-selection-selective-routing/` |
 | 38 | [Container networking and security inspection: AKS egress through Azure Firewall, what the firewall sees, pod policy and ingress](38-container-security-inspection/) | `38-container-security-inspection/` |
+| 42 | [AKS to AKS traffic enforcement with Palo Alto VM-Series firewalls, dynamic address groups, and cheaper layered alternatives](42-aks-paloalto-vmseries/) | `42-aks-paloalto-vmseries/` |
+| 43 | [Inspecting Azure Load Balancer traffic with Palo Alto VM-Series (ILB, ELB, Gateway Load Balancer, SNAT, symmetry)](43-lb-paloalto-inspection/) | `43-lb-paloalto-inspection/` |
 # azure-network-security

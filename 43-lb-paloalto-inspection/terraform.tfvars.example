@@ -1,0 +1,35 @@
+# Copy to terraform.tfvars and edit. Every gate is false by default.
+subscription_id  = "00000000-0000-0000-0000-000000000000"
+location         = "westeurope"
+name_prefix      = "cs43"
+mgmt_source_cidr = "203.0.113.50/32" # replace with your own public address
+
+# Gate 1: two VM-Series VMs, both load balancers, public IPs and the route (billable)
+deploy_firewalls = false
+
+# Gate 2: two small web VMs and the web internal load balancer (billable, small; needs gate 1 to be useful)
+deploy_backends = false
+
+# Gate 3: Gateway Load Balancer variant (billable; needs gates 1 and 2; removes the web default route while on)
+deploy_gateway_lb = false
+
+# Optional NAT Gateway for outbound (billable)
+enable_nat_gateway = false
+
+# Marketplace terms: accept them yourself (see LAB-GUIDE.md) or set true after reading them.
+accept_marketplace_terms = false
+
+# Image and size: check current Palo Alto Networks and Azure Marketplace documentation.
+vmseries_publisher = "paloaltonetworks"
+vmseries_offer     = "vmseries-flex"
+vmseries_sku       = "byol"
+vmseries_version   = "latest"
+vmseries_size      = "Standard_D3_v2"
+
+# Secrets: do NOT put them here. Use TF_VAR_admin_password and TF_VAR_bootstrap_access_key.
+
+# Behaviour and break/fix switches
+plb_floating_ip        = true
+nsg_allow_http_inbound = true
+break_probe_block      = false
+use_availability_zones = false

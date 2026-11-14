@@ -1,0 +1,44 @@
+# Cluster A: namespace shop with a web pod (allowed by the DAG) and a batch pod (not in the DAG).
+# Designed, not tested. The curl image tag is an example.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: shop
+  labels:
+    kubernetes.io/metadata.name: shop
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: shop
+spec:
+  replicas: 2
+  selector:
+    matchLabels: {app: web}
+  template:
+    metadata:
+      labels: {app: web, tier: frontend, env: lab}
+    spec:
+      containers:
+        - name: web
+          image: curlimages/curl:8.10.1
+          command: ["sleep", "86400"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: batch
+  namespace: shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: batch}
+  template:
+    metadata:
+      labels: {app: batch, tier: worker, env: lab}
+    spec:
+      containers:
+        - name: batch
+          image: curlimages/curl:8.10.1
+          command: ["sleep", "86400"]

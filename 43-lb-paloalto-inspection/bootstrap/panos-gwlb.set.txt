@@ -1,0 +1,18 @@
+# Gateway Load Balancer variant (gate 3). PLACEHOLDER: designed, not tested, and the PAN-OS lines below are NOT verified.
+# Check the current Palo Alto Networks documentation for the VM-Series integration with the Azure Gateway Load Balancer:
+# the supported PAN-OS version, the interface type and the exact commands. Do not paste these lines without checking.
+#
+# What must match the Terraform pool (gwlb.tf):
+#   internal tunnel: VXLAN, udp/10800, identifier (VNI) 800
+#   external tunnel: VXLAN, udp/10801, identifier (VNI) 801
+#   the fourth NIC (ethernet1/3, 10.80.3.4 on fw1 and 10.80.3.5 on fw2) answers the probe on tcp/443
+#
+# Sketch of the intent (verify each line):
+#   set network interface ethernet ethernet1/3 layer3 dhcp-client enable yes create-default-route no
+#   set network profiles interface-management-profile lb-probe-gw https yes
+#   set network profiles interface-management-profile lb-probe-gw permitted-ip 168.63.129.16
+#   (create the tunnel settings for the internal and external tunnels with the ports and identifiers above)
+#   set zone gwlb network layer3 ethernet1/3          # zone for the decapsulated traffic: verify the interface type
+#   set address fe-gw-web ip-netmask 203.0.113.81/32  # example address of the chained frontend
+#   set rulebase security rules gw-web from gwlb to gwlb source any destination fe-gw-web application web-browsing service service-http action allow log-end yes
+#   (no NAT rule: the inner packet must return unchanged)
